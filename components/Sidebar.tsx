@@ -36,21 +36,21 @@ export default function Sidebar() {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-4 z-50 lg:hidden bg-indigo-600 text-white p-2 rounded-lg"
+        className="fixed top-4 left-4 z-50 lg:hidden bg-teal-600 text-white p-2 rounded-lg"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-screen w-64 bg-indigo-900 text-white transition-transform duration-300 z-40 lg:translate-x-0 ${
+        className={`fixed left-0 top-0 h-screen w-64 bg-teal-900 text-white transition-transform duration-300 z-40 lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="p-6">
           {/* Logo */}
           <div className="text-2xl font-bold mb-8">
-            VitalStep<span className="text-indigo-300">.</span>
+            VitalStep<span className="text-coral-400">.</span>
           </div>
 
           {/* Navigation */}
@@ -60,7 +60,7 @@ export default function Sidebar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-indigo-800 transition"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-teal-800 transition"
               >
                 <item.icon size={20} />
                 <span>{item.label}</span>

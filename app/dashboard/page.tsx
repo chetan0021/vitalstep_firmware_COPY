@@ -61,13 +61,13 @@ export default function DashboardPage() {
     label: string
     value: number
   }) => (
-    <div className="bg-white rounded-lg shadow p-6 border-l-4 border-indigo-600">
+    <div className="bg-white rounded-lg shadow p-6 border-l-4 border-teal-600">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-gray-600 text-sm">{label}</p>
           <p className="text-3xl font-bold text-gray-900 mt-2">{value}</p>
         </div>
-        <Icon className="text-indigo-600" size={40} />
+        <Icon className="text-teal-600" size={40} />
       </div>
     </div>
   )
@@ -100,20 +100,20 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <Link
           href="/dashboard/generate"
-          className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg p-6 transition transform hover:scale-105"
+          className="bg-teal-600 hover:bg-teal-700 text-white rounded-lg p-6 transition transform hover:scale-105"
         >
-          <div className="text-3xl mb-2">=ƒöº</div>
+          <div className="text-3xl mb-2">=ï¿½ï¿½ï¿½</div>
           <h3 className="text-xl font-bold">Generate Device ID</h3>
-          <p className="text-indigo-100 mt-2">Create a new device code</p>
+          <p className="text-teal-100 mt-2">Create a new device code</p>
         </Link>
 
         <Link
           href="/dashboard/devices"
-          className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-6 transition transform hover:scale-105"
+          className="bg-coral-500 hover:bg-coral-600 text-white rounded-lg p-6 transition transform hover:scale-105"
         >
-          <div className="text-3xl mb-2">=ƒôï</div>
+          <div className="text-3xl mb-2">=ï¿½ï¿½ï¿½</div>
           <h3 className="text-xl font-bold">View Inventory</h3>
-          <p className="text-blue-100 mt-2">Manage all devices</p>
+          <p className="text-coral-100 mt-2">Manage all devices</p>
         </Link>
       </div>
 

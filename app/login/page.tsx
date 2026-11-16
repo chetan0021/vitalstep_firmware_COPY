@@ -42,7 +42,7 @@ export default function LoginPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(to bottom right, #eff6ff, #e0e7ff)',
+      background: 'linear-gradient(to bottom right, #f0fdfa, #fff1f2)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -63,7 +63,7 @@ export default function LoginPage() {
               justifyContent: 'center',
               width: '4rem',
               height: '4rem',
-              background: '#4f46e5',
+              background: '#0d9488',
               borderRadius: '9999px',
               marginBottom: '1rem'
             }}>
@@ -138,7 +138,7 @@ export default function LoginPage() {
               disabled={loading}
               style={{
                 width: '100%',
-                background: loading ? '#9ca3af' : '#4f46e5',
+                background: loading ? '#9ca3af' : '#0d9488',
                 color: 'white',
                 fontWeight: '600',
                 padding: '0.5rem',
@@ -147,8 +147,8 @@ export default function LoginPage() {
                 cursor: loading ? 'not-allowed' : 'pointer',
                 transition: 'background 0.2s'
               }}
-              onMouseEnter={(e) => !loading && (e.currentTarget.style.background = '#4338ca')}
-              onMouseLeave={(e) => !loading && (e.currentTarget.style.background = '#4f46e5')}
+              onMouseEnter={(e) => !loading && (e.currentTarget.style.background = '#0f766e')}
+              onMouseLeave={(e) => !loading && (e.currentTarget.style.background = '#0d9488')}
             >
               {loading ? 'Logging in...' : 'Sign In'}
             </button>

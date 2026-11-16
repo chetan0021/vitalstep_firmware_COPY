@@ -112,7 +112,7 @@ export default function GeneratePage() {
           <button
             onClick={generateDevice}
             disabled={loading}
-            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white font-semibold py-3 px-8 rounded-lg transition duration-200"
+            className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-400 text-white font-semibold py-3 px-8 rounded-lg transition duration-200"
           >
             {loading && <Loader size={20} className="animate-spin" />}
             {loading ? 'Generating...' : 'Generate Device ID'}
@@ -192,14 +192,14 @@ export default function GeneratePage() {
           </div>
 
           {/* Download SD Files */}
-          <div className="bg-indigo-50 border-2 border-indigo-200 rounded-lg shadow p-6">
+          <div className="bg-teal-50 border-2 border-teal-200 rounded-lg shadow p-6">
             <h3 className="text-lg font-bold text-gray-900 mb-4">Download SD Card Files</h3>
             <p className="text-gray-600 mb-4">
               Download these files and place them on the device's SD card
             </p>
             <button
               onClick={downloadSDFiles}
-              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg transition"
+              className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-6 rounded-lg transition"
             >
               <Download size={20} />
               Download Files

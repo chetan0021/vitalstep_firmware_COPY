@@ -93,7 +93,7 @@ export default function DevicesPage() {
               placeholder="Search device code..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
             />
           </div>
 
@@ -102,7 +102,7 @@ export default function DevicesPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent appearance-none bg-white pr-8"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent appearance-none bg-white pr-8"
             >
               <option value="all">All Status</option>
               <option value="manufactured">Manufactured</option>
@@ -127,7 +127,7 @@ export default function DevicesPage() {
       <div className="bg-white rounded-lg shadow overflow-hidden">
         {loading ? (
           <div className="p-8 text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
             <p className="text-gray-600 mt-4">Loading devices...</p>
           </div>
         ) : filteredDevices.length === 0 ? (
@@ -156,7 +156,7 @@ export default function DevicesPage() {
               <tbody>
                 {filteredDevices.map((device) => (
                   <tr key={device.id} className="border-b border-gray-200 hover:bg-gray-50">
-                    <td className="px-6 py-3 font-mono text-sm font-bold text-indigo-600">
+                    <td className="px-6 py-3 font-mono text-sm font-bold text-teal-600">
                       {device.device_code}
                     </td>
                     <td className="px-6 py-3">
@@ -173,7 +173,7 @@ export default function DevicesPage() {
                       {new Date(device.created_at).toLocaleTimeString()}
                     </td>
                     <td className="px-6 py-3">
-                      <button className="text-indigo-600 hover:text-indigo-900 font-semibold text-sm">
+                      <button className="text-teal-600 hover:text-teal-900 font-semibold text-sm">
                         View Details
                       </button>
                     </td>
