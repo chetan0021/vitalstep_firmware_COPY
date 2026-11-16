@@ -27,9 +27,20 @@ class AccountViewModel extends BaseViewModel {
 
   Future<void> init() async {
     setBusy(true);
-    profile = await _accountService.getAccountDetails();
-    setBusy(false);
-    notifyListeners();
+    try {
+      profile = await _accountService.getAccountDetails();
+      notifyListeners();
+    } catch (e) {
+      _logger.e("Error loading profile: $e");
+      await _dialogService.showDialog(
+        title: 'Error Loading Profile',
+        description:
+            'Unable to load your profile. Please try again or contact support.',
+        buttonTitle: 'OK',
+      );
+    } finally {
+      setBusy(false);
+    }
   }
 
   Map<String, dynamic> getDevices(Profile prof) {

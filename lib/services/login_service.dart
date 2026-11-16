@@ -101,26 +101,33 @@ class LoginService {
 
       final userId = res.user!.id;
 
-      // Create profile
+      // Step 1: Create minimal profile (only columns that exist in profiles table)
       await patientSupabaseClient.from('profiles').upsert({
         'id': userId,
         'name': signUpInfo.name,
         'email': signUpInfo.email,
-        'phone': signUpInfo.phone,
-        'country_code': signUpInfo.countryCode,
-        'dob': signUpInfo.dob,
-        'gender': signUpInfo.gender,
-        'weight': signUpInfo.weight,
-        'height': signUpInfo.height,
         'dominant_hand': signUpInfo.dominantHand,
+        'user_type': 'Patient',
+      });
+
+      // Step 2: Create patient record with all clinical/physical data
+      await patientSupabaseClient.from('patients').upsert({
+        'user_id': userId,
+        'name': signUpInfo.name,
+        'email': signUpInfo.email,
+        'phone': signUpInfo.phone.toString(),
+        'date_of_birth': signUpInfo.dob,
+        'gender': signUpInfo.gender,
+        'dominant_hand': signUpInfo.dominantHand,
+        'weight_kg': signUpInfo.weight,
+        'height_cm': signUpInfo.height,
+        'palm_length_mm': signUpInfo.palmLength?.toInt(),
+        'palm_width_mm': signUpInfo.palmWidth?.toInt(),
+        'knuckle_length_mm': signUpInfo.knuckleLength?.toInt(),
         'city': signUpInfo.city,
         'country': signUpInfo.country,
         'address': signUpInfo.address,
-        'pincode': signUpInfo.pincode,
-        'palm_length': signUpInfo.palmLength,
-        'palm_width': signUpInfo.palmWidth,
-        'knuckle_length': signUpInfo.knuckleLength,
-        'user_type': 'Patient',
+        'pincode': signUpInfo.pincode?.toString(),
       });
 
       box.write('userId', userId);
@@ -152,22 +159,29 @@ class LoginService {
       final userId = patientSupabaseClient.auth.currentUser?.id;
       if (userId == null) return;
 
+      // Update minimal profile columns only
       await patientSupabaseClient.from('profiles').update({
         'name': signUpInfo.name,
-        'phone': signUpInfo.phone,
-        'dob': signUpInfo.dob,
-        'gender': signUpInfo.gender,
-        'weight': signUpInfo.weight,
-        'height': signUpInfo.height,
         'dominant_hand': signUpInfo.dominantHand,
+      }).eq('id', userId);
+
+      // Update full clinical data in patients table
+      await patientSupabaseClient.from('patients').update({
+        'name': signUpInfo.name,
+        'phone': signUpInfo.phone.toString(),
+        'date_of_birth': signUpInfo.dob,
+        'gender': signUpInfo.gender,
+        'dominant_hand': signUpInfo.dominantHand,
+        'weight_kg': signUpInfo.weight,
+        'height_cm': signUpInfo.height,
+        'palm_length_mm': signUpInfo.palmLength?.toInt(),
+        'palm_width_mm': signUpInfo.palmWidth?.toInt(),
+        'knuckle_length_mm': signUpInfo.knuckleLength?.toInt(),
         'city': signUpInfo.city,
         'country': signUpInfo.country,
         'address': signUpInfo.address,
-        'pincode': signUpInfo.pincode,
-        'palm_length': signUpInfo.palmLength,
-        'palm_width': signUpInfo.palmWidth,
-        'knuckle_length': signUpInfo.knuckleLength,
-      }).eq('id', userId);
+        'pincode': signUpInfo.pincode?.toString(),
+      }).eq('user_id', userId);
 
       Fluttertoast.showToast(msg: "Profile Updated Successfully");
     } catch (e) {

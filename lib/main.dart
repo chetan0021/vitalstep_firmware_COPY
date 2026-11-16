@@ -47,6 +47,9 @@ Future<void> main() async {
   patientSupabaseClient = SupabaseClient(
     'https://oyqecdcpicvzwwvwaeka.supabase.co',
     'sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi',
+    authOptions: const AuthClientOptions(
+      authFlowType: AuthFlowType.implicit,
+    ),
   );
 
   setupBottomSheetUi();

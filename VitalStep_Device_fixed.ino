@@ -64,7 +64,7 @@ static const char SUPABASE_ROOT_CA[] = "";   // paste root CA PEM here when TLS_
 #define TZ_OFFSET_SEC     19800            // IST = UTC+5:30
 
 // ------------------------------ TEST MODE (simulate data without hardware) ---
-#define TEST_MODE         1     // 1 = enable test mode (simulates realistic trial data)
+#define TEST_MODE         0     // 0 = production mode (show QR code + skip button at startup)
 #define MOCK_HX711        1     // 1 = mock load cell readings
 #define MOCK_BATTERY      1     // 1 = mock battery voltage (simulates 85%)
 #define MOCK_BUZZER       1     // 1 = skip speaker output
@@ -431,6 +431,128 @@ static bool sdWriteText(const char* path,const char* data){
 }
 
 // ===========================================================================
+//  PAIRING STATE PERSISTENCE (SD Card)
+// ===========================================================================
+// Pairing file format on SD: device_code|secret|paired_user_id|paired_at
+// Example: VS-001001|29740c5e5bf1edfb0503264a306b01661836346fd126fa621f40d9d7cdd12c68|d9dd4237-2701-4475-9d9e-2fac790c760f|2024-11-11T10:00:00Z
+
+struct PairingState {
+  char device_code[40];
+  char secret[72];
+  char paired_user_id[48];
+  char paired_at[32];
+  bool paired;
+};
+
+static PairingState pairingState = {"", "", "", "", false};
+
+// Load pairing state from SD card (/pairing.txt)
+// Returns true if paired file exists and is valid
+static bool loadPairingState() {
+  pairingState.paired = false;
+  pairingState.paired_user_id[0] = 0;
+  pairingState.paired_at[0] = 0;
+  
+  if (!sdOk) {
+    claimed = false;  // No SD = no pairing state possible
+    return false;
+  }
+  
+  char content[256];
+  if (!sdReadText("/pairing.txt", content, sizeof content)) {
+    claimed = false;  // No pairing file = not paired
+    return false;  // File doesn't exist or empty
+  }
+  
+  // Parse: device_code|secret|paired_user_id|paired_at
+  char* p = (char*)malloc(strlen(content) + 1);
+  if (!p) return false;
+  strcpy(p, content);
+  
+  char* parts[4] = {nullptr};
+  int partIdx = 0;
+  char* saveptr = nullptr;
+  
+  // Simple tokenizer with strtok_r
+  char* token = strtok_r(p, "|", &saveptr);
+  while (token && partIdx < 4) {
+    parts[partIdx++] = token;
+    token = strtok_r(nullptr, "|", &saveptr);
+  }
+  free(p);
+  
+  // Validate we got all 4 parts
+  if (partIdx != 4) {
+    Serial.println("[PAIR] Invalid pairing file format");
+    return false;
+  }
+  
+  // Copy parsed values
+  strlcpy(pairingState.device_code, parts[0], sizeof pairingState.device_code);
+  strlcpy(pairingState.secret, parts[1], sizeof pairingState.secret);
+  strlcpy(pairingState.paired_user_id, parts[2], sizeof pairingState.paired_user_id);
+  strlcpy(pairingState.paired_at, parts[3], sizeof pairingState.paired_at);
+  
+  // Validate: device_code and secret should match what we have
+  if (strcmp(pairingState.device_code, devCode) != 0 || 
+      strcmp(pairingState.secret, devSecret) != 0) {
+    Serial.println("[PAIR] Device code/secret mismatch in pairing file");
+    return false;
+  }
+  
+  pairingState.paired = (pairingState.paired_user_id[0] != 0);
+  if (pairingState.paired) {
+    Serial.printf("[PAIR] Device is PAIRED to user: %s\n", pairingState.paired_user_id);
+    claimed = true;  // Sync claimed flag with pairing state
+  } else {
+    claimed = false;
+  }
+  return pairingState.paired;
+}
+
+// Save pairing state to SD card
+// Called when device-sync returns paired=true with user_id
+static bool savePairingState(const char* user_id, const char* at_time) {
+  if (!sdOk || !devCode[0] || !devSecret[0]) return false;
+  
+  // Format: device_code|secret|paired_user_id|paired_at
+  char content[256];
+  snprintf(content, sizeof content, "%s|%s|%s|%s", devCode, devSecret, user_id, at_time);
+  
+  bool ok = sdWriteText("/pairing.txt", content);
+  if (ok) {
+    Serial.printf("[PAIR] Saved pairing state for user: %s\n", user_id);
+    strlcpy(pairingState.paired_user_id, user_id, sizeof pairingState.paired_user_id);
+    strlcpy(pairingState.paired_at, at_time, sizeof pairingState.paired_at);
+    pairingState.paired = true;
+  }
+  return ok;
+}
+
+// Remove pairing state from SD card (unpair)
+static bool removePairingState() {
+  if (!sdOk) return false;
+  
+  sdLock();
+  bool ok = !SD.exists("/pairing.txt") || SD.remove("/pairing.txt");
+  sdUnlock();
+  
+  if (ok) {
+    Serial.println("[PAIR] Removed pairing state from SD");
+    pairingState.paired = false;
+    pairingState.paired_user_id[0] = 0;
+    pairingState.paired_at[0] = 0;
+  }
+  return ok;
+}
+
+// Check if device is paired (by checking if pairing file exists on SD)
+// This is called at boot to decide: show HOME (paired) or PAIRING screen (unpaired)
+static bool isPaired() {
+  return pairingState.paired;
+}
+
+// ===========================================================================
 //  IDENTITY  (device code + secret from SD, cached in NVS; device id after pairing)
 // ===========================================================================
 static void identityLoad(){
@@ -499,7 +621,11 @@ static void beepOk(){ beep(1319,90); }
 static void beepTrial(){ beep(988,120); }
 static void beepErr(){ beep(330,250); }
 static void applyBrightness(){
-  static const uint8_t lv[4]={40,110,180,255}; tft.setBrightness(dimmed?20:lv[(optBright>3?3:optBright)]);
+  // CRITICAL FIX: Keep backlight always on to prevent SPI bus contention with touch controller
+  // Both display and touch share SPI2_HOST; brightness changes lock the bus, blocking touch reads
+  // Solution: Always run at maximum brightness (255) to eliminate PWM updates
+  // dimmed flag is ignored; backlight stays on always
+  tft.setBrightness(255);  // Always maximum brightness - prevents touch freeze
 }
 
 // ===========================================================================
@@ -955,10 +1081,33 @@ static int doSync(){
   }
   pendingCnt=pendingCount();
   bool cl=doc["claimed"]|false;
-  if(reqUnpair){ reqUnpair=false; }
+  if(reqUnpair){ reqUnpair=false; removePairingState(); }
   if(cl!=claimed){ claimed=cl; evClaim=true; }
   if(cl){
     const char* did=doc["device_id"]|""; if(did[0]) identitySaveDevId(did);
+    
+    // Save pairing state to SD when device becomes/stays claimed
+    const char* pid=doc["owner"]["patient_code"]|(const char*)"";
+    if(pid[0]){
+      // Use server time if available, or current time
+      const char* server_ts=doc["server_time"]|(const char*)"";
+      char now_ts[32]="";
+      if(!server_ts[0]){
+        uint32_t now=nowEpoch();
+        if(now){
+          struct tm t; localTm(now,&t);
+          snprintf(now_ts,sizeof now_ts,"%04d-%02d-%02dT%02d:%02d:%02dZ",t.tm_year+1900,t.tm_mon+1,t.tm_mday,t.tm_hour,t.tm_min,t.tm_sec);
+          server_ts=now_ts;
+        }
+      }
+      savePairingState(pid,server_ts);
+    } else if(isPaired() && pairingState.paired_user_id[0]){
+      // Device already paired but response missing patient_code - restore from existing pairing state
+      // This handles the case where cloud says claimed=true but response is incomplete
+      Serial.println("[PAIR] Restoring existing pairing state (server response incomplete)");
+      // pairingState already loaded at boot, just validate it's still good
+    }
+    
     profIn=PROF; strlcpy(profIn.name,doc["owner"]["name"]|(const char*)PROF.name,sizeof profIn.name);
     strlcpy(profIn.pid,doc["owner"]["patient_code"]|(const char*)PROF.pid,sizeof profIn.pid);
     strlcpy(profIn.spec,doc["specialist"]["name"]|(const char*)PROF.spec,sizeof profIn.spec);
@@ -1411,7 +1560,7 @@ static void drawSettings(){
   kv(246,146,224,"Load cell",hxOk?"OK":"Not found",hxOk?C_OK:C_BAD);
   kv(246,168,224,"Code",devCode[0]?devCode:"--",C_TXT);
   kv(246,190,224,"Firmware",FW_VERSION,C_TXT);
-  BTN(10,208,146,52,"Wi-Fi setup",C_TEAL,C_INK); BTNO(167,208,146,52,"Sync now",C_LINE,C_TXT); BTNO(324,208,146,52,"Zero scale",C_LINE,C_TXT);
+  BTN(10,208,146,52,"Wi-Fi setup",C_TEAL,C_INK); BTNO(167,208,146,52,"Sync now",C_LINE,C_TXT); BTN(324,208,146,52,"Skip",C_GOLD,C_INK);
 }
 static void tapSettings(){
   if(inR(tx,ty,10,34,224,26)){ uint8_t t=(tx<122)?0:1; if(t!=setPage){ setPage=t; needFull=true; } return; }
@@ -1425,7 +1574,7 @@ static void tapSettings(){
   }
   if(inR(tx,ty,10,208,146,52)){ if(!identOk){ toastC("No device code on SD",C_BAD); return; } goB(S_SETUP,S_SETTINGS); bleStart(); return; }
   if(inR(tx,ty,167,208,146,52)){ doSyncNow(); return; }
-  if(inR(tx,ty,324,208,146,52)){ toast("Zeroing scale..."); hxZero(); toast(hxOk?"Scale zeroed":"Load cell not found"); }
+  if(inR(tx,ty,324,208,146,52)){ go(S_HOME); return; }  // Skip button - return to home
 }
 
 // ===========================================================================
@@ -1881,9 +2030,20 @@ static void ledTick(uint32_t now){
   else ledSet(0,0,0);
 }
 static void pollTouch(){
-  int32_t x=0,y=0; bool d=tft.getTouch(&x,&y); ttap=false;
-  if(d){ if(!tdown){ if(millis()-tUp>80) ttap=true; tdown=true; } tx=(int)x; ty=(int)y; lastTouchMs=millis(); }
-  else { if(tdown) tUp=millis(); tdown=false; }
+  int32_t x=0,y=0; bool d=tft.getTouch(&x,&y);
+  if(d){ 
+    if(!tdown){ 
+      // Touch detected while not already pressed: register as tap immediately (or after 20ms debounce)
+      if(millis()-tUp>20) ttap=true;  // Reduced from 80ms to 20ms for responsive button feedback
+      tdown=true; 
+    } 
+    tx=(int)x; ty=(int)y; lastTouchMs=millis(); 
+  }
+  else { 
+    if(tdown) tUp=millis(); 
+    tdown=false; 
+    ttap=false;  // Clear tap flag when touch is released
+  }
 }
 static void handleTouch(){
   static bool pd=false;
@@ -1892,6 +2052,7 @@ static void handleTouch(){
     if(modal!=M_NONE) modalTap();
     else {
       bool sub=(scr==S_COMPARE||scr==S_INSIGHT);
+      Scr oldScr=scr;  // remember previous screen
       if(sub&&inR(tx,ty,0,26,100,32)) goB(scrBack,S_HOME);
       else if(navVisible()&&ty>=275){
         int t=clampi(tx/120,0,3); Scr s=(t==0)?S_HOME:((t==1)?S_DASH:((t==2)?S_ASSESS:S_SETTINGS)); if(s!=scr) go(s);
@@ -1902,6 +2063,8 @@ static void handleTouch(){
         case S_COMPARE: tapCompare(); break; case S_INSIGHT: tapInsight(); break;
         case S_CALIB: tapCalib(); break;     default: break;
       }
+      // If screen changed, reset lastTouchMs to prevent immediate dimming
+      if(scr!=oldScr) lastTouchMs=millis();
     }
   }
   if(tdown&&scr==S_DASH&&modal==M_NONE) dashDrag();
@@ -1910,7 +2073,8 @@ static void handleTouch(){
 }
 static void tick(uint32_t now){
   batteryUpdate(); timePersist(); statusWatch(now); processNetEvents(); ledTick(now);
-  if(!dimmed&&now-lastTouchMs>90000UL&&scr!=S_TEST&&!bleActive){ dimmed=true; applyBrightness(); }
+  // DISABLED: Automatic screen dimming - causes SPI bus contention with touch
+  // if(!dimmed&&now-lastTouchMs>90000UL&&scr!=S_TEST&&!bleActive){ dimmed=true; applyBrightness(); }
   if(toastUntil&&now>toastUntil){ toastUntil=0; if(scr!=S_TEST&&scr!=S_SPLASH&&scr!=S_SETUP&&scr!=S_CALIB) needFull=true; }
   static bool warned=false;
   if(batPresent&&batPct>=0){
@@ -1940,6 +2104,7 @@ void setup(){
   bootStep("Loading settings...",8);          optionsLoad(); applyBrightness();
   bootStep("Checking SD card...",22);         sdInit(); if(sdOk) logoDraw(240,98);
   bootStep("Reading device identity...",36);  identityLoad();
+  bootStep("Loading pairing state...",40);    if(sdOk) loadPairingState(); else claimed=false;  // If no SD, can't be paired
   bootStep("Loading Wi-Fi and history...",50); wifiCredsLoad(); timeRestore(); historyLoad(); queueLoad(); pendingCnt=pendingCount();
   bootStep("Reading battery...",62);          batteryUpdate();
   bootStep("Starting load cell...",78);       hxInit();
@@ -1953,8 +2118,20 @@ void setup(){
   else if(!identOk||!haveCreds){ goB(S_SETUP,S_HOME); if(identOk&&!haveCreds) bleStart(); }
   else go(S_HOME);  // TEST MODE: skip straight to home - pairing not required
 #else
-  if(force||!identOk||!haveCreds||!claimed){ goB(S_SETUP,S_HOME); if(identOk&&(force||!haveCreds)) bleStart(); }
-  else go(S_HOME);
+  // Production mode: check pairing state from SD
+  // If paired and have creds, go to HOME
+  // If unpaired or no creds, go to SETUP (QR code + pairing screen)
+  if(force||!identOk||!haveCreds){ 
+    goB(S_SETUP,S_HOME); 
+    if(identOk&&(force||!haveCreds)) bleStart(); 
+  }
+  else if(isPaired()){
+    // Device is paired: show HOME directly
+    go(S_HOME);
+  } else {
+    // Device is unpaired: show SETUP (QR code pairing screen)
+    goB(S_SETUP,S_HOME);
+  }
 #endif
   lastTouchMs=millis();
 }
@@ -1963,5 +2140,5 @@ void loop(){
   pollTouch(); handleTouch(); tick(now);
   if(needFull){ needFull=false; drawScreen(); }
   else if(statusDirty) drawStatus();
-  delay(3);
+  delay(5);  // Increased from 3ms to 5ms to allow SPI transactions to complete and reduce touch/display contention
 }

@@ -102,7 +102,8 @@ class DeviceViewModel extends FormViewModel {
           deviceCode: scannedDeviceCode!, deviceName: deviceName.trim());
       Fluttertoast.showToast(msg: "Device added successfully");
       scannedDeviceCode = null;
-      devicesFuture = init();
+      // Reload data without reassigning future
+      await init();
       notifyListeners();
     } catch (e) {
       _logger.e(e.toString());
@@ -144,7 +145,9 @@ class DeviceViewModel extends FormViewModel {
         await _accountsService.addDevice(
             deviceCode: deviceCodeValue!, deviceName: deviceNameValue!);
         Fluttertoast.showToast(msg: "Device added successfully");
-        devicesFuture = init();
+        // Reload data without reassigning future
+        await init();
+        notifyListeners();
       } catch (e) {
         _logger.e(e.toString());
         Fluttertoast.showToast(msg: "Unable to add device");

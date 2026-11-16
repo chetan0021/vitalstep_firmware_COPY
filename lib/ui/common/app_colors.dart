@@ -12,6 +12,16 @@ const Color kcWarningColor = Color(0xFFFFB300);
 const Color kcErrorColor = Color(0xFFF44336);
 const Color kcInfoColor = Color(0xFF2196F3);
 
+// Severity & Indicator Colors
+const Color kcCoralColor = Color(0xFFFF5722); // Deep Coral for Moderate severity
+const Color kcOrangeColor = Color(0xFFFF9800); // Orange for Mild severity
+const Color kcRedOrangeColor = Color(0xFFE64A19); // Red-Orange accent
+
+// Teal & Blue Variants (for UI components)
+const Color kcTealLight = Color(0xFF80CBC4); // Light Teal
+const Color kcTealLighter = Color(0xFFB2DFDB); // Lighter Teal
+const Color kcBlueLight = Color(0xFF90CAF9); // Light Blue
+
 // Neutral Palette
 const Color kcDarkGreyColor = Color(0xFF1A1A1A); // Apple-style dark text
 const Color kcMediumGrey = Color(0xFF757575); 

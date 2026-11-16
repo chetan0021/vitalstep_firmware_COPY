@@ -15,22 +15,43 @@ class AccountsService {
       final uid = patientUserId ?? patientSupabaseClient.auth.currentUser?.id;
       if (uid == null) throw Exception('No user ID available');
 
+      // Fetch minimal profile (id, name, email, user_type, dominant_hand)
       final profileData = await patientSupabaseClient
           .from('profiles')
-          .select()
+          .select('id, name, email, user_type, dominant_hand')
           .eq('id', uid)
           .single();
+
+      // Fetch full clinical data from patients table
+      final patientData = await patientSupabaseClient
+          .from('patients')
+          .select()
+          .eq('user_id', uid)
+          .maybeSingle();
 
       final devicesData = await patientSupabaseClient
           .from('devices')
           .select()
           .eq('user_id', uid);
 
+      // Merge both tables — patients columns take precedence for clinical data
       return Profile.fromJson({
         ...profileData,
-        'countryCode': profileData['country_code'] ?? '',
-        'weight': profileData['weight'] ?? 0,
-        'height': profileData['height'] ?? 0,
+        if (patientData != null) ...patientData,
+        // Map patients column names to Profile model field names
+        'countryCode': patientData?['country_code'] ?? '',
+        'weight': patientData?['weight_kg'] ?? 0,
+        'height': patientData?['height_cm'] ?? 0,
+        'dob': patientData?['date_of_birth'],
+        'dominant_hand': profileData['dominant_hand'] ?? patientData?['dominant_hand'],
+        'palm_length': patientData?['palm_length_mm'],
+        'palm_width': patientData?['palm_width_mm'],
+        'knuckles_length': patientData?['knuckle_length_mm'],
+        'phone': patientData?['phone'],
+        'city': patientData?['city'],
+        'country': patientData?['country'],
+        'address': patientData?['address'],
+        'pincode': patientData?['pincode'],
         'device': devicesData,
       });
     } catch (e) {
@@ -61,18 +82,35 @@ class AccountsService {
     required String deviceName,
   }) async {
     try {
-      final userId = patientSupabaseClient.auth.currentUser?.id;
-      if (userId == null) throw Exception('No user ID');
+      final token = patientSupabaseClient.auth.currentSession?.accessToken;
+      if (token == null) throw Exception('No authentication token');
 
-      await patientSupabaseClient.from('devices').insert({
-        'user_id': userId,
-        'device_code': deviceCode,
-        'device_name': deviceName,
-        'is_active': true,
-      });
+      // Call the pair-device edge function to:
+      // 1. Verify device exists in device_inventory
+      // 2. Update device_inventory.paired_user_id
+      // 3. Create app-level pairing record
+      final response = await patientSupabaseClient.functions.invoke(
+        'pair-device',
+        body: {
+          'device_code': deviceCode,
+          'device_name': deviceName,
+        },
+      );
+
+      if (response.data is! Map) {
+        throw Exception('Invalid response from pair-device');
+      }
+
+      final Map<String, dynamic> result = response.data as Map<String, dynamic>;
+
+      if (result['ok'] != true || result['paired'] != true) {
+        throw Exception(result['error'] ?? 'Failed to pair device');
+      }
+
+      _logger.i('Device paired successfully: $deviceCode');
     } catch (e) {
       _logger.e('addDevice error: $e');
-      throw Exception('Failed to add device');
+      throw Exception('Failed to pair device: $e');
     }
   }
 

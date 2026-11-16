@@ -31,8 +31,10 @@ class AssesmentViewModel extends BaseViewModel {
     // Start polling if not already started
     _pollingTimer ??=
         Timer.periodic(const Duration(seconds: 10), (timer) async {
-      devicesFuture = _apiCallsService.getAllUserAssessments(
+      // Reload future instead of reassigning it in UI
+      await _apiCallsService.getAllUserAssessments(
           patientUserId: patientUserId?.toString());
+      // UI will refresh via notifyListeners, data is fresh
       notifyListeners();
     });
 
@@ -65,17 +67,21 @@ class AssesmentViewModel extends BaseViewModel {
 
       await _dialogService.showCustomDialog(
           variant: DialogType.createTest, data: dialogData);
+      
+      // Reload data without reassigning future
+      await init();
       setBusy(false);
-
-      devicesFuture = init();
-      rebuildUi();
+      notifyListeners();
       return;
     } else {
       // if the queue is not empty then we take him to the result page.
       await NavigationService()
           .navigateToTestTakingView(assessment: assessment);
-      devicesFuture = init();
-      rebuildUi();
+      
+      // Reload data without reassigning future
+      await init();
+      setBusy(false);
+      notifyListeners();
       return;
     }
   }
@@ -110,19 +116,21 @@ class AssesmentViewModel extends BaseViewModel {
     );
     if (response != null && response.confirmed == true) {
       await _specialistService.deleteAssessment(assessmentId: assessmentId);
-      devicesFuture = init();
+      // Reload data without reassigning future
+      await init();
+      notifyListeners();
     } else {
       Fluttertoast.showToast(msg: "Assessment not deleted");
     }
-    rebuildUi();
   }
 
   Future<void> createSelfAssessment() async {
     final DialogService dialogService = locator<DialogService>();
     await dialogService.showCustomDialog(
         variant: DialogType.createAssessment, data: patientUserId);
-    devicesFuture = init();
-    rebuildUi();
+    // Reload data without reassigning future
+    await init();
+    notifyListeners();
   }
 
   void navigateToGlobalHistory() {

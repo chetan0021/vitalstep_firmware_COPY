@@ -36,6 +36,9 @@ class HomeTabViewModel extends BaseViewModel {
   static const String _cachedNameKey = 'host_profile_name';
 
   Profile? profile;
+  
+  // Cache specialists future to prevent infinite API calls
+  Future<List<Accounts>>? _specialistsFuture;
 
   String get hostFirstName {
     if (profile?.name != null) return profile!.name!.split(' ')[0];
@@ -149,6 +152,9 @@ class HomeTabViewModel extends BaseViewModel {
 
   Future<void> refreshData() async {
     try {
+      // Reset specialists cache on refresh
+      _specialistsFuture = null;
+      
       if (profile == null) {
         await getProfile();
         notifyListeners();
@@ -345,7 +351,9 @@ class HomeTabViewModel extends BaseViewModel {
   }
 
   Future<List<Accounts>> getSpecialists() async {
-    return await _apiCallsService.getSpecialists();
+    // Cache the future so it's only called once per init cycle
+    _specialistsFuture ??= _apiCallsService.getSpecialists();
+    return _specialistsFuture!;
   }
 
   Future<void> createNewTest() async {
