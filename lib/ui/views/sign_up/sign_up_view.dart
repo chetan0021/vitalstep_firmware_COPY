@@ -69,14 +69,12 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new,
-              color: kcDarkGreyColor, size: 20),
+          icon: const Icon(Icons.arrow_back_ios_new, color: kcDarkGreyColor, size: 20),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           update ? "Edit Profile" : "Create Account",
-          style: const TextStyle(
-              color: kcDarkGreyColor, fontWeight: FontWeight.bold),
+          style: const TextStyle(color: kcDarkGreyColor, fontWeight: FontWeight.bold),
         ),
       ),
       body: Form(
@@ -87,71 +85,46 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (!update) ...[
-                const Text("Join VitalStep",
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: kcDarkGreyColor)),
+                const Text("Join VitalStep", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: kcDarkGreyColor)),
                 const SizedBox(height: 8),
-                const Text("Start tracking your palm pressure today.",
-                    style: TextStyle(fontSize: 15, color: kcMediumGrey)),
+                const Text("Start tracking your grip strength today.", style: TextStyle(fontSize: 15, color: kcMediumGrey)),
                 const SizedBox(height: 32),
               ],
+              
               _buildSectionTitle("Personal Information"),
-              _buildField("Full Name", nameController, "e.g. John Doe",
-                  validator: FormValidators.nameValidator),
+              _buildField("Full Name", nameController, "e.g. John Doe", validator: FormValidators.nameValidator),
               _buildPhoneField(viewModel),
-              _buildField(
-                  "Email Address", emailController, "e.g. john@example.com",
-                  keyboardType: TextInputType.emailAddress,
+              _buildField("Email Address", emailController, "e.g. john@example.com", 
+                  keyboardType: TextInputType.emailAddress, 
                   validator: FormValidators.emailValidator,
                   enabled: profile == null),
               _buildPasswordField(viewModel),
+              
               const SizedBox(height: 32),
               _buildSectionTitle("Physical Metrics"),
               Row(
                 children: [
-                  Expanded(
-                      child: _buildField("Height (cm)", heightController, "170",
-                          keyboardType: TextInputType.number,
-                          validator:
-                              FormValidators.heightInCentiMetersValidator)),
+                  Expanded(child: _buildField("Height (cm)", heightController, "170", keyboardType: TextInputType.number, validator: FormValidators.heightInCentiMetersValidator)),
                   const SizedBox(width: 16),
-                  Expanded(
-                      child: _buildField("Weight (kg)", weightController, "70",
-                          keyboardType: TextInputType.number,
-                          validator: FormValidators.weightInKgValidator)),
+                  Expanded(child: _buildField("Weight (kg)", weightController, "70", keyboardType: TextInputType.number, validator: FormValidators.weightInKgValidator)),
                 ],
               ),
-              _buildField(
-                  "Date of Birth", viewModel.viewDobController, "Select Date",
-                  readOnly: true, onTap: () => viewModel.setDOB(context)),
+              _buildField("Date of Birth", viewModel.viewDobController, "Select Date", readOnly: true, onTap: () => viewModel.setDOB(context)),
+              
               const SizedBox(height: 32),
               _buildSectionTitle("Hand Specifications"),
               Row(
                 children: [
-                  Expanded(
-                      child: _buildDropdown(
-                          "Dominant Hand",
-                          viewModel.dominantHandValue,
-                          DominantHandValueToTitleMap,
-                          (val) => viewModel.setDominantHand(val!))),
+                  Expanded(child: _buildDropdown("Dominant Hand", viewModel.dominantHandValue, DominantHandValueToTitleMap, (val) => viewModel.setDominantHand(val!))),
                   const SizedBox(width: 16),
-                  Expanded(
-                      child: _buildDropdown(
-                          "Gender",
-                          viewModel.genderValue,
-                          GenderValueToTitleMap,
-                          (val) => viewModel.setGender(val!))),
+                  Expanded(child: _buildDropdown("Gender", viewModel.genderValue, GenderValueToTitleMap, (val) => viewModel.setGender(val!))),
                 ],
               ),
               const SizedBox(height: 16),
-              _buildMeasurementField(context, "Palm Length (cm)",
-                  palmLengthController, "assets/palmLength.png"),
-              _buildMeasurementField(context, "Palm Width (cm)",
-                  palmWidthController, "assets/palmWidth.png"),
-              _buildMeasurementField(context, "Knuckles Length (cm)",
-                  knucklesLengthController, "assets/knucleLength.png"),
+              _buildMeasurementField(context, "Palm Length (cm)", palmLengthController, "assets/palmLength.png"),
+              _buildMeasurementField(context, "Palm Width (cm)", palmWidthController, "assets/palmWidth.png"),
+              _buildMeasurementField(context, "Knuckles Length (cm)", knucklesLengthController, "assets/knucleLength.png"),
+              
               const SizedBox(height: 32),
               _buildSectionTitle("Address"),
               _buildField("Street Address", addressController, "123 Main St"),
@@ -159,14 +132,14 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
                 children: [
                   Expanded(child: _buildField("City", cityController, "City")),
                   const SizedBox(width: 16),
-                  Expanded(
-                      child: _buildField("Pincode", pincodeController, "123456",
-                          keyboardType: TextInputType.number)),
+                  Expanded(child: _buildField("Pincode", pincodeController, "123456", keyboardType: TextInputType.number)),
                 ],
               ),
               _buildField("Country", countryController, "Country"),
+
               const SizedBox(height: 32),
               if (profile == null) _buildTermsCheckbox(viewModel),
+              
               const SizedBox(height: 40),
               _buildSubmitButton(viewModel, update),
               const SizedBox(height: 24),
@@ -182,32 +155,18 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
   Widget _buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
-      child: Text(title,
-          style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: kcPrimaryColor)),
+      child: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: kcPrimaryColor)),
     );
   }
 
-  Widget _buildField(
-      String label, TextEditingController controller, String hint,
-      {TextInputType? keyboardType,
-      String? Function(String?)? validator,
-      bool enabled = true,
-      bool readOnly = false,
-      VoidCallback? onTap,
-      Widget? suffixIcon}) {
+  Widget _buildField(String label, TextEditingController controller, String hint, 
+      {TextInputType? keyboardType, String? Function(String?)? validator, bool enabled = true, bool readOnly = false, VoidCallback? onTap, Widget? suffixIcon}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 4, bottom: 8),
-          child: Text(label,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                  color: kcDarkGreyColor)),
+          child: Text(label, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: kcDarkGreyColor)),
         ),
         TextFormField(
           controller: controller,
@@ -216,8 +175,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
           onTap: onTap,
           keyboardType: keyboardType,
           validator: validator,
-          decoration:
-              premiumInputDecoration(hint).copyWith(suffixIcon: suffixIcon),
+          decoration: premiumInputDecoration(hint).copyWith(suffixIcon: suffixIcon),
         ),
         const SizedBox(height: 16),
       ],
@@ -230,11 +188,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
       children: [
         const Padding(
           padding: EdgeInsets.only(left: 4, bottom: 8),
-          child: Text("Mobile Number",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                  color: kcDarkGreyColor)),
+          child: Text("Mobile Number", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: kcDarkGreyColor)),
         ),
         Row(
           children: [
@@ -242,15 +196,10 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
               width: 100,
               child: DropdownButtonFormField<String>(
                 value: vm.countryCodesDropDownValue,
-                decoration: premiumInputDecoration("").copyWith(
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 18)),
+                decoration: premiumInputDecoration("").copyWith(contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18)),
                 onChanged: (val) => vm.setCountryCodesDropDown(val!),
                 items: CountryCodesDropDownValueToTitleMap.keys
-                    .map((val) => DropdownMenuItem(
-                        value: val,
-                        child: Text(CountryCodesDropDownValueToTitleMap[val]!,
-                            style: const TextStyle(fontSize: 14))))
+                    .map((val) => DropdownMenuItem(value: val, child: Text(CountryCodesDropDownValueToTitleMap[val]!, style: const TextStyle(fontSize: 14))))
                     .toList(),
               ),
             ),
@@ -277,11 +226,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
       children: [
         const Padding(
           padding: EdgeInsets.only(left: 4, bottom: 8),
-          child: Text("Password",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                  color: kcDarkGreyColor)),
+          child: Text("Password", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: kcDarkGreyColor)),
         ),
         TextFormField(
           controller: passwordController,
@@ -289,9 +234,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
           validator: FormValidators.passwordValidator,
           decoration: premiumInputDecoration("••••••••").copyWith(
             suffixIcon: IconButton(
-              icon: Icon(
-                  vm.passwordVisible ? Icons.visibility : Icons.visibility_off,
-                  color: kcMediumGrey),
+              icon: Icon(vm.passwordVisible ? Icons.visibility : Icons.visibility_off, color: kcMediumGrey),
               onPressed: () {
                 vm.passwordVisible = !vm.passwordVisible;
                 vm.rebuildUi();
@@ -303,34 +246,25 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
     );
   }
 
-  Widget _buildDropdown(String label, String? value,
-      Map<String, String> itemsMap, Function(String?) onChanged) {
+  Widget _buildDropdown(String label, String? value, Map<String, String> itemsMap, Function(String?) onChanged) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 4, bottom: 8),
-          child: Text(label,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                  color: kcDarkGreyColor)),
+          child: Text(label, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: kcDarkGreyColor)),
         ),
         DropdownButtonFormField<String>(
           value: value,
           onChanged: onChanged,
           decoration: premiumInputDecoration("Select"),
-          items: itemsMap.keys
-              .map((val) =>
-                  DropdownMenuItem(value: val, child: Text(itemsMap[val]!)))
-              .toList(),
+          items: itemsMap.keys.map((val) => DropdownMenuItem(value: val, child: Text(itemsMap[val]!))).toList(),
         ),
       ],
     );
   }
 
-  Widget _buildMeasurementField(BuildContext context, String label,
-      TextEditingController controller, String assetPath) {
+  Widget _buildMeasurementField(BuildContext context, String label, TextEditingController controller, String assetPath) {
     return _buildField(
       label,
       controller,
@@ -343,17 +277,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
             builder: (context) => Dialog(
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: Image.asset(
-                  assetPath,
-                  width: 250,
-                  height: 250,
-                  fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) => const Icon(
-                    Icons.pan_tool_outlined,
-                    size: 80,
-                    color: kcPrimaryColor,
-                  ),
-                ),
+                child: Image.asset(assetPath, width: 250, height: 250, fit: BoxFit.contain),
               ),
             ),
           );
@@ -395,18 +319,11 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
       title: RichText(
         text: TextSpan(
           children: [
-            const TextSpan(
-                text: "I accept the ",
-                style: TextStyle(color: kcMediumGrey, fontSize: 13)),
+            const TextSpan(text: "I accept the ", style: TextStyle(color: kcMediumGrey, fontSize: 13)),
             TextSpan(
               text: "Terms and Conditions",
-              style: const TextStyle(
-                  color: kcPrimaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13),
-              recognizer: TapGestureRecognizer()
-                ..onTap =
-                    () => NavigationService().navigateToPrivacyPolicyView(),
+              style: const TextStyle(color: kcPrimaryColor, fontWeight: FontWeight.bold, fontSize: 13),
+              recognizer: TapGestureRecognizer()..onTap = () => NavigationService().navigateToPrivacyPolicyView(),
             ),
           ],
         ),
@@ -432,21 +349,12 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
         decoration: BoxDecoration(
           color: kcPrimaryColor,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-                color: kcPrimaryColor.withOpacity(0.3),
-                blurRadius: 10,
-                offset: const Offset(0, 4))
-          ],
+          boxShadow: [BoxShadow(color: kcPrimaryColor.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 4))],
         ),
         child: Center(
           child: vm.isBusy
               ? const CircularProgressIndicator(color: Colors.white)
-              : Text(update ? "Save Changes" : "Create Account",
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17)),
+              : Text(update ? "Save Changes" : "Create Account", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17)),
         ),
       ),
     );

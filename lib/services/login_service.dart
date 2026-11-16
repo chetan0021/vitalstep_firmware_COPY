@@ -1,240 +1,181 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:vital_step/Model/SignUpInfo.dart';
 import 'package:vital_step/app/app.dialogs.dart';
 import 'package:vital_step/app/app.locator.dart';
 import 'package:vital_step/app/app.logger.dart';
 import 'package:vital_step/app/app.router.dart';
+import 'package:vital_step/main.dart';
 import 'package:vital_step/services/notifications_service.dart';
-import 'package:vital_step/services/supabase_service.dart';
-import 'package:vital_step/Model/SignUpInfo.dart';
 
 class LoginService {
   final _logger = getLogger("LoginService");
-  final _box = GetStorage();
+  final box = GetStorage();
   final DialogService _dialogService = locator<DialogService>();
 
-  // ─── AUTH STATE ────────────────────────────────────────────────────────────
-
   Future<bool> isLoggedIn() async {
-    try {
-      final session = vitalstepSupabaseClient.auth.currentSession;
-      return session != null;
-    } catch (e) {
-      _logger.e('isLoggedIn error: $e');
-      return false;
-    }
+    final userId = await getUserId();
+    return userId != null;
   }
 
   Future<String?> getUserId() async {
-    try {
-      final userId = vitalstepSupabaseClient.auth.currentUser?.id;
-      if (userId != null) return userId;
-      // Fallback to storage
-      return _box.read('userId')?.toString();
-    } catch (e) {
-      _logger.e('getUserId error: $e');
-      return null;
-    }
+    // Prefer live session over stored value
+    final liveId = patientSupabaseClient.auth.currentUser?.id;
+    if (liveId != null) return liveId;
+    return box.read("userId")?.toString();
   }
 
   Future<String?> getUserType() async {
-    return _box.read('userType')?.toString() ?? 'Patient';
+    return box.read('userType')?.toString();
   }
 
-  // ─── SIGN IN ───────────────────────────────────────────────────────────────
-
-  Future<void> signIn(String email, String password, String selectedUserType) async {
+  Future<void> signIn(
+      String email, String password, String selectedUserType) async {
     try {
-      _logger.i('Signing in: $email as $selectedUserType');
-
-      final response = await vitalstepSupabaseClient.auth.signInWithPassword(
-        email: email.trim(),
-        password: password.trim(),
+      final res = await patientSupabaseClient.auth.signInWithPassword(
+        email: email,
+        password: password,
       );
 
-      if (response.session == null) {
+      if (res.user == null) {
         _dialogService.showCustomDialog(
           variant: DialogType.infoAlert,
-          title: 'Login Failed',
-          description: 'No session returned. Please try again.',
+          title: 'Error Logging In',
+          description: 'The account does not exist or password is wrong.',
         );
         return;
       }
 
-      final userId = response.user!.id;
+      final userId = res.user!.id;
 
-      // Verify user exists in the correct table
-      if (selectedUserType == 'Specialist') {
-        final specialist = await vitalstepSupabaseClient
-            .from('specialists')
-            .select('id')
-            .eq('user_id', userId)
-            .maybeSingle();
+      // Verify user type matches selected type
+      final profileData = await patientSupabaseClient
+          .from('profiles')
+          .select('user_type')
+          .eq('id', userId)
+          .maybeSingle();
 
-        if (specialist == null) {
-          await vitalstepSupabaseClient.auth.signOut();
-          _dialogService.showCustomDialog(
-            variant: DialogType.infoAlert,
-            title: 'Login Failed',
-            description: 'No specialist account found for this email. Please sign up as a specialist first.',
-          );
-          return;
-        }
-      } else {
-        // Patient — also check/create patients row gracefully
-        final patient = await vitalstepSupabaseClient
-            .from('patients')
-            .select('id')
-            .eq('user_id', userId)
-            .maybeSingle();
+      final dbUserType = profileData?['user_type'] as String? ?? 'Patient';
 
-        if (patient == null) {
-          // Auto-create minimal patient row so app doesn't crash
-          final patientCode = 'VS${userId.substring(0, 6).toUpperCase()}';
-          await vitalstepSupabaseClient.from('patients').upsert({
-            'user_id': userId,
-            'name': email.split('@')[0],
-            'email': email.trim(),
-            'patient_code': patientCode,
-          });
-        }
+      if (selectedUserType == 'Specialist' && dbUserType != 'Specialist') {
+        await patientSupabaseClient.auth.signOut();
+        _dialogService.showCustomDialog(
+          variant: DialogType.infoAlert,
+          title: 'Error Logging In',
+          description: 'This account is not a specialist account.',
+        );
+        return;
       }
 
-      _box.write('userId', userId);
-      _box.write('userType', selectedUserType);
-      _logger.i('Sign in successful: $userId as $selectedUserType');
+      box.write('userId', userId);
+      box.write('userType', dbUserType);
+      box.write('userEmail', email);
 
       NavigationService().navigateToStartupView();
-    } on Exception catch (e) {
-      _logger.e('signIn error: $e');
-      final msg = e.toString();
-      String description = 'An error occurred during sign in.';
-      if (msg.contains('Invalid login credentials')) {
-        description = 'Incorrect email or password.';
-      } else if (msg.contains('Email not confirmed')) {
-        description = 'Please confirm your email before signing in.';
-      } else if (msg.contains('network')) {
-        description = 'Network error. Check your internet connection.';
-      }
+    } catch (e) {
+      _logger.e('SignIn error: $e');
       _dialogService.showCustomDialog(
         variant: DialogType.infoAlert,
-        title: 'Login Failed',
-        description: description,
+        title: 'Error Logging In',
+        description: e.toString(),
       );
     }
   }
-
-  // ─── SIGN UP ───────────────────────────────────────────────────────────────
 
   Future<void> signUp(SignUpInfo signUpInfo) async {
     try {
-      _logger.i('Signing up: ${signUpInfo.email}');
-
-      // 1. Create Supabase auth user
-      final response = await vitalstepSupabaseClient.auth.signUp(
-        email: signUpInfo.email!.trim(),
-        password: signUpInfo.password!.trim(),
+      final res = await patientSupabaseClient.auth.signUp(
+        email: signUpInfo.email,
+        password: signUpInfo.password,
       );
 
-      if (response.user == null) {
+      if (res.user == null) {
         _dialogService.showCustomDialog(
           variant: DialogType.infoAlert,
-          title: 'Sign Up Failed',
-          description: 'Could not create account. Please try again.',
+          title: 'Error Signing Up',
+          description: 'Failed to create account. Try again.',
         );
         return;
       }
 
-      final userId = response.user!.id;
+      final userId = res.user!.id;
 
-      // 2. Insert into patients table
-      final patientCode = 'VS${userId.substring(0, 6).toUpperCase()}';
-      await vitalstepSupabaseClient.from('patients').insert({
-        'user_id': userId,
-        'name': (signUpInfo.name ?? '').trim(),
-        'email': signUpInfo.email!.trim(),
-        'phone': signUpInfo.phone?.toString(),
-        'patient_code': patientCode,
+      // Create profile
+      await patientSupabaseClient.from('profiles').upsert({
+        'id': userId,
+        'name': signUpInfo.name,
+        'email': signUpInfo.email,
+        'phone': signUpInfo.phone,
+        'country_code': signUpInfo.countryCode,
+        'dob': signUpInfo.dob,
         'gender': signUpInfo.gender,
-        'date_of_birth': signUpInfo.dob,
+        'weight': signUpInfo.weight,
+        'height': signUpInfo.height,
         'dominant_hand': signUpInfo.dominantHand,
-        'weight_kg': signUpInfo.weight,
-        'height_cm': signUpInfo.height,
-        'palm_length_mm': signUpInfo.palmLength != null ? (signUpInfo.palmLength! * 10).round() : null,
-        'palm_width_mm': signUpInfo.palmWidth != null ? (signUpInfo.palmWidth! * 10).round() : null,
-        'knuckle_length_mm': signUpInfo.knuckleLength != null ? (signUpInfo.knuckleLength! * 10).round() : null,
         'city': signUpInfo.city,
         'country': signUpInfo.country,
         'address': signUpInfo.address,
-        'pincode': signUpInfo.pincode?.toString(),
+        'pincode': signUpInfo.pincode,
+        'palm_length': signUpInfo.palmLength,
+        'palm_width': signUpInfo.palmWidth,
+        'knuckle_length': signUpInfo.knuckleLength,
+        'user_type': 'Patient',
       });
 
-      _box.write('userId', userId);
-      _box.write('userType', 'Patient');
+      box.write('userId', userId);
+      box.write('userType', 'Patient');
+      box.write('userEmail', signUpInfo.email);
 
-      _logger.i('Sign up successful: $userId');
-      Fluttertoast.showToast(msg: "Account created! Please check your email to verify.");
       NavigationService().navigateToDeviceView(showExistingDevices: false);
-    } on Exception catch (e) {
-      _logger.e('signUp error: $e');
-      final msg = e.toString();
-      String description = 'An error occurred during sign up.';
-      if (msg.contains('already registered') || msg.contains('already exists')) {
-        description = 'An account with this email already exists.';
-      } else if (msg.contains('Password')) {
-        description = 'Password must be at least 6 characters.';
-      }
+    } catch (e) {
+      _logger.e('SignUp error: $e');
       _dialogService.showCustomDialog(
         variant: DialogType.infoAlert,
-        title: 'Sign Up Failed',
-        description: description,
+        title: 'Error Signing Up',
+        description: e.toString(),
       );
     }
   }
 
-  // ─── SIGN OUT ──────────────────────────────────────────────────────────────
-
   Future<void> signOut() async {
-    try {
-      await vitalstepSupabaseClient.auth.signOut();
-    } catch (e) {
-      _logger.w('signOut error (non-critical): $e');
-    }
-    await _box.erase();
-    final notificationsService = locator<NotificationsService>();
-    await notificationsService.clearAllFutureNotifications();
-    Fluttertoast.showToast(msg: "Signed out successfully");
+    await patientSupabaseClient.auth.signOut();
+    await box.erase();
+    final notif = locator<NotificationsService>();
+    await notif.clearAllFutureNotifications();
+    Fluttertoast.showToast(msg: "Logged Out Successfully");
     NavigationService().navigateToStartupView();
   }
 
-  // ─── UPDATE PROFILE ────────────────────────────────────────────────────────
-
-  Future<void> updateProfile(SignUpInfo signUpInfo) async {
+  updateProfile(SignUpInfo signUpInfo) async {
     try {
-      final userId = await getUserId();
-      if (userId == null) throw Exception('Not logged in');
+      final userId = patientSupabaseClient.auth.currentUser?.id;
+      if (userId == null) return;
 
-      await vitalstepSupabaseClient.from('patients').update({
+      await patientSupabaseClient.from('profiles').update({
         'name': signUpInfo.name,
-        'phone': signUpInfo.phone?.toString(),
+        'phone': signUpInfo.phone,
+        'dob': signUpInfo.dob,
         'gender': signUpInfo.gender,
-        'date_of_birth': signUpInfo.dob,
+        'weight': signUpInfo.weight,
+        'height': signUpInfo.height,
         'dominant_hand': signUpInfo.dominantHand,
-        'weight_kg': signUpInfo.weight,
-        'height_cm': signUpInfo.height,
         'city': signUpInfo.city,
         'country': signUpInfo.country,
         'address': signUpInfo.address,
-      }).eq('user_id', userId);
+        'pincode': signUpInfo.pincode,
+        'palm_length': signUpInfo.palmLength,
+        'palm_width': signUpInfo.palmWidth,
+        'knuckle_length': signUpInfo.knuckleLength,
+      }).eq('id', userId);
 
-      Fluttertoast.showToast(msg: "Profile updated successfully");
+      Fluttertoast.showToast(msg: "Profile Updated Successfully");
     } catch (e) {
       _logger.e('updateProfile error: $e');
       _dialogService.showCustomDialog(
         variant: DialogType.infoAlert,
-        title: 'Error',
-        description: 'Failed to update profile. Please try again.',
+        title: 'Error Updating Profile',
+        description: 'An error occurred',
       );
     }
   }

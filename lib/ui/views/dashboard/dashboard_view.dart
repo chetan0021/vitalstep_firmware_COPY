@@ -66,7 +66,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
                       _buildMainStats(viewModel),
                       verticalSpaceMedium,
 
-                      _buildSectionTitle("Palm Pressure Trends"),
+                      _buildSectionTitle("Grip Trends"),
                       verticalSpaceSmall,
                       _buildTrendGraph(viewModel),
                       verticalSpaceMedium,

@@ -24,8 +24,7 @@ class AnalysisRadarChart extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 8),
           child: Text(
             "Performance Radar  (higher = better)",
-            style: TextStyle(
-                fontSize: 12, color: kcMediumGrey, fontStyle: FontStyle.italic),
+            style: TextStyle(fontSize: 12, color: kcMediumGrey, fontStyle: FontStyle.italic),
           ),
         ),
 
@@ -57,19 +56,14 @@ class AnalysisRadarChart extends StatelessWidget {
               ),
               getTitle: (index, angle) {
                 switch (index) {
-                  case 0:
-                    return const RadarChartTitle(text: 'Peak');
-                  case 1:
-                    return const RadarChartTitle(text: 'Consistency');
-                  case 2:
-                    return const RadarChartTitle(text: 'Symmetry');
-                  default:
-                    return const RadarChartTitle(text: '');
+                  case 0: return const RadarChartTitle(text: 'Peak');
+                  case 1: return const RadarChartTitle(text: 'Consistency');
+                  case 2: return const RadarChartTitle(text: 'Symmetry');
+                  default: return const RadarChartTitle(text: '');
                 }
               },
               tickCount: 4,
-              ticksTextStyle:
-                  const TextStyle(color: Colors.transparent, fontSize: 0),
+              ticksTextStyle: const TextStyle(color: Colors.transparent, fontSize: 0),
               gridBorderData: const BorderSide(color: Colors.grey, width: 0.5),
             ),
           ),
@@ -80,14 +74,11 @@ class AnalysisRadarChart extends StatelessWidget {
         // ── Readable stat chips below the chart ──
         Row(
           children: [
-            _statChip(
-                "Peak", "${peakStrength.toStringAsFixed(1)} Kg", Colors.purple),
+            _statChip("Peak", "${peakStrength.toStringAsFixed(1)} Kg", Colors.purple),
             const SizedBox(width: 8),
-            _statChip("Consistency", "${consistency.toStringAsFixed(1)}%",
-                kcPrimaryColor),
+            _statChip("Consistency", "${consistency.toStringAsFixed(1)}%", kcPrimaryColor),
             const SizedBox(width: 8),
-            _statChip("Symmetry", "${symmetry.toStringAsFixed(1)}%",
-                kcSecondaryColor),
+            _statChip("Symmetry", "${symmetry.toStringAsFixed(1)}%", kcSecondaryColor),
           ],
         ),
 
@@ -104,11 +95,9 @@ class AnalysisRadarChart extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _Hint("Peak", "Max palm pressure force across all 3 trials (Kg)"),
-              _Hint("Consistency",
-                  "How similar your 3 trials were (100% = identical)"),
-              _Hint(
-                  "Symmetry", "Left vs Right balance (100% = equal strength)"),
+              _Hint("Peak", "Max grip force across all 3 trials (Kg)"),
+              _Hint("Consistency", "How similar your 3 trials were (100% = identical)"),
+              _Hint("Symmetry", "Left vs Right balance (100% = equal strength)"),
             ],
           ),
         ),
@@ -128,13 +117,9 @@ class AnalysisRadarChart extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(label,
-                style: TextStyle(
-                    fontSize: 10, color: color, fontWeight: FontWeight.w600)),
+            Text(label, style: TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.w600)),
             const SizedBox(height: 2),
-            Text(value,
-                style: TextStyle(
-                    fontSize: 14, color: color, fontWeight: FontWeight.bold)),
+            Text(value, style: TextStyle(fontSize: 14, color: color, fontWeight: FontWeight.bold)),
           ],
         ),
       ),
@@ -154,14 +139,8 @@ class _Hint extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("$term: ",
-              style: const TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color: kcDarkGreyColor)),
-          Expanded(
-              child: Text(meaning,
-                  style: const TextStyle(fontSize: 11, color: kcMediumGrey))),
+          Text("$term: ", style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: kcDarkGreyColor)),
+          Expanded(child: Text(meaning, style: const TextStyle(fontSize: 11, color: kcMediumGrey))),
         ],
       ),
     );

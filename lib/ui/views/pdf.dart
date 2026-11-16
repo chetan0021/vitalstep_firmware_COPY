@@ -97,7 +97,7 @@ class _AssessmentHistoryPageState extends State<AssessmentHistoryPage>
     final pdf = pw.Document();
 
     const customBlue = PdfColor.fromInt(0xFFBCD5DF);
-    final logoImage = await imageFromAssetBundle('assets/Logo.jpeg');
+    final logoImage = await imageFromAssetBundle('assets/images/logo.jpeg');
     await Future.delayed(const Duration(milliseconds: 500));
 
     final tableImage = await _captureWidgetAsImage(_graph1Key);
@@ -105,8 +105,7 @@ class _AssessmentHistoryPageState extends State<AssessmentHistoryPage>
 
     if (tableImage == null || graphImage == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Error capturing graphs. Please try again.')),
+        const SnackBar(content: Text('Error capturing graphs. Please try again.')),
       );
       return;
     }
@@ -117,7 +116,8 @@ class _AssessmentHistoryPageState extends State<AssessmentHistoryPage>
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
             pw.Center(
-              child: pw.Image(pw.MemoryImage(logoImage), width: 80, height: 80),
+              child:
+                  pw.Image(pw.MemoryImage(logoImage), width: 80, height: 80),
             ),
             pw.SizedBox(height: 10),
             pw.Center(

@@ -47,7 +47,7 @@ class CompareView extends StackedView<CompareViewModel> {
                       verticalSpaceMedium,
 
                       // ── 2. Bar chart w/ inline legend ──
-                      _buildLabel('Average Palm Pressure Strength'),
+                      _buildLabel('Average Grip Strength'),
                       const SizedBox(height: 4),
                       _buildLegendRow(),
                       verticalSpaceSmall,
@@ -84,7 +84,7 @@ class CompareView extends StackedView<CompareViewModel> {
                       _buildTrendChart(vm),
                       const SizedBox(height: 8),
                       _buildChartCaption(
-                          'Each point = average palm pressure force (Kg) of one test session. '
+                          'Each point = average grip force (Kg) of one test session. '
                           'Upward = improving. Aim for the two lines to stay close together.'),
                       verticalSpaceLarge,
                     ],

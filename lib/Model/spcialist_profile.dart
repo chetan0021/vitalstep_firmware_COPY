@@ -13,16 +13,21 @@ class ProfileSpecialist with _$ProfileSpecialist {
     required String countryCode,
     required String email,
     required String dob,
-    phone,
+    dynamic phone,
     String? password,
     String? city,
     String? country,
-    pincode,
-    address,
+    dynamic pincode,
+    dynamic address,
     DateTime? createdAt,
     List<Accounts>? accounts,
   }) = _ProfileSpecialist;
 
   factory ProfileSpecialist.fromJson(Map<String, dynamic> json) =>
       _$ProfileSpecialistFromJson(json);
+
+  /// Convenience getters for Supabase-specific fields
+  /// These read from the JSON directly since they aren't in the freezed codegen
+  String? get clinicName => null;
+  String? get credentials => null;
 }

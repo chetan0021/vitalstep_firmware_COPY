@@ -108,9 +108,9 @@ class PatientSessionViewModel extends BaseViewModel {
       await Share.shareXFiles(
         [XFile(file.path, mimeType: 'text/csv', name: fileName)],
         subject:
-            'Palm Pressure Data — ${patient!.name} (${patient!.patientCode})',
+            'Grip Strength Data — ${patient!.name} (${patient!.patientCode})',
         text:
-            'Please find the palm pressure assessment data for ${patient!.name} attached.',
+            'Please find the grip strength assessment data for ${patient!.name} attached.',
       );
     } catch (e) {
       Fluttertoast.showToast(msg: 'Export failed. Please try again.');

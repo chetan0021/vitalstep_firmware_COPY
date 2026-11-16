@@ -12,7 +12,6 @@ import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 enum ChartPeriod { week, month, year }
-
 enum ChartType { line, bar }
 
 class AssessmentHistoryViewModel extends BaseViewModel {
@@ -43,8 +42,7 @@ class AssessmentHistoryViewModel extends BaseViewModel {
   }
 
   void toggleChartType() {
-    _selectedChartType =
-        _selectedChartType == ChartType.line ? ChartType.bar : ChartType.line;
+    _selectedChartType = _selectedChartType == ChartType.line ? ChartType.bar : ChartType.line;
     notifyListeners();
   }
 
@@ -61,18 +59,6 @@ class AssessmentHistoryViewModel extends BaseViewModel {
   String getDate(DateTime string) {
     // dd - mm - yy
     return "${string.day} - ${string.month} - ${string.year}";
-  }
-
-  String getTime(DateTime dt) {
-    final hour = dt.hour.toString().padLeft(2, '0');
-    final minute = dt.minute.toString().padLeft(2, '0');
-    final period = dt.hour >= 12 ? 'PM' : 'AM';
-    final displayHour = dt.hour > 12
-        ? dt.hour - 12
-        : dt.hour == 0
-            ? 12
-            : dt.hour;
-    return '${displayHour.toString().padLeft(2, '0')}:$minute $period';
   }
 
   List<Test> getHandTests({required String hand, required bool isAscending}) {
@@ -96,41 +82,28 @@ class AssessmentHistoryViewModel extends BaseViewModel {
   }
 
   Map<String, dynamic> getChartData(String hand) {
-    if (tests == null || tests!.isEmpty)
-      return {
-        'spots': <FlSpot>[],
-        'labels': <String>[],
-        'barGroups': <BarChartGroupData>[]
-      };
-
+    if (tests == null || tests!.isEmpty) return {'spots': <FlSpot>[], 'labels': <String>[], 'barGroups': <BarChartGroupData>[]};
+    
     final handTests = getHandTests(hand: hand, isAscending: true);
-    if (handTests.isEmpty)
-      return {
-        'spots': <FlSpot>[],
-        'labels': <String>[],
-        'barGroups': <BarChartGroupData>[]
-      };
+    if (handTests.isEmpty) return {'spots': <FlSpot>[], 'labels': <String>[], 'barGroups': <BarChartGroupData>[]};
 
     final Map<String, List<double>> groupedData = {};
     final DateFormat formatter = _getFormatterForPeriod(_selectedPeriod);
 
     for (var t in handTests) {
       final key = formatter.format(t.createdAt);
-      final avg = (double.parse(t.trial1) +
-              double.parse(t.trial2) +
-              double.parse(t.trial3)) /
-          3;
+      final avg = (double.parse(t.trial1) + double.parse(t.trial2) + double.parse(t.trial3)) / 3;
       groupedData.putIfAbsent(key, () => []).add(avg);
     }
 
     final sortedKeys = groupedData.keys.toList();
     // Sort keys based on date if period is month or week
     if (_selectedPeriod == ChartPeriod.month) {
-      sortedKeys.sort((a, b) {
-        final d1 = DateFormat('MMM yy').parse(a);
-        final d2 = DateFormat('MMM yy').parse(b);
-        return d1.compareTo(d2);
-      });
+       sortedKeys.sort((a, b) {
+         final d1 = DateFormat('MMM yy').parse(a);
+         final d2 = DateFormat('MMM yy').parse(b);
+         return d1.compareTo(d2);
+       });
     }
 
     final List<FlSpot> spots = [];
@@ -141,18 +114,16 @@ class AssessmentHistoryViewModel extends BaseViewModel {
       final key = sortedKeys[i];
       final values = groupedData[key]!;
       final avg = values.reduce((a, b) => a + b) / values.length;
-
+      
       spots.add(FlSpot(i.toDouble(), avg));
       labels.add(key);
-
+      
       barGroups.add(BarChartGroupData(
         x: i,
         barRods: [
           BarChartRodData(
             toY: avg,
-            color: hand == "Right"
-                ? const Color(0xFF00796B)
-                : const Color(0xFF1976D2), // kcPrimaryColor/kcSecondaryColor
+            color: hand == "Right" ? const Color(0xFF00796B) : const Color(0xFF1976D2), // kcPrimaryColor/kcSecondaryColor
             width: 16,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(6)),
           ),
@@ -248,16 +219,16 @@ class AssessmentHistoryViewModel extends BaseViewModel {
   void generatePDF({required int assessmentId, int? patientId}) async {
     setBusy(true);
     try {
-      final Profile profile =
-          await _accountService.getAccountDetails(patientUserId: patientId);
+      final Profile profile = await _accountService.getAccountDetails(patientUserId: patientId);
 
       // Re-fetch to ensure latest data is included (e.g. just-completed test)
-      final List<Test> freshTests = await _apiCallsService
-          .getAllAssessmentTests(assessmentId: assessmentId);
+      final List<Test> freshTests = await _apiCallsService.getAllAssessmentTests(
+          assessmentId: assessmentId);
 
       // Merge: use fresh fetch but fall back to already-loaded tests if fresh is empty
-      final List<Test> tests =
-          freshTests.isNotEmpty ? freshTests : (this.tests ?? []);
+      final List<Test> tests = freshTests.isNotEmpty
+          ? freshTests
+          : (this.tests ?? []);
 
       if (tests.isEmpty) {
         setBusy(false);
@@ -266,24 +237,20 @@ class AssessmentHistoryViewModel extends BaseViewModel {
 
       final pdf = pw.Document();
       const customBlue = PdfColor.fromInt(0xFFBCD5DF);
-
+      
       // Right hand tests
       final rightTests = tests.where((t) => t.hand == "Right").toList();
       final leftTests = tests.where((t) => t.hand == "Left").toList();
-
+      
       pdf.addPage(
         pw.MultiPage(
           build: (pw.Context context) => [
             pw.Center(
-              child: pw.Text("VITAL STEP",
-                  style: pw.TextStyle(
-                      fontSize: 24, fontWeight: pw.FontWeight.bold)),
+               child: pw.Text("VITAL STEP", style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
             ),
             pw.SizedBox(height: 10),
             pw.Center(
-              child: pw.Text("ASSESSMENT HISTORY",
-                  style: pw.TextStyle(
-                      fontSize: 22, fontWeight: pw.FontWeight.bold)),
+              child: pw.Text("ASSESSMENT HISTORY", style: pw.TextStyle(fontSize: 22, fontWeight: pw.FontWeight.bold)),
             ),
             pw.SizedBox(height: 20),
             pw.TableHelper.fromTextArray(
@@ -295,95 +262,46 @@ class AssessmentHistoryViewModel extends BaseViewModel {
               ],
             ),
             pw.SizedBox(height: 20),
-            pw.Text("1. Right Hand Table",
-                style:
-                    pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
+            pw.Text("1. Right Hand Table", style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
             pw.TableHelper.fromTextArray(
-              headers: [
-                "ID",
-                "Date",
-                "Trial 1",
-                "Trial 2",
-                "Trial 3",
-                "Average"
-              ],
-              data: rightTests
-                  .map((t) => [
-                        t.id.toString(),
-                        getDate(t.createdAt),
-                        t.trial1,
-                        t.trial2,
-                        t.trial3,
-                        calculateAverage(t)
-                      ])
-                  .toList(),
+              headers: ["ID", "Date", "Trial 1", "Trial 2", "Trial 3", "Average"],
+              data: rightTests.map((t) => [
+                t.id.toString(),
+                getDate(t.createdAt),
+                t.trial1,
+                t.trial2,
+                t.trial3,
+                calculateAverage(t)
+              ]).toList(),
               headerDecoration: const pw.BoxDecoration(color: customBlue),
             ),
             pw.SizedBox(height: 20),
-            pw.Text("2. Left Hand Table",
-                style:
-                    pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
+            pw.Text("2. Left Hand Table", style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
             pw.TableHelper.fromTextArray(
-              headers: [
-                "ID",
-                "Date",
-                "Trial 1",
-                "Trial 2",
-                "Trial 3",
-                "Average"
-              ],
-              data: leftTests
-                  .map((t) => [
-                        t.id.toString(),
-                        getDate(t.createdAt),
-                        t.trial1,
-                        t.trial2,
-                        t.trial3,
-                        calculateAverage(t)
-                      ])
-                  .toList(),
+              headers: ["ID", "Date", "Trial 1", "Trial 2", "Trial 3", "Average"],
+              data: leftTests.map((t) => [
+                t.id.toString(),
+                getDate(t.createdAt),
+                t.trial1,
+                t.trial2,
+                t.trial3,
+                calculateAverage(t)
+              ]).toList(),
               headerDecoration: const pw.BoxDecoration(color: customBlue),
             ),
             pw.SizedBox(height: 20),
-            pw.Text("3. Latest Assessment Summary",
-                style:
-                    pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
+            pw.Text("3. Latest Assessment Summary", style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
             pw.TableHelper.fromTextArray(
-              headers: [
-                "Hand",
-                "Date",
-                "Trial 1",
-                "Trial 2",
-                "Trial 3",
-                "Average"
-              ],
+              headers: ["Hand", "Date", "Trial 1", "Trial 2", "Trial 3", "Average"],
               data: [
-                if (rightTests.isNotEmpty)
-                  () {
-                    final t = rightTests.reduce(
-                        (a, b) => a.createdAt.isAfter(b.createdAt) ? a : b);
-                    return [
-                      "Right",
-                      getDate(t.createdAt),
-                      t.trial1,
-                      t.trial2,
-                      t.trial3,
-                      calculateAverage(t)
-                    ];
-                  }(),
-                if (leftTests.isNotEmpty)
-                  () {
-                    final t = leftTests.reduce(
-                        (a, b) => a.createdAt.isAfter(b.createdAt) ? a : b);
-                    return [
-                      "Left",
-                      getDate(t.createdAt),
-                      t.trial1,
-                      t.trial2,
-                      t.trial3,
-                      calculateAverage(t)
-                    ];
-                  }(),
+                if (rightTests.isNotEmpty) () {
+                  final t = rightTests.reduce((a, b) => a.createdAt.isAfter(b.createdAt) ? a : b);
+                  return ["Right", getDate(t.createdAt), t.trial1, t.trial2, t.trial3, calculateAverage(t)];
+                }(),
+                if (leftTests.isNotEmpty) () {
+                  final t = leftTests.reduce((a, b) => a.createdAt.isAfter(b.createdAt) ? a : b);
+                  return ["Left", getDate(t.createdAt), t.trial1, t.trial2, t.trial3, calculateAverage(t)];
+                }(),
               ],
               headerDecoration: const pw.BoxDecoration(color: customBlue),
             ),
@@ -392,9 +310,9 @@ class AssessmentHistoryViewModel extends BaseViewModel {
       );
 
       await Printing.layoutPdf(
-          onLayout: (PdfPageFormat format) async => pdf.save(),
-          name:
-              'VitalStep_Assessment_${assessmentId}_${DateFormat('yyyyMMdd').format(DateTime.now())}.pdf');
+        onLayout: (PdfPageFormat format) async => pdf.save(),
+        name: 'VitalStep_Assessment_${assessmentId}_${DateFormat('yyyyMMdd').format(DateTime.now())}.pdf'
+      );
     } catch (e) {
       print("Error generating PDF: $e");
     }

@@ -79,7 +79,7 @@ class PatientHistoryView extends StackedView<PatientHistoryViewModel> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       children: [
         // Chart section
-        _buildSectionTitle('Palm Pressure Trends'),
+        _buildSectionTitle('Grip Trends'),
         verticalSpaceSmall,
         if (viewModel.hasChartData)
           _buildChart(viewModel)

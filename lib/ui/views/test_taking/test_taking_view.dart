@@ -32,7 +32,7 @@ class TestTakingView extends StackedView<TestTakingViewModel> {
             onPressed: () => viewModel.cancelTest(assessment: assessment),
           ),
           title: const Text(
-            "Palm Pressure Test",
+            "Grip Test",
             style: TextStyle(
                 color: kcDarkGreyColor,
                 fontWeight: FontWeight.bold,
@@ -67,12 +67,6 @@ class TestTakingView extends StackedView<TestTakingViewModel> {
                           height: 140,
                           width: 140,
                           fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Icon(
-                            Icons.pan_tool_outlined,
-                            size: 100,
-                            color: kcPrimaryColor,
-                          ),
                         ),
                       ),
                       verticalSpaceLarge,

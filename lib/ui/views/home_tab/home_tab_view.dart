@@ -146,7 +146,6 @@ class HomeTabView extends StackedView<HomeTabViewModel> {
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         letterSpacing: -0.5),
-                    overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     vm.activePatientCode,
@@ -154,7 +153,6 @@ class HomeTabView extends StackedView<HomeTabViewModel> {
                         color: Colors.white70,
                         fontSize: 11,
                         fontWeight: FontWeight.w500),
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               )
@@ -165,7 +163,6 @@ class HomeTabView extends StackedView<HomeTabViewModel> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                     letterSpacing: -0.5),
-                overflow: TextOverflow.ellipsis,
               ),
         background: Container(
           decoration: const BoxDecoration(

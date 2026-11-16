@@ -98,12 +98,8 @@ class AssesmentView extends StackedView<AssesmentViewModel> {
           ),
         ],
       ),
-      floatingActionButton: isSpecialist == true
-          ? FloatingActionButton(
-              onPressed: viewModel.createSelfAssessment,
-              backgroundColor: kcPrimaryColor,
-              child: const Icon(Icons.add, color: Colors.white),
-            )
+      floatingActionButton: isSpecialist == true 
+          ? null 
           : null,
     );
   }
@@ -219,29 +215,8 @@ class AssesmentView extends StackedView<AssesmentViewModel> {
           verticalSpaceMedium,
           const Text("No Assessments", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: kcDarkGreyColor)),
           verticalSpaceSmall,
-          Text(
-            isSpecialist == true
-                ? "Tap the + button to create an assessment for this patient."
-                : "Start your first test to see it here.",
-            style: const TextStyle(color: kcMediumGrey),
-            textAlign: TextAlign.center,
-          ),
-          if (isSpecialist == true) ...[
-            verticalSpaceLarge,
-            SizedBox(
-              height: 50,
-              child: ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kcPrimaryColor,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                ),
-                onPressed: viewModel.createSelfAssessment,
-                icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text("Create Assessment", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-              ),
-            ),
-          ] else ...[
+          const Text("Start your first test to see it here.", style: TextStyle(color: kcMediumGrey)),
+          if (isSpecialist != true) ...[
             verticalSpaceLarge,
             SizedBox(
               height: 50,

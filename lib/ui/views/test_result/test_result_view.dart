@@ -150,29 +150,24 @@ class TestResultView extends StackedView<TestResultViewModel> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(vm.getDate(test.createdAt),
-                    style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600),
-                    overflow: TextOverflow.ellipsis),
-                verticalSpaceTiny,
-                const Text("Latest Assessment",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis),
-              ],
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(vm.getDate(test.createdAt),
+                  style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600)),
+              verticalSpaceTiny,
+              const Text("Latest Assessment",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold)),
+            ],
           ),
-          const SizedBox(width: 12),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(16),
@@ -357,11 +352,7 @@ class TestResultView extends StackedView<TestResultViewModel> {
 
   Widget _buildRecoverySection(List<String> tips) {
     if (tips.isEmpty) return const SizedBox();
-    // Filter out nutrition items
-    final categorized = tips
-        .map((tip) => _categorize(tip))
-        .where((item) => !item.isNutrition)
-        .toList();
+    final categorized = tips.map((tip) => _categorize(tip)).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -414,20 +405,17 @@ class TestResultView extends StackedView<TestResultViewModel> {
   /// Parses a raw ML recommendation string into a display-ready item.
   _RecItem _categorize(String tip) {
     final lower = tip.toLowerCase();
-    // Skip nutrition tips entirely — return null handled by caller
     if (lower.startsWith('nutrition') ||
         lower.contains('food') ||
         lower.contains('diet') ||
         lower.contains('eat') ||
         lower.contains('fish') ||
         lower.contains('turmeric')) {
-      // Return as general tip without nutrition label
       return _RecItem(
-        label: '',
-        body: tip,
-        icon: Icons.check_circle_outline_rounded,
-        color: Colors.green,
-        isNutrition: true,
+        label: 'Nutrition',
+        body: _stripPrefix(tip, 'Nutrition:'),
+        icon: Icons.restaurant_menu_rounded,
+        color: const Color(0xFF4CAF50),
       );
     } else if (lower.startsWith('movement') ||
         lower.contains('exercise') ||
@@ -521,12 +509,10 @@ class _RecItem {
   final String body;
   final IconData icon;
   final Color color;
-  final bool isNutrition;
   const _RecItem({
     required this.label,
     required this.body,
     required this.icon,
     required this.color,
-    this.isNutrition = false,
   });
 }

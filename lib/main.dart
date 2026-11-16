@@ -12,16 +12,15 @@ import 'package:vital_step/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:vital_step/services/device_selection_service.dart';
 import 'package:vital_step/services/notifications_service.dart';
-import 'package:vital_step/services/supabase_service.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 final StreamController<ReceivedNotification> didReceiveLocalNotificationStream =
     StreamController<ReceivedNotification>.broadcast();
 
-/// Kill-switch Supabase client (separate project)
-/// Used only for remote app disable feature
-late final SupabaseClient killSwitchSupabaseClient;
+/// Main VitalStep Supabase client — used for all patient, specialist,
+/// assessment, and device data.
+late final SupabaseClient patientSupabaseClient;
 
 @pragma('vm:entry-point')
 void notificationTapBackground(
@@ -35,30 +34,19 @@ Future<void> main() async {
   await setupLocator();
   setupDialogUi();
 
-  // ─── INITIALIZE KILL-SWITCH SUPABASE ──────────────────────────────────
-  // This is separate and only used for the kill-switch feature
+  // ─── INITIALIZE KILL-SWITCH SUPABASE (separate legacy project) ─────────
   await Supabase.initialize(
     url: 'https://aoujgxqgixpanztyyshc.supabase.co',
     anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvdWpneHFnaXBhbnp0eXlzaGMiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTcyMzE5Nzc4NCwiZXhwIjoyMDM4NzczNzg0fQ.7oZoJa7kYpIjj48dOI_iamjxLlMqv_pek52RswBtpRs',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvdWpneHFnaXhwYW56dHl5c2hjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjMxOTc3ODQsImV4cCI6MjAzODc3Mzc4NH0.7oZoJa7kYpIjj48dOI_iamjxLlMqv_pek52RswBtpRs',
   );
-  killSwitchSupabaseClient = Supabase.instance.client;
 
-  // ─── INITIALIZE MAIN VITALSTEP SUPABASE (YOUR NEW PROJECT) ────────────
-  // Project: vitalstep-device-sync-v2
-  // URL: https://oyqecdcpicvzwwwaeka.supabase.co
-  // Publishable Key: sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi
-  //
-  // IMPORTANT: Get the ANON KEY from Supabase dashboard:
-  // 1. Go to: https://supabase.com/dashboard/project/oyqecdcpicvzwwwaeka/settings/api
-  // 2. Look for: Project API keys → anon/public
-  // 3. Copy the full key (starts with "eyJ...")
-  // 4. Pass it via: --dart-define=VITALSTEP_SUPABASE_ANON_KEY=<your_key>
-  //
-  // For now, using placeholder - UPDATE THIS WITH YOUR ACTUAL ANON KEY
-  await SupabaseService.initialize(
-    url: 'https://oyqecdcpicvzwwvwaeka.supabase.co',
-    anonKey: 'sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi',
+  // ─── INITIALIZE MAIN VITALSTEP SUPABASE ────────────────────────────────
+  // Project: oyqecdcpicvzwwvwaeka (vitalstep-device-sync-v2)
+  // The publishable key is the anon/public key in new Supabase key format.
+  patientSupabaseClient = SupabaseClient(
+    'https://oyqecdcpicvzwwvwaeka.supabase.co',
+    'sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi',
   );
 
   setupBottomSheetUi();
@@ -69,7 +57,7 @@ Future<void> main() async {
   await deviceSelectionService.initialize();
 
   const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings("@mipmap/ic_launcher");
+      AndroidInitializationSettings("app_icon");
 
   const InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
@@ -89,7 +77,7 @@ Future<void> main() async {
     initialRoute = Routes.assesmentView;
   }
 
-  runApp(VitalStepApp(initialRoute: initialRoute));
+  runApp(MainApp(initialRoute: initialRoute));
 
   // For foreground and background
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
@@ -99,16 +87,18 @@ Future<void> main() async {
   }, onDidReceiveBackgroundNotificationResponse: notificationTapBackground);
 }
 
-class VitalStepApp extends StatelessWidget {
+class MainApp extends StatelessWidget {
+  const MainApp({super.key, required this.initialRoute});
   final String initialRoute;
-  const VitalStepApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'VitalStep',
       debugShowCheckedModeBanner: false,
       initialRoute: initialRoute,
+      theme: ThemeData(
+        primaryColor: const Color(0xFF0D9488), // VitalStep teal
+      ),
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,
       navigatorObservers: [

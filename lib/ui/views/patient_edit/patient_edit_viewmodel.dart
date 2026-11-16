@@ -6,7 +6,6 @@ import 'package:vital_step/app/app.locator.dart';
 import 'package:vital_step/main.dart';
 import 'package:vital_step/services/mode_service.dart';
 import 'package:vital_step/services/patient_service.dart';
-import 'package:vital_step/services/supabase_service.dart';
 
 class PatientEditViewModel extends BaseViewModel {
   final _patientService = locator<PatientService>();
@@ -71,7 +70,7 @@ class PatientEditViewModel extends BaseViewModel {
     if (!_validate() || patient == null) return;
     setBusy(true);
     try {
-      await vitalstepSupabaseClient
+      await patientSupabaseClient
           .from('research_patients')
           .update({
             'name': name.trim(),
@@ -92,4 +91,3 @@ class PatientEditViewModel extends BaseViewModel {
     }
   }
 }
-

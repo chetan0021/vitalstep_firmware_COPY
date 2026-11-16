@@ -72,7 +72,6 @@ class TestResultViewModel extends BaseViewModel {
     _aiLoading = true;
     notifyListeners();
     try {
-      int? age;
       int? weight;
       int? height;
       String? gender;
@@ -98,28 +97,15 @@ class TestResultViewModel extends BaseViewModel {
         knuckleLength = profile.knucklesLength != null
             ? double.tryParse(profile.knucklesLength.toString())
             : null;
-        // Derive age from dob if available
-        if (profile.dob != null && profile.dob!.isNotEmpty) {
-          final dob = DateTime.tryParse(profile.dob!);
-          if (dob != null) {
-            age = DateTime.now().year - dob.year;
-            if (DateTime.now().month < dob.month ||
-                (DateTime.now().month == dob.month &&
-                    DateTime.now().day < dob.day)) {
-              age--;
-            }
-          }
-        }
       } catch (_) {}
 
-      // In patient mode, get patient-specific data (overrides host profile)
+      // In patient mode, get patient-specific data
       if (_modeService.isPatientMode && _modeService.hasActivePatient) {
         try {
           final patient =
               await _patientService.getPatient(_modeService.activePatientId!);
           if (patient != null) {
             condition = patient.condition;
-            age = patient.age; // patient age takes priority
             if (patient.weight != null) weight = patient.weight;
             if (patient.height != null) height = patient.height;
             if (patient.dominantHand != null)
@@ -138,7 +124,6 @@ class TestResultViewModel extends BaseViewModel {
         trial3: double.tryParse(t.trial3) ?? 0,
         hand: t.hand,
         posture: t.posture,
-        age: age,
         weight: weight,
         height: height,
         gender: gender,
@@ -285,7 +270,7 @@ class TestResultViewModel extends BaseViewModel {
     }
     if (_aiInsight != null) {
       final ml = _aiInsight!.mlPrediction;
-      return 'Your palm pressure is classified as ${ml.predictedCategory} '
+      return 'Your grip strength is classified as ${ml.predictedCategory} '
           '(${ml.percentile.toStringAsFixed(0)}th percentile). '
           '${ml.recommendations.isNotEmpty ? ml.recommendations.first : ""}';
     }

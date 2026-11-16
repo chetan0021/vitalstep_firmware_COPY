@@ -80,7 +80,7 @@ class AiService {
   static const String _groqUrl =
       'https://api.groq.com/openai/v1/chat/completions';
   static const String _groqApiKey =
-      String.fromEnvironment('GROQ_API_KEY', defaultValue: '');
+      'YOUR_GROQ_API_KEY_HERE'; // TODO: Replace with actual key or load from env
   static const String _groqModel = 'llama-3.3-70b-versatile';
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -395,7 +395,7 @@ class AiService {
             headers: {'Content-Type': 'application/json'},
             body: jsonEncode(payload),
           )
-          .timeout(const Duration(seconds: 60));
+          .timeout(const Duration(seconds: 30));
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
@@ -429,12 +429,10 @@ class AiService {
               'messages': [
                 {
                   'role': 'system',
-                  'content': 'You are a friendly health assistant for a palm pressure measurement app. '
+                  'content': 'You are a friendly health assistant for a grip strength app. '
                       'Speak directly to the patient in simple, warm, everyday language. '
                       'Never use technical terms like "ML model", "percentile", '
                       '"confidence score", "bilateral", "clinical", or any medical jargon. '
-                      'Do NOT give nutrition or diet advice. '
-                      'Focus only on movement, exercise, rest and daily habits. '
                       'Be encouraging, brief, and clear. Write like a supportive coach.',
                 },
                 {'role': 'user', 'content': prompt},
@@ -443,7 +441,7 @@ class AiService {
               'temperature': 0.4,
             }),
           )
-          .timeout(const Duration(seconds: 30));
+          .timeout(const Duration(seconds: 20));
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
@@ -477,8 +475,8 @@ class AiService {
     final level = ml.predictedCategory.toLowerCase();
 
     final prompt =
-        'A patient just tested their $hand hand palm pressure while $posture. '
-        'Their average pressure was $avgKg kg, which is considered $level. '
+        'A patient just tested their $hand hand grip strength while $posture. '
+        'Their average grip was $avgKg kg, which is considered $level. '
         '$ageStr $conditionStr '
         'Write 2 friendly sentences telling them what this result means and one simple tip. '
         'No jargon, no technical terms, speak directly to them as "you".';
@@ -538,7 +536,7 @@ class AiService {
         : '';
     final ageStr = age != null ? 'The patient is $age years old.' : '';
 
-    final prompt = "A patient's palm pressure has $trend recently. "
+    final prompt = "A patient's grip strength has $trend recently. "
         'Their latest reading is ${latestAvg.toStringAsFixed(1)} kg, '
         'previous was ${previousAvg.toStringAsFixed(1)} kg. '
         'Their current level is ${ml.predictedCategory.toLowerCase()}. '
@@ -559,7 +557,7 @@ class AiService {
     final tip = ml.recommendations.isNotEmpty
         ? ml.recommendations.first
         : 'Keep up your regular exercises!';
-    return 'Your palm pressure at ${ml.average.toStringAsFixed(1)} kg is $level. $tip';
+    return 'Your grip strength at ${ml.average.toStringAsFixed(1)} kg is $level. $tip';
   }
 
   String _fallbackCompareInsight(double leftAvg, double rightAvg) {
@@ -573,7 +571,7 @@ class AiService {
   }
 
   String _fallbackHomeInsight(MlPrediction ml, String trend) {
-    return 'Your palm pressure has $trend — currently at ${ml.average.toStringAsFixed(1)} kg. Keep going!';
+    return 'Your grip strength has $trend — currently at ${ml.average.toStringAsFixed(1)} kg. Keep going!';
   }
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -586,3 +584,5 @@ class AiService {
     return weight / (h * h);
   }
 }
+
+

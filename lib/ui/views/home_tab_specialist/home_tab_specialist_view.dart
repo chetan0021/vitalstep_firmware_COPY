@@ -36,11 +36,6 @@ class HomeTabSpecialistView extends StackedView<HomeTabSpecialistViewModel> {
             Image.asset(
               'assets/stethoscope.png',
               height: 200,
-              errorBuilder: (context, error, stackTrace) => const Icon(
-                Icons.medical_services_outlined,
-                size: 120,
-                color: kcPrimaryColor,
-              ),
             ),
             verticalSpaceMedium,
             Row(
