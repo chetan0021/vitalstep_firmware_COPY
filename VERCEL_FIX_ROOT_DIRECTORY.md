@@ -1,4 +1,4 @@
-# âš ï¸ VERCEL ROOT DIRECTORY FIX
+# GÜán+Å VERCEL ROOT DIRECTORY FIX
 
 ## Problem Identified
 Vercel is showing: **"Looking for a starting point..."**
@@ -37,7 +37,7 @@ Click **Save**
 ### Step 8: Redeploy
 1. Go to: **Deployments** tab
 2. Find the latest deployment
-3. Click **â‹¯** (three dots)
+3. Click **Gï»** (three dots)
 4. Click **Redeploy**
 5. Wait 2-3 minutes
 
@@ -48,12 +48,12 @@ Click **Save**
 Your project structure:
 ```
 Repository Root (main branch)
-â”œâ”€â”€ app/                    â† Next.js app
-â”œâ”€â”€ components/
-â”œâ”€â”€ lib/
-â”œâ”€â”€ package.json
-â”œâ”€â”€ next.config.ts
-â””â”€â”€ tailwind.config.ts
+Gö£GöÇGöÇ app/                    GåÉ Next.js app
+Gö£GöÇGöÇ components/
+Gö£GöÇGöÇ lib/
+Gö£GöÇGöÇ package.json
+Gö£GöÇGöÇ next.config.ts
+GööGöÇGöÇ tailwind.config.ts
 ```
 
 **Root Directory should be EMPTY** to tell Vercel:
@@ -76,11 +76,11 @@ Once deployment completes:
 ## If Still Not Working
 
 1. **Clear Vercel cache:**
-   - Settings â†’ Deployments â†’ Remove all Cache
+   - Settings GåÆ Deployments GåÆ Remove all Cache
    - Redeploy again
 
 2. **Check environment variables:**
-   - Settings â†’ Environment Variables
+   - Settings GåÆ Environment Variables
    - Verify all 4 variables are there:
      - NEXT_PUBLIC_SUPABASE_URL
      - NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -97,15 +97,15 @@ Once deployment completes:
 
 **Settings page looks like:**
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ Settings                â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ General                 â”‚
-â”‚  Root Directory: [___]  â† Leave EMPTY
-â”‚  Framework: Next.js     â”‚
-â”‚  Build Command: auto    â”‚
-â”‚  Output Directory: auto â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé Settings                Göé
+Gö£GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñ
+Göé General                 Göé
+Göé  Root Directory: [___]  GåÉ Leave EMPTY
+Göé  Framework: Next.js     Göé
+Göé  Build Command: auto    Göé
+Göé  Output Directory: auto Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 **Make sure Root Directory is completely empty!**

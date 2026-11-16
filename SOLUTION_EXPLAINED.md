@@ -6,18 +6,18 @@ Think of the device like a single-worker reception desk:
 
 ```
 CURRENT SITUATION:
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ Worker at desk:                         â”‚
-â”‚  - Takes phone calls (touch input)      â”‚
-â”‚  - Draws pictures on board (graphics)   â”‚
-â”‚                                         â”‚
-â”‚ Problem: Worker is DRAWING for 100-200msâ”‚
-â”‚ During drawing time = NO PHONE CALLS!   â”‚
-â”‚                                         â”‚
-â”‚ Customer touches screen at T=50ms       â”‚
-â”‚ Worker doesn't see it until T=200ms     â”‚
-â”‚ (by then, touch event is GONE)          â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé Worker at desk:                         Göé
+Göé  - Takes phone calls (touch input)      Göé
+Göé  - Draws pictures on board (graphics)   Göé
+Göé                                         Göé
+Göé Problem: Worker is DRAWING for 100-200msGöé
+Göé During drawing time = NO PHONE CALLS!   Göé
+Göé                                         Göé
+Göé Customer touches screen at T=50ms       Göé
+Göé Worker doesn't see it until T=200ms     Göé
+Göé (by then, touch event is GONE)          Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 **Result**: Buttons appear "frozen" because touch events happen while the worker is busy drawing.
@@ -32,10 +32,10 @@ A gradient is a smooth color transition. In the Dashboard, there's a gradient he
 
 ```
 Current (SLOW) implementation:
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ Gradient fill from BLUE to PURPLE       â”‚
-â”‚ â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé Gradient fill from BLUE to PURPLE       Göé
+Göé GûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæ Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 Width = 108 pixels
 
 Current code does this:
@@ -53,10 +53,10 @@ Instead of smooth pixel-by-pixel transitions, use 3-4 color blocks:
 
 ```
 OPTIMIZED (FAST) implementation:
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚   BLUE       â”‚   MID-BLUE   â”‚   PURPLE     â”‚
-â”‚  (36px)      â”‚   (36px)     â”‚   (36px)     â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGö¼GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGö¼GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé   BLUE       Göé   MID-BLUE   Göé   PURPLE     Göé
+Göé  (36px)      Göé   (36px)     Göé   (36px)     Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGö¦GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGö¦GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
 New code does this:
   fillRect(0, 0, 36, 22, BLUE)       // 1 operation
@@ -111,10 +111,10 @@ Time 150ms:  Draw text
 Time 200ms:  Done - NOW check touch!
              (But touch was pressed at T=50ms - MISSED!)
 
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ (200ms of drawing) â”‚
-â”‚ T=50ms: Touch pressed (IGNORED)         â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê (200ms of drawing) Göé
+Göé T=50ms: Touch pressed (IGNORED)         Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 A "Yield Point" is a checkpoint where we say:
@@ -135,10 +135,10 @@ Time 80ms:   Draw text
              [YIELD] - Check: "Did someone touch?" No
 Time 110ms:  Done
 
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ â–ˆâ–ˆ [YIELD] â–ˆâ–ˆ [YIELD] â–ˆâ–ˆ [YIELD] â–ˆâ–ˆ    â”‚
-â”‚ T=50ms: Touch pressed â†’ HANDLED IMMEDIATELY!
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé GûêGûê [YIELD] GûêGûê [YIELD] GûêGûê [YIELD] GûêGûê    Göé
+Göé T=50ms: Touch pressed GåÆ HANDLED IMMEDIATELY!
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ### Code Implementation
@@ -180,7 +180,7 @@ static void drawChart_WithYields(const Patient& p,int ox,int oy,int w,int h,int 
   
   // ... grid drawing ...
   for(int g=0;g<=(int)ymax;g+=5){
-    checkYield();  // â† ALLOW TOUCH EVERY 10ms
+    checkYield();  // GåÉ ALLOW TOUCH EVERY 10ms
     int yy=pb-(int)((pb-pt)*(float)g/ymax); 
     HL(pl,yy,pr-pl,gridc);
   }
@@ -189,7 +189,7 @@ static void drawChart_WithYields(const Patient& p,int ox,int oy,int w,int h,int 
   for(int s2=0;s2<2;s2++){
     const float* a=(s2==0)?p.L:p.R; 
     for(int i=0;i<cnt;i++){
-      checkYield();  // â† ALLOW TOUCH EVERY 10ms
+      checkYield();  // GåÉ ALLOW TOUCH EVERY 10ms
       // ... draw points ...
     }
   }
@@ -205,52 +205,52 @@ static void drawChart_WithYields(const Patient& p,int ox,int oy,int w,int h,int 
 
 ```
 BEFORE (BROKEN):
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ T=0ms:   User PRESSES button                          â”‚
-â”‚ T=0ms:   touchHandler() runs                          â”‚
-â”‚ T=0ms:   needFull = true  (request screen redraw)     â”‚
-â”‚ T=0ms:   Loop ends                                    â”‚
-â”‚                                                       â”‚
-â”‚ T=3ms:   Loop starts again                            â”‚
-â”‚ T=3ms:   [SLOW] drawScreen() starts                   â”‚
-â”‚ T=40ms:  drawChart() rendering grid lines             â”‚
-â”‚ T=80ms:  drawChart() rendering data curves            â”‚
-â”‚ T=150ms: drawChart() done, now drawing text           â”‚
-â”‚ T=200ms: drawScreen() FINALLY DONE                    â”‚
-â”‚ T=200ms: Loop ends                                    â”‚
-â”‚                                                       â”‚
-â”‚ T=203ms: pollTouch() runs (touch ALREADY RELEASED!)   â”‚
-â”‚ Result:  Button press was MISSED!                     â”‚
-â”‚          User sees: No response, UI appears FROZEN    â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé T=0ms:   User PRESSES button                          Göé
+Göé T=0ms:   touchHandler() runs                          Göé
+Göé T=0ms:   needFull = true  (request screen redraw)     Göé
+Göé T=0ms:   Loop ends                                    Göé
+Göé                                                       Göé
+Göé T=3ms:   Loop starts again                            Göé
+Göé T=3ms:   [SLOW] drawScreen() starts                   Göé
+Göé T=40ms:  drawChart() rendering grid lines             Göé
+Göé T=80ms:  drawChart() rendering data curves            Göé
+Göé T=150ms: drawChart() done, now drawing text           Göé
+Göé T=200ms: drawScreen() FINALLY DONE                    Göé
+Göé T=200ms: Loop ends                                    Göé
+Göé                                                       Göé
+Göé T=203ms: pollTouch() runs (touch ALREADY RELEASED!)   Göé
+Göé Result:  Button press was MISSED!                     Göé
+Göé          User sees: No response, UI appears FROZEN    Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ```
 AFTER (FIXED):
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ T=0ms:   User PRESSES button                          â”‚
-â”‚ T=0ms:   touchHandler() sets ttap flag                â”‚
-â”‚ T=0ms:   Loop ends                                    â”‚
-â”‚                                                       â”‚
-â”‚ T=3ms:   Loop starts again                            â”‚
-â”‚ T=3ms:   pollTouch() checks hardware â†’ sees press     â”‚
-â”‚ T=3ms:   handleTouch() runs â†’ TAP REGISTERED!         â”‚
-â”‚ T=3ms:   needFull = true (request screen redraw)      â”‚
-â”‚ T=3ms:   Loop ends                                    â”‚
-â”‚                                                       â”‚
-â”‚ T=6ms:   Loop starts again                            â”‚
-â”‚ T=6ms:   drawScreen_WithYields() starts               â”‚
-â”‚ T=10ms:  Draw gradient (optimized - only 3 bands)     â”‚
-â”‚ T=12ms:  checkYield() â†’ allow touch ISR if needed     â”‚
-â”‚ T=15ms:  Start drawing chart grid                     â”‚
-â”‚ T=20ms:  checkYield() â†’ interrupt here if touch!      â”‚
-â”‚ T=25ms:  Drawing continues with yields every 10ms    â”‚
-â”‚ T=55ms:  drawScreen_WithYields() DONE (3x faster!)    â”‚
-â”‚                                                       â”‚
-â”‚ Result:  User sees instant response (55ms vs 200ms)   â”‚
-â”‚          New "Trends" tab appears immediately         â”‚
-â”‚          UI feels smooth and responsive!              â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé T=0ms:   User PRESSES button                          Göé
+Göé T=0ms:   touchHandler() sets ttap flag                Göé
+Göé T=0ms:   Loop ends                                    Göé
+Göé                                                       Göé
+Göé T=3ms:   Loop starts again                            Göé
+Göé T=3ms:   pollTouch() checks hardware GåÆ sees press     Göé
+Göé T=3ms:   handleTouch() runs GåÆ TAP REGISTERED!         Göé
+Göé T=3ms:   needFull = true (request screen redraw)      Göé
+Göé T=3ms:   Loop ends                                    Göé
+Göé                                                       Göé
+Göé T=6ms:   Loop starts again                            Göé
+Göé T=6ms:   drawScreen_WithYields() starts               Göé
+Göé T=10ms:  Draw gradient (optimized - only 3 bands)     Göé
+Göé T=12ms:  checkYield() GåÆ allow touch ISR if needed     Göé
+Göé T=15ms:  Start drawing chart grid                     Göé
+Göé T=20ms:  checkYield() GåÆ interrupt here if touch!      Göé
+Göé T=25ms:  Drawing continues with yields every 10ms    Göé
+Göé T=55ms:  drawScreen_WithYields() DONE (3x faster!)    Göé
+Göé                                                       Göé
+Göé Result:  User sees instant response (55ms vs 200ms)   Göé
+Göé          New "Trends" tab appears immediately         Göé
+Göé          UI feels smooth and responsive!              Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ---
@@ -263,7 +263,7 @@ AFTER (FIXED):
 | **Chart render time** | 40-80ms | 30-50ms | **2x faster** |
 | **Total drawScreen() time** | 150-200ms | 50-80ms | **3-4x faster** |
 | **Touch response time** | 100-200ms | 15-25ms | **8-10x faster** |
-| **Feel** | Frozen/sluggish | Smooth/responsive | âœ… **FIXED** |
+| **Feel** | Frozen/sluggish | Smooth/responsive | G£à **FIXED** |
 
 ---
 
@@ -309,7 +309,7 @@ for(int g=0;g<=(int)ymax;g+=5){
 // After each line drawing loop:
 for(int s2=0;s2<2;s2++){
   for(int i=0;i<cnt;i++){
-    checkYield();  // â† Add this
+    checkYield();  // GåÉ Add this
     // ... existing point code ...
   }
 }
@@ -324,11 +324,11 @@ Search and replace all `GRRH(` with `GRRH_FAST(`
 
 After implementing these fixes:
 
-âœ… **Buttons respond immediately** when you tap them  
-âœ… **No more "frozen" feeling** when switching screens  
-âœ… **Charts render smoothly** in 50-80ms instead of 150-200ms  
-âœ… **Touch input never gets missed** due to frequent yield points  
-âœ… **Visual quality remains excellent** (banding not noticeable on small gradients)  
+G£à **Buttons respond immediately** when you tap them  
+G£à **No more "frozen" feeling** when switching screens  
+G£à **Charts render smoothly** in 50-80ms instead of 150-200ms  
+G£à **Touch input never gets missed** due to frequent yield points  
+G£à **Visual quality remains excellent** (banding not noticeable on small gradients)  
 
 ---
 

@@ -12,10 +12,10 @@ fatal: The remote name could not be resolved: 'api.github.com'
 This means your computer **cannot reach GitHub servers** via DNS.
 
 ### What This Means
-- âœ… Your git configuration is correct
-- âœ… Your GitHub credentials are fine  
-- âœ… Your local commits are saved
-- âŒ Your computer's network can't resolve github.com
+- G£à Your git configuration is correct
+- G£à Your GitHub credentials are fine  
+- G£à Your local commits are saved
+- G¥î Your computer's network can't resolve github.com
 
 ## How to Fix This
 
@@ -66,9 +66,9 @@ If you prefer doing it manually:
 
 ## What NOT to Do
 
-âŒ Don't revoke GitHub credentials - they were never used (network failed first)  
-âŒ Don't reinstall git - the issue is network, not git  
-âŒ Don't change git credentials - they're correct  
+G¥î Don't revoke GitHub credentials - they were never used (network failed first)  
+G¥î Don't reinstall git - the issue is network, not git  
+G¥î Don't change git credentials - they're correct  
 
 ## Git Configuration Status
 
@@ -86,10 +86,10 @@ origin = https://github.com/chetan0021/vitalstep_with_firmware.git
 
 ## Current Code Status
 
-âœ… All files are committed locally
-âœ… Dashboard integration is complete
-âœ… Configuration files added
-âœ… Ready to push - just need network
+G£à All files are committed locally
+G£à Dashboard integration is complete
+G£à Configuration files added
+G£à Ready to push - just need network
 
 **Local commits waiting to push:**
 - Immediate Action Required guide
@@ -100,7 +100,7 @@ origin = https://github.com/chetan0021/vitalstep_with_firmware.git
 
 ## What Happens When Network is Fixed
 
-1. Network restored â†’ `ping github.com` works
+1. Network restored GåÆ `ping github.com` works
 2. Run: `git push origin main`
 3. Git Credential Manager opens
 4. You select your GitHub account

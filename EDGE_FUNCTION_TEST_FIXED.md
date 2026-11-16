@@ -1,4 +1,4 @@
-# ðŸ§ª Edge Function Testing - Fixed Method
+# =ƒº¬ Edge Function Testing - Fixed Method
 
 The issue: The Supabase test UI doesn't generate proper auth tokens. We need to use a different approach.
 
@@ -8,7 +8,7 @@ The issue: The Supabase test UI doesn't generate proper auth tokens. We need to 
 
 ### Step 1: Get Admin Auth Token
 
-Go to Supabase Dashboard â†’ **Authentication** â†’ **Users**
+Go to Supabase Dashboard GåÆ **Authentication** GåÆ **Users**
 Find `admin@vitalstep.com` user
 
 Go to your local machine terminal and run:
@@ -121,7 +121,7 @@ console.log('Result:', result);
 
 After successful test, check that device was created:
 
-Go to Supabase â†’ **SQL Editor** â†’ Run:
+Go to Supabase GåÆ **SQL Editor** GåÆ Run:
 
 ```sql
 SELECT device_code, device_secret, status, created_at 
@@ -137,6 +137,6 @@ You should see your newly generated device!
 ## Next Steps
 
 Once function returns `"ok": true`, reply:
-**"âœ… Edge function working! Generated device: VS-XXXXX"**
+**"G£à Edge function working! Generated device: VS-XXXXX"**
 
 Then I'll build the complete Next.js dashboard!

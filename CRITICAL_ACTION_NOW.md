@@ -1,4 +1,4 @@
-# ðŸš¨ CRITICAL ACTION NEEDED NOW
+# =ƒÜ¿ CRITICAL ACTION NEEDED NOW
 
 ## Current Problem
 Your Vercel deployment shows:
@@ -10,7 +10,7 @@ Your Vercel deployment shows:
 
 ---
 
-## âš¡ FIX IT IN 5 MINUTES
+## GÜí FIX IT IN 5 MINUTES
 
 ### Go Here NOW:
 https://vercel.com/dashboard/vitalstep-with-firmware/settings/general
@@ -25,7 +25,7 @@ https://vercel.com/dashboard/vitalstep-with-firmware/settings/general
 ### Save & Redeploy:
 1. Click **Save**
 2. Go to **Deployments**
-3. Click the **â‹¯** on latest deployment
+3. Click the **Gï»** on latest deployment
 4. Click **Redeploy**
 5. Wait 2-3 minutes
 
@@ -34,10 +34,10 @@ https://vercel.com/dashboard/vitalstep-with-firmware/settings/general
 ## That's It!
 
 Once redeployed:
-- âœ… Vercel will find your Next.js app
-- âœ… Tailwind CSS will be included
-- âœ… Dashboard will load with styling
-- âœ… Login page will appear
+- G£à Vercel will find your Next.js app
+- G£à Tailwind CSS will be included
+- G£à Dashboard will load with styling
+- G£à Login page will appear
 
 ---
 

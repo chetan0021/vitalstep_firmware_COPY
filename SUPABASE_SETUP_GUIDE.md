@@ -1,8 +1,8 @@
-# âœ… Supabase Setup Guide for VitalStep
+# G£à Supabase Setup Guide for VitalStep
 
 ## Current Status
-- âœ… Flutter app has Supabase credentials configured
-- âŒ Supabase backend NOT YET SET UP (authentication, tables, functions)
+- G£à Flutter app has Supabase credentials configured
+- G¥î Supabase backend NOT YET SET UP (authentication, tables, functions)
 
 ---
 
@@ -18,21 +18,21 @@
 ## Step 2: Enable Authentication (Email/Password)
 
 ### 2.1 Go to Authentication Settings
-1. Left sidebar â†’ **Authentication** â†’ **Providers**
+1. Left sidebar GåÆ **Authentication** GåÆ **Providers**
 2. Scroll down and find **Email** provider
-3. Click the **Email** toggle â†’ Turn it **ON** (green)
+3. Click the **Email** toggle GåÆ Turn it **ON** (green)
 4. Save settings
 
 ### 2.2 Configure Email Provider
-1. Still in Authentication â†’ **Email**
+1. Still in Authentication GåÆ **Email**
 2. Enable:
-   - âœ… **Enable email provider**
-   - âœ… **Confirm email** (required)
-   - âœ… **Auto-confirm new users** (or handle via email)
+   - G£à **Enable email provider**
+   - G£à **Confirm email** (required)
+   - G£à **Auto-confirm new users** (or handle via email)
 3. For testing: Enable "Auto-confirm" so users can login immediately without email verification
 
 ### 2.3 Set Redirect URLs
-1. Go to **Authentication** â†’ **URL Configuration**
+1. Go to **Authentication** GåÆ **URL Configuration**
 2. Add allowed redirect URLs:
    - `com.vitalstep://auth-callback` (for mobile app)
    - `http://localhost:3000/auth-callback` (for local testing if needed)
@@ -43,7 +43,7 @@
 ## Step 3: Create Database Tables
 
 ### 3.1 Go to SQL Editor
-1. Left sidebar â†’ **SQL Editor**
+1. Left sidebar GåÆ **SQL Editor**
 2. Click **+ New Query**
 3. Paste the following SQL and run it:
 
@@ -178,7 +178,7 @@ CREATE POLICY "Public: Insert insights via device-sync"
 The device sends test results to this Edge Function, which stores them in Supabase.
 
 ### 4.1 Create the Function
-1. Left sidebar â†’ **Edge Functions**
+1. Left sidebar GåÆ **Edge Functions**
 2. Click **+ Create a new function**
 3. Name: `device-sync`
 4. Runtime: **TypeScript**
@@ -323,31 +323,31 @@ serve(async (req) => {
 
 You already have them in the app, but verify they're correct:
 
-1. Go to **Settings** â†’ **API**
+1. Go to **Settings** GåÆ **API**
 2. Find:
-   - **Project URL**: `https://oyqecdcpicvzwwvwaeka.supabase.co` âœ“
-   - **Anon Key (public)**: `sb_publishable_...` âœ“
-3. These are already in `supabase_service.dart` âœ“
+   - **Project URL**: `https://oyqecdcpicvzwwvwaeka.supabase.co` G£ô
+   - **Anon Key (public)**: `sb_publishable_...` G£ô
+3. These are already in `supabase_service.dart` G£ô
 
 ---
 
 ## Step 6: Test Authentication in Supabase
 
 ### 6.1 Create a Test User
-1. Go to **Authentication** â†’ **Users**
+1. Go to **Authentication** GåÆ **Users**
 2. Click **+ Add user**
 3. Email: `test@vitalstep.com`
 4. Password: `Test123!@#`
 5. Click **Create user**
-6. Status should show: **Confirmed** âœ“
+6. Status should show: **Confirmed** G£ô
 
 ### 6.2 Verify in Database
-1. Go to **SQL Editor** â†’ **+ New Query**
+1. Go to **SQL Editor** GåÆ **+ New Query**
 2. Run:
    ```sql
    SELECT id, email FROM public.users;
    ```
-3. You should see your test user âœ“
+3. You should see your test user G£ô
 
 ---
 
@@ -358,9 +358,9 @@ Now the app can authenticate:
 ### 7.1 Dependencies Already Installed
 The `pubspec.yaml` has:
 ```yaml
-supabase_flutter: ^2.4.0    âœ“
-provider: ^6.0.0            âœ“
-http: ^1.1.0                âœ“
+supabase_flutter: ^2.4.0    G£ô
+provider: ^6.0.0            G£ô
+http: ^1.1.0                G£ô
 ```
 
 ### 7.2 Run the App
@@ -384,33 +384,33 @@ flutter run                       # Run on connected phone/emulator
 8. Should redirect to login
 9. Enter same credentials
 10. Tap **Sign In**
-11. You're logged in! âœ“
+11. You're logged in! G£ô
 
 ---
 
 ## Step 8: Test Device Pairing
 
 ### 8.1 Device Running (already flashed with fixed.ino)
-1. Device boots â†’ shows BLE pairing screen
+1. Device boots GåÆ shows BLE pairing screen
 2. Device waits for app to connect
 
 ### 8.2 App Pairing
-1. App logged in â†’ Home screen
+1. App logged in GåÆ Home screen
 2. Tap **Add Device** / **Pair Device**
 3. App scans for BLE
 4. Select `PalmPressure` (your device)
 5. App sends device code + secret
-6. Device confirmed on cloud âœ“
+6. Device confirmed on cloud G£ô
 
 ### 8.3 Run a Test
-1. App â†’ **Start Test**
+1. App GåÆ **Start Test**
 2. Device runs measurement cycle
-3. Results appear in app âœ“
-4. Tap **Sync** â†’ uploads to Supabase âœ“
+3. Results appear in app G£ô
+4. Tap **Sync** GåÆ uploads to Supabase G£ô
 
 ---
 
-## âœ… Checklist Before Testing
+## G£à Checklist Before Testing
 
 - [ ] Supabase Authentication enabled (Email/Password)
 - [ ] Redirect URLs configured (com.vitalstep://auth-callback)
@@ -419,12 +419,12 @@ flutter run                       # Run on connected phone/emulator
 - [ ] Edge Function `device-sync` deployed
 - [ ] Test user created: test@vitalstep.com / Test123!@#
 - [ ] Flutter app dependencies installed (`flutter pub get`)
-- [ ] Device firmware flashed with calibrated HX711 factor âœ“
+- [ ] Device firmware flashed with calibrated HX711 factor G£ô
 - [ ] Phone connected for testing
 
 ---
 
-## ðŸš€ Ready to Test!
+## =ƒÜÇ Ready to Test!
 
 **Next Steps:**
 1. Follow steps 1-5 above to set up Supabase
@@ -433,48 +433,48 @@ flutter run                       # Run on connected phone/emulator
 4. Sign up / Sign in
 5. Pair device
 6. Run measurement test
-7. Watch data sync to cloud âœ“
+7. Watch data sync to cloud G£ô
 
 ---
 
-## ðŸ“ž Troubleshooting
+## =ƒôP Troubleshooting
 
 **"Authentication failed"**
-â†’ Check email/password match test user (test@vitalstep.com / Test123!@#)
-â†’ Make sure Email provider is enabled
+GåÆ Check email/password match test user (test@vitalstep.com / Test123!@#)
+GåÆ Make sure Email provider is enabled
 
 **"Device pairing failed"**
-â†’ Check device is powered on and showing BLE screen
-â†’ Check app has Bluetooth permission
-â†’ Make sure Edge Function is deployed
+GåÆ Check device is powered on and showing BLE screen
+GåÆ Check app has Bluetooth permission
+GåÆ Make sure Edge Function is deployed
 
 **"Measurements not syncing"**
-â†’ Check Wi-Fi is connected on device
-â†’ Check Edge Function logs in Supabase
-â†’ Verify device_code and device_secret match
+GåÆ Check Wi-Fi is connected on device
+GåÆ Check Edge Function logs in Supabase
+GåÆ Verify device_code and device_secret match
 
 **"Empty tables"**
-â†’ Check RLS policies are correct
-â†’ Try disabling RLS temporarily for testing (`ALTER TABLE ... DISABLE ROW LEVEL SECURITY`)
+GåÆ Check RLS policies are correct
+GåÆ Try disabling RLS temporarily for testing (`ALTER TABLE ... DISABLE ROW LEVEL SECURITY`)
 
 ---
 
-## ðŸ“Š Final Architecture
+## =ƒôè Final Architecture
 
 ```
 Phone (Flutter App)
-    â†“ (HTTPS + WebSocket)
+    Gåô (HTTPS + WebSocket)
 Supabase Cloud
-    â”œâ”€â”€ Authentication (Email/Password) âœ“
-    â”œâ”€â”€ Realtime DB (users, devices, measurements) âœ“
-    â”œâ”€â”€ Edge Functions (device-sync) âœ“
-    â””â”€â”€ BLE Pairing â†” Device (ESP32)
+    Gö£GöÇGöÇ Authentication (Email/Password) G£ô
+    Gö£GöÇGöÇ Realtime DB (users, devices, measurements) G£ô
+    Gö£GöÇGöÇ Edge Functions (device-sync) G£ô
+    GööGöÇGöÇ BLE Pairing Gåö Device (ESP32)
 
 Device (ESP32-3248S035)
-    â”œâ”€â”€ Load Cell (HX711) - 13.746 factor âœ“
-    â”œâ”€â”€ SD Card (offline queue) âœ“
-    â”œâ”€â”€ Wi-Fi (cloud sync) âœ“
-    â””â”€â”€ BLE (app pairing) âœ“
+    Gö£GöÇGöÇ Load Cell (HX711) - 13.746 factor G£ô
+    Gö£GöÇGöÇ SD Card (offline queue) G£ô
+    Gö£GöÇGöÇ Wi-Fi (cloud sync) G£ô
+    GööGöÇGöÇ BLE (app pairing) G£ô
 ```
 
-Everything is connected and ready! ðŸŽ‰
+Everything is connected and ready! =ƒÄë

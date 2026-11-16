@@ -110,7 +110,7 @@ static void GRR(int x,int y,int w,int h,int r,uint16_t c1,uint16_t c2){       //
 ### Location 4a: After line ~1125 (grid drawing loop)
 ```cpp
   for(int g=0;g<=(int)ymax;g+=5){
-    checkYield();  // â† ADD THIS LINE
+    checkYield();  // GåÉ ADD THIS LINE
     int yy=pb-(int)((pb-pt)*(float)g/ymax); 
     HL(pl,yy,pr-pl,gridc);
     snprintf(b,sizeof b,"%d",g); 
@@ -125,7 +125,7 @@ static void GRR(int x,int y,int w,int h,int r,uint16_t c1,uint16_t c2){       //
     uint16_t c=(s2==0)?C_L:C_R; 
     int lx=-1,ly=0;
     for(int i=0;i<cnt;i++){
-      checkYield();  // â† ADD THIS LINE
+      checkYield();  // GåÉ ADD THIS LINE
       float v=a[st+i]; 
       int xx=(cnt==1)?(pl+pr)/2:pl+8+((pr-pl-16)*i)/(cnt-1);
       if(v<=0){ lx=-1; continue; }
@@ -135,7 +135,7 @@ static void GRR(int x,int y,int w,int h,int r,uint16_t c1,uint16_t c2){       //
     }
     
     for(int i=0;i<cnt;i++){
-      checkYield();  // â† ADD THIS LINE
+      checkYield();  // GåÉ ADD THIS LINE
       float v=a[st+i]; 
       if(v<=0) continue;
       int xx=(cnt==1)?(pl+pr)/2:pl+8+((pr-pl-16)*i)/(cnt-1); 
@@ -150,14 +150,14 @@ static void GRR(int x,int y,int w,int h,int r,uint16_t c1,uint16_t c2){       //
 ```cpp
   char d1[16]; 
   fmtTs(p.ts[st],d1,sizeof d1); 
-  checkYield();  // â† ADD THIS LINE
+  checkYield();  // GåÉ ADD THIS LINE
   DT(d1,pl+2,pb+12,AL_L,C_DIM,F2);
   fmtTs(p.ts[n-1],d1,sizeof d1); 
-  checkYield();  // â† ADD THIS LINE
+  checkYield();  // GåÉ ADD THIS LINE
   DT(d1,pr-2,pb+12,AL_R,C_DIM,F2);
   if(!compact && cnt>=5){ 
     fmtTs(p.ts[st+cnt/2],d1,sizeof d1); 
-    checkYield();  // â† ADD THIS LINE
+    checkYield();  // GåÉ ADD THIS LINE
     DT(d1,(pl+pr)/2,pb+12,AL_C,C_DIM,F2); 
   }
 ```
@@ -173,14 +173,14 @@ static void GRR(int x,int y,int w,int h,int r,uint16_t c1,uint16_t c2){       //
 void loop(){
   uint32_t now=millis();
   pollTouch(); 
-  checkYield();  // â† ADD THIS LINE - Allow touch ISR even if we're about to draw
+  checkYield();  // GåÉ ADD THIS LINE - Allow touch ISR even if we're about to draw
   handleTouch(); 
-  checkYield();  // â† ADD THIS LINE - Process touch input right away
+  checkYield();  // GåÉ ADD THIS LINE - Process touch input right away
   tick(now);
-  checkYield();  // â† ADD THIS LINE - Yield before drawing
+  checkYield();  // GåÉ ADD THIS LINE - Yield before drawing
   if(needFull){ needFull=false; drawScreen(); }
   else if(statusDirty) drawStatus();
-  checkYield();  // â† ADD THIS LINE - Yield after screen update
+  checkYield();  // GåÉ ADD THIS LINE - Yield after screen update
   delay(3);
 }
 ```
@@ -193,7 +193,7 @@ void loop(){
 
 ```cpp
 void loop(){
-  uint32_t tStart = millis();  // â† ADD THIS
+  uint32_t tStart = millis();  // GåÉ ADD THIS
   uint32_t now=millis();
   pollTouch(); 
   checkYield();
@@ -204,9 +204,9 @@ void loop(){
   if(needFull){ needFull=false; drawScreen(); }
   else if(statusDirty) drawStatus();
   checkYield();
-  uint32_t elapsed = millis() - tStart;  // â† ADD THIS
+  uint32_t elapsed = millis() - tStart;  // GåÉ ADD THIS
   
-  // â† ADD THIS BLOCK - Print slow frames
+  // GåÉ ADD THIS BLOCK - Print slow frames
   if(elapsed > 50){
     Serial.printf("[PERF] Loop cycle took %lu ms (buttons responsive: %s)\n", 
                   elapsed, elapsed<100?"YES":"MAYBE_SLOW");

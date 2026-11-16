@@ -1,6 +1,6 @@
 # VitalStep Device - Sensor Calibration & Setup Guide
 
-## ‚úÖ UPDATED: Calibration Factor Applied (13.746 counts/gram)
+## G£‡ UPDATED: Calibration Factor Applied (13.746 counts/gram)
 
 ### Latest Changes
 **Date**: November 12, 2026  
@@ -9,18 +9,18 @@
 - **Old calibration factor**: 10300.0 counts/kg (incorrect)
 - **New calibration factor**: 13746.0 counts/kg (13.746 counts/gram) 
 - **Source**: HX711 calibration tool output from image
-- **Reference reading**: 1.010 kg = delta 13883 counts ‚Üí factor 13.746 counts/gram
+- **Reference reading**: 1.010 kg = delta 13883 counts GÂ∆ factor 13.746 counts/gram
 
 ---
 
-## üìã Sensor Input Configuration Summary
+## =ÉÙÔ Sensor Input Configuration Summary
 
-### 1. **LOAD CELL (HX711)** ‚úÖ ACTIVE & CALIBRATED
+### 1. **LOAD CELL (HX711)** G£‡ ACTIVE & CALIBRATED
 | Configuration | Status | Value |
 |---|---|---|
-| Hardware | ‚úÖ Real | HX711 module on CN1 socket |
+| Hardware | G£‡ Real | HX711 module on CN1 socket |
 | Pins | DT=IO21, SCK=IO22 | Connected to ESP32 |
-| Calibration Factor | ‚úÖ Updated | 13746.0 counts/kg |
+| Calibration Factor | G£‡ Updated | 13746.0 counts/kg |
 | Stability Tolerance | 0.05 kg | Same as before |
 | Minimum Trigger | 0.1 kg | Same as before |
 | Mode in `fixed.ino` | MOCK_HX711=1 | **Test mode** (simulates realistic data) |
@@ -38,10 +38,10 @@ weight_kg = (raw_count - offset) / 13746.0 / 1000
 
 ---
 
-### 2. **SD CARD** ‚úÖ ACTIVE (REAL)
+### 2. **SD CARD** G£‡ ACTIVE (REAL)
 | Configuration | Status | Value |
 |---|---|---|
-| Hardware | ‚úÖ Real | microSD card on VSPI |
+| Hardware | G£‡ Real | microSD card on VSPI |
 | Pins | CS=IO5, SCK=IO18, MISO=IO19, MOSI=IO23 | Connected to ESP32 |
 | Purpose | Identity backup | `/devicecode.txt`, `/devicesecret.txt`, `/deviceID.txt` |
 | Offline Queue | Pending results | `/vs/pending/` directory |
@@ -55,11 +55,11 @@ weight_kg = (raw_count - offset) / 13746.0 / 1000
 
 ---
 
-### 3. **BATTERY MONITOR** ‚ö†Ô∏è SIMULATED (NOT YET TESTED)
+### 3. **BATTERY MONITOR** G‹·n+≈ SIMULATED (NOT YET TESTED)
 | Configuration | Status | Value |
 |---|---|---|
-| Hardware | ‚ö†Ô∏è Simulated | Battery divider on IO35 (not tested yet) |
-| Cells | 2S Li-ion | ~7.4V nominal (3.7V √ó 2) |
+| Hardware | G‹·n+≈ Simulated | Battery divider on IO35 (not tested yet) |
+| Cells | 2S Li-ion | ~7.4V nominal (3.7V +˘ 2) |
 | ADC Pin | IO35 | Input-only, safe with Wi-Fi |
 | Voltage Divider | 330k/100k | pack(+) -- 330k -- IO35 -- 100k -- GND |
 | Capacitor | 100nF | IO35 to GND (noise filtering) |
@@ -67,13 +67,13 @@ weight_kg = (raw_count - offset) / 13746.0 / 1000
 | Mode in `prod.ino` | MOCK_BATTERY=0 | **Real ADC reading** (when tested) |
 
 **Status**:
-- ‚úÖ Code is ready (battery monitor function implemented)
-- ‚ö†Ô∏è Divider not physically tested yet
-- üìå Will enable real battery readings once hardware is verified
+- G£‡ Code is ready (battery monitor function implemented)
+- G‹·n+≈ Divider not physically tested yet
+- =ÉÙÓ Will enable real battery readings once hardware is verified
 
 ---
 
-## üéõÔ∏è TEST MODE vs PRODUCTION MODE
+## =Éƒ¢n+≈ TEST MODE vs PRODUCTION MODE
 
 ### VitalStep_Device_fixed.ino (Development/Testing)
 ```cpp
@@ -109,7 +109,7 @@ weight_kg = (raw_count - offset) / 13746.0 / 1000
 
 ---
 
-## üîß How the Calibration Factor Works
+## =Éˆ∫ How the Calibration Factor Works
 
 ### From Calibration Tool (Your Image)
 ```
@@ -134,39 +134,39 @@ weight_kg = (raw_count - offset) / 13746.0 / 1000;
 
 ---
 
-## üì¶ Sensor Status Matrix
+## =ÉÙ™ Sensor Status Matrix
 
 | Sensor | fixed.ino | prod.ino | Calibrated | Tested | Notes |
 |---|---|---|---|---|---|
-| **Load Cell (HX711)** | Mock (‚ÜíReal data) | Real | ‚úÖ Yes (13.746 c/g) | ‚úÖ Yes (calibration tool) | Ready for use |
-| **SD Card** | Real | Real | N/A | ‚úÖ Yes | Always enabled |
-| **Battery Monitor** | Mock (85%) | Real ADC | N/A | ‚ö†Ô∏è Pending | Code ready, hardware pending |
-| **Touch Display** | Real | Real | ‚úÖ Yes | ‚úÖ Yes | Working perfectly |
-| **Wi-Fi + BLE** | Real+Hardcoded | Real+BLE | N/A | ‚úÖ Yes | Ready for testing |
-| **Speaker** | Mocked | Real | N/A | ‚úÖ Yes | GPIO26 connected |
+| **Load Cell (HX711)** | Mock (GÂ∆Real data) | Real | G£‡ Yes (13.746 c/g) | G£‡ Yes (calibration tool) | Ready for use |
+| **SD Card** | Real | Real | N/A | G£‡ Yes | Always enabled |
+| **Battery Monitor** | Mock (85%) | Real ADC | N/A | G‹·n+≈ Pending | Code ready, hardware pending |
+| **Touch Display** | Real | Real | G£‡ Yes | G£‡ Yes | Working perfectly |
+| **Wi-Fi + BLE** | Real+Hardcoded | Real+BLE | N/A | G£‡ Yes | Ready for testing |
+| **Speaker** | Mocked | Real | N/A | G£‡ Yes | GPIO26 connected |
 
 ---
 
-## üöÄ Next Steps
+## =É‹« Next Steps
 
 ### For Testing (using fixed.ino)
-1. ‚úÖ Flash `VitalStep_Device_fixed.ino` to ESP32
-2. ‚úÖ Power on - device boots with UI
-3. ‚úÖ Run trials - will get realistic mock pressure data (8-14 kg)
-4. ‚úÖ Test cloud sync - results upload to Supabase
-5. ‚úÖ Test offline mode - results queue in SD card `/vs/pending/`
-6. ‚úÖ Test UI responsiveness - all buttons fast (yield points active)
+1. G£‡ Flash `VitalStep_Device_fixed.ino` to ESP32
+2. G£‡ Power on - device boots with UI
+3. G£‡ Run trials - will get realistic mock pressure data (8-14 kg)
+4. G£‡ Test cloud sync - results upload to Supabase
+5. G£‡ Test offline mode - results queue in SD card `/vs/pending/`
+6. G£‡ Test UI responsiveness - all buttons fast (yield points active)
 
 ### For Production (using prod.ino)
-1. ‚è≥ Provision Wi-Fi via BLE from mobile app
-2. ‚è≥ Physically connect real load cell to CN1
-3. ‚è≥ Run trials - will get **actual palm pressure readings**
-4. ‚è≥ Test battery monitor (when divider tested)
-5. ‚è≥ Cloud sync with real patient data
+1. G≈¶ Provision Wi-Fi via BLE from mobile app
+2. G≈¶ Physically connect real load cell to CN1
+3. G≈¶ Run trials - will get **actual palm pressure readings**
+4. G≈¶ Test battery monitor (when divider tested)
+5. G≈¶ Cloud sync with real patient data
 
 ---
 
-## ‚ö° Performance Optimizations (Already Applied)
+## G‹Ì Performance Optimizations (Already Applied)
 
 Both firmware files include:
 
@@ -186,15 +186,15 @@ Both firmware files include:
 
 ---
 
-## üìù Files Modified
+## =ÉÙ• Files Modified
 
-- ‚úÖ `VitalStep_Device_fixed.ino` - Updated HX_DEFAULT_SCALE to 13746.0
-- ‚úÖ `VitalStep_Device_production.ino` - Updated HX_DEFAULT_SCALE to 13746.0
-- üìÑ This document - Complete sensor configuration reference
+- G£‡ `VitalStep_Device_fixed.ino` - Updated HX_DEFAULT_SCALE to 13746.0
+- G£‡ `VitalStep_Device_production.ino` - Updated HX_DEFAULT_SCALE to 13746.0
+- =ÉÙ‰ This document - Complete sensor configuration reference
 
 ---
 
-## ‚úÖ Verification Checklist
+## G£‡ Verification Checklist
 
 - [x] Calibration factor updated in both files (13746 counts/kg)
 - [x] Load cell configured for actual HX711 hardware
@@ -208,6 +208,6 @@ Both firmware files include:
 
 ---
 
-**Status**: ‚úÖ **READY FOR TESTING**
+**Status**: G£‡ **READY FOR TESTING**
 
 Both firmware files are now properly configured with your calibrated load cell factor and can be flashed to the ESP32-3248S035 device.

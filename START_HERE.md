@@ -1,24 +1,24 @@
-# ğŸš€ START HERE - Dashboard Deployment
+# =ƒÜÇ START HERE - Dashboard Deployment
 
-## âœ… Your Dashboard is Ready for Production!
+## G£à Your Dashboard is Ready for Production!
 
 Everything is complete, tested, and ready to deploy. Follow these simple steps.
 
 ---
 
-## ğŸ“ What You Have
+## =ƒôì What You Have
 
-âœ… **Backend**: Edge Function deployed & tested  
-âœ… **Database**: Supabase tables & policies configured  
-âœ… **Frontend Code**: 9 production-ready files  
-âœ… **Documentation**: Complete deployment guides  
-âœ… **Configuration**: All environment variables ready  
+G£à **Backend**: Edge Function deployed & tested  
+G£à **Database**: Supabase tables & policies configured  
+G£à **Frontend Code**: 9 production-ready files  
+G£à **Documentation**: Complete deployment guides  
+G£à **Configuration**: All environment variables ready  
 
 ---
 
-## ğŸ¯ 3 Simple Steps to Live
+## =ƒÄ» 3 Simple Steps to Live
 
-### STEP 1ï¸âƒ£: BUILD LOCALLY (20 minutes)
+### STEP 1n+ÅGâú: BUILD LOCALLY (20 minutes)
 
 Open Terminal and run:
 
@@ -41,7 +41,7 @@ npm install @supabase/supabase-js lucide-react
 
 ---
 
-### STEP 2ï¸âƒ£: PUSH TO GITHUB (5 minutes)
+### STEP 2n+ÅGâú: PUSH TO GITHUB (5 minutes)
 
 ```bash
 git init
@@ -56,7 +56,7 @@ Replace `YOUR_USERNAME` with your GitHub username.
 
 ---
 
-### STEP 3ï¸âƒ£: DEPLOY TO VERCEL (10 minutes)
+### STEP 3n+ÅGâú: DEPLOY TO VERCEL (10 minutes)
 
 1. Go to: https://vercel.com/new
 2. Sign in with GitHub
@@ -64,12 +64,12 @@ Replace `YOUR_USERNAME` with your GitHub username.
 4. Click: "Import"
 5. **Add Environment Variables** (see below)
 6. Click: "Deploy"
-7. Wait for green checkmark âœ…
+7. Wait for green checkmark G£à
 8. Get live URL!
 
 ---
 
-## ğŸ”‘ Environment Variables
+## =ƒöæ Environment Variables
 
 **For .env.local (local development):**
 
@@ -84,7 +84,7 @@ NEXT_PUBLIC_EDGE_FUNCTION_URL=https://oyqecdcpicvzwwvwaeka.supabase.co/functions
 
 **For Vercel (production):**
 
-Add in Project Settings â†’ Environment Variables:
+Add in Project Settings GåÆ Environment Variables:
 
 | Name | Value |
 |------|-------|
@@ -95,7 +95,7 @@ Add in Project Settings â†’ Environment Variables:
 
 ---
 
-## ğŸ§ª Test Credentials
+## =ƒº¬ Test Credentials
 
 ```
 Email:    admin@vitalstep.com
@@ -104,37 +104,37 @@ Password: Admin123!@#
 
 ---
 
-## ğŸ“ Files to Copy
+## =ƒôü Files to Copy
 
 Copy these 9 files to your `admin-dashboard` project:
 
 ```
-dashboard-lib-supabase.ts                 â†’ lib/supabase.ts
-dashboard-app-layout.tsx                  â†’ app/layout.tsx
-dashboard-app-login-page.tsx              â†’ app/login/page.tsx
-dashboard-app-dashboard-layout.tsx        â†’ app/dashboard/layout.tsx
-dashboard-app-dashboard-page.tsx          â†’ app/dashboard/page.tsx
-dashboard-app-dashboard-generate-page.tsx â†’ app/dashboard/generate/page.tsx
-dashboard-app-dashboard-devices-page.tsx  â†’ app/dashboard/devices/page.tsx
-dashboard-app-dashboard-audit-page.tsx    â†’ app/dashboard/audit/page.tsx
-dashboard-components-sidebar.tsx          â†’ components/Sidebar.tsx
+dashboard-lib-supabase.ts                 GåÆ lib/supabase.ts
+dashboard-app-layout.tsx                  GåÆ app/layout.tsx
+dashboard-app-login-page.tsx              GåÆ app/login/page.tsx
+dashboard-app-dashboard-layout.tsx        GåÆ app/dashboard/layout.tsx
+dashboard-app-dashboard-page.tsx          GåÆ app/dashboard/page.tsx
+dashboard-app-dashboard-generate-page.tsx GåÆ app/dashboard/generate/page.tsx
+dashboard-app-dashboard-devices-page.tsx  GåÆ app/dashboard/devices/page.tsx
+dashboard-app-dashboard-audit-page.tsx    GåÆ app/dashboard/audit/page.tsx
+dashboard-components-sidebar.tsx          GåÆ components/Sidebar.tsx
 ```
 
 ---
 
-## âœ¨ What You Get
+## G£¿ What You Get
 
-âœ… Professional admin dashboard  
-âœ… Device generation system  
-âœ… Device inventory management  
-âœ… Audit logging  
-âœ… Responsive design  
-âœ… Secure authentication  
-âœ… One-click deployment  
+G£à Professional admin dashboard  
+G£à Device generation system  
+G£à Device inventory management  
+G£à Audit logging  
+G£à Responsive design  
+G£à Secure authentication  
+G£à One-click deployment  
 
 ---
 
-## ğŸ“Š Dashboard Pages
+## =ƒôè Dashboard Pages
 
 After deployment, you'll have:
 
@@ -157,7 +157,7 @@ After deployment, you'll have:
 
 ---
 
-## ğŸ“š Documentation
+## =ƒôÜ Documentation
 
 For more details, see these files:
 
@@ -168,7 +168,7 @@ For more details, see these files:
 
 ---
 
-## â±ï¸ Timeline
+## GÅ¦n+Å Timeline
 
 - Phase 1 (Build locally): 20 minutes
 - Phase 2 (Git & GitHub): 5 minutes
@@ -177,7 +177,7 @@ For more details, see these files:
 
 ---
 
-## âœ… Quick Checklist
+## G£à Quick Checklist
 
 - [ ] Read this file (START_HERE.md)
 - [ ] Create Next.js project
@@ -192,7 +192,7 @@ For more details, see these files:
 
 ---
 
-## ğŸ‰ You're Ready!
+## =ƒÄë You're Ready!
 
 Everything is set up and ready to go. Just follow the 3 steps above and you'll have a live production dashboard within 35 minutes!
 
@@ -202,4 +202,4 @@ Everything is set up and ready to go. Just follow the 3 steps above and you'll h
 
 ---
 
-**Good luck! ğŸš€**
+**Good luck! =ƒÜÇ**

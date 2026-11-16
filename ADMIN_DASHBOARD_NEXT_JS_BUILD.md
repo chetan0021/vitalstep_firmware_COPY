@@ -1,4 +1,4 @@
-# ğŸš€ VitalStep Admin Dashboard - Complete Next.js Build
+# =ƒÜÇ VitalStep Admin Dashboard - Complete Next.js Build
 
 ## Full Codebase Structure
 
@@ -6,42 +6,42 @@ I'll provide all the code files you need. Create a folder structure like this:
 
 ```
 vitalstep-admin-dashboard/
-â”œâ”€â”€ app/
-â”‚   â”œâ”€â”€ layout.tsx
-â”‚   â”œâ”€â”€ page.tsx
-â”‚   â”œâ”€â”€ login/
-â”‚   â”‚   â””â”€â”€ page.tsx
-â”‚   â”œâ”€â”€ dashboard/
-â”‚   â”‚   â”œâ”€â”€ layout.tsx
-â”‚   â”‚   â”œâ”€â”€ page.tsx
-â”‚   â”‚   â”œâ”€â”€ devices/
-â”‚   â”‚   â”‚   â””â”€â”€ page.tsx
-â”‚   â”‚   â””â”€â”€ audit/
-â”‚   â”‚       â””â”€â”€ page.tsx
-â”‚   â””â”€â”€ api/
-â”‚       â””â”€â”€ auth/
-â”‚           â”œâ”€â”€ [...nextauth]/
-â”‚           â”‚   â””â”€â”€ route.ts
-â”‚           â””â”€â”€ logout/
-â”‚               â””â”€â”€ route.ts
-â”œâ”€â”€ lib/
-â”‚   â”œâ”€â”€ supabase.ts
-â”‚   â”œâ”€â”€ auth.ts
-â”‚   â””â”€â”€ utils.ts
-â”œâ”€â”€ components/
-â”‚   â”œâ”€â”€ Header.tsx
-â”‚   â”œâ”€â”€ Sidebar.tsx
-â”‚   â”œâ”€â”€ DeviceCard.tsx
-â”‚   â”œâ”€â”€ DeviceImage.tsx
-â”‚   â””â”€â”€ LoadingSpinner.tsx
-â”œâ”€â”€ public/
-â”‚   â””â”€â”€ device.jpg
-â”œâ”€â”€ .env.local
-â”œâ”€â”€ package.json
-â”œâ”€â”€ tsconfig.json
-â”œâ”€â”€ next.config.js
-â”œâ”€â”€ tailwind.config.ts
-â””â”€â”€ postcss.config.js
+Gö£GöÇGöÇ app/
+Göé   Gö£GöÇGöÇ layout.tsx
+Göé   Gö£GöÇGöÇ page.tsx
+Göé   Gö£GöÇGöÇ login/
+Göé   Göé   GööGöÇGöÇ page.tsx
+Göé   Gö£GöÇGöÇ dashboard/
+Göé   Göé   Gö£GöÇGöÇ layout.tsx
+Göé   Göé   Gö£GöÇGöÇ page.tsx
+Göé   Göé   Gö£GöÇGöÇ devices/
+Göé   Göé   Göé   GööGöÇGöÇ page.tsx
+Göé   Göé   GööGöÇGöÇ audit/
+Göé   Göé       GööGöÇGöÇ page.tsx
+Göé   GööGöÇGöÇ api/
+Göé       GööGöÇGöÇ auth/
+Göé           Gö£GöÇGöÇ [...nextauth]/
+Göé           Göé   GööGöÇGöÇ route.ts
+Göé           GööGöÇGöÇ logout/
+Göé               GööGöÇGöÇ route.ts
+Gö£GöÇGöÇ lib/
+Göé   Gö£GöÇGöÇ supabase.ts
+Göé   Gö£GöÇGöÇ auth.ts
+Göé   GööGöÇGöÇ utils.ts
+Gö£GöÇGöÇ components/
+Göé   Gö£GöÇGöÇ Header.tsx
+Göé   Gö£GöÇGöÇ Sidebar.tsx
+Göé   Gö£GöÇGöÇ DeviceCard.tsx
+Göé   Gö£GöÇGöÇ DeviceImage.tsx
+Göé   GööGöÇGöÇ LoadingSpinner.tsx
+Gö£GöÇGöÇ public/
+Göé   GööGöÇGöÇ device.jpg
+Gö£GöÇGöÇ .env.local
+Gö£GöÇGöÇ package.json
+Gö£GöÇGöÇ tsconfig.json
+Gö£GöÇGöÇ next.config.js
+Gö£GöÇGöÇ tailwind.config.ts
+GööGöÇGöÇ postcss.config.js
 ```
 
 ---
@@ -81,7 +81,7 @@ NEXTAUTH_URL=http://localhost:3000
 ```
 
 Get `SUPABASE_SERVICE_KEY` from:
-Supabase â†’ Settings â†’ API â†’ Service Role Secret Key
+Supabase GåÆ Settings GåÆ API GåÆ Service Role Secret Key
 
 Generate `NEXTAUTH_SECRET`:
 ```bash
@@ -95,37 +95,37 @@ openssl rand -base64 32
 I'll provide complete code for each file. Copy-paste them into your project.
 
 Files ready to be created:
-1. âœ… lib/supabase.ts - Supabase client
-2. âœ… lib/auth.ts - Authentication helper
-3. âœ… lib/utils.ts - Utility functions
-4. âœ… components/Header.tsx
-5. âœ… components/Sidebar.tsx
-6. âœ… components/DeviceImage.tsx
-7. âœ… components/LoadingSpinner.tsx
-8. âœ… components/DeviceCard.tsx
-9. âœ… app/layout.tsx
-10. âœ… app/page.tsx (login redirect)
-11. âœ… app/login/page.tsx (login form)
-12. âœ… app/dashboard/layout.tsx
-13. âœ… app/dashboard/page.tsx (main dashboard)
-14. âœ… app/dashboard/devices/page.tsx (device inventory)
-15. âœ… app/dashboard/audit/page.tsx (audit log)
-16. âœ… app/api/auth/[...nextauth]/route.ts
-17. âœ… app/api/auth/logout/route.ts
-18. âœ… next.config.js
-19. âœ… tailwind.config.ts
-20. âœ… Device image handling
+1. G£à lib/supabase.ts - Supabase client
+2. G£à lib/auth.ts - Authentication helper
+3. G£à lib/utils.ts - Utility functions
+4. G£à components/Header.tsx
+5. G£à components/Sidebar.tsx
+6. G£à components/DeviceImage.tsx
+7. G£à components/LoadingSpinner.tsx
+8. G£à components/DeviceCard.tsx
+9. G£à app/layout.tsx
+10. G£à app/page.tsx (login redirect)
+11. G£à app/login/page.tsx (login form)
+12. G£à app/dashboard/layout.tsx
+13. G£à app/dashboard/page.tsx (main dashboard)
+14. G£à app/dashboard/devices/page.tsx (device inventory)
+15. G£à app/dashboard/audit/page.tsx (audit log)
+16. G£à app/api/auth/[...nextauth]/route.ts
+17. G£à app/api/auth/logout/route.ts
+18. G£à next.config.js
+19. G£à tailwind.config.ts
+20. G£à Device image handling
 
 ---
 
 ## Ready?
 
 Confirm you want me to:
-1. âœ… Create all code files (I'll provide complete code to copy-paste)
-2. âœ… Test locally
-3. âœ… Push to GitHub
-4. âœ… Deploy to Vercel with environment variables
+1. G£à Create all code files (I'll provide complete code to copy-paste)
+2. G£à Test locally
+3. G£à Push to GitHub
+4. G£à Deploy to Vercel with environment variables
 
 Reply: "Ready - create all files"
 
-Then I'll give you the complete codebase! ğŸš€
+Then I'll give you the complete codebase! =ƒÜÇ

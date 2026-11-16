@@ -1,18 +1,18 @@
 # VitalStep - Quick Start Guide
 
-## âš¡ Get Started in 5 Minutes
+## GÜí Get Started in 5 Minutes
 
-### Your Device is Already Running âœ…
+### Your Device is Already Running G£à
 
 The ESP32 device is **currently in test mode** and syncing to Supabase successfully.
 
 **Check Status:**
 1. Open Arduino IDE serial monitor
-2. Look for: `[CLOUD] POST returned code: 200` âœ…
+2. Look for: `[CLOUD] POST returned code: 200` G£à
 
 ---
 
-## ðŸš€ NEXT: Build & Test the Mobile App
+## =ƒÜÇ NEXT: Build & Test the Mobile App
 
 ### Step 1: Install Flutter (if not done)
 ```bash
@@ -56,7 +56,7 @@ flutter run
 
 ---
 
-## ðŸ“± Build for App Store
+## =ƒô¦ Build for App Store
 
 ### Android APK
 ```bash
@@ -74,14 +74,14 @@ flutter build ios --release
 
 ---
 
-## ðŸ§ª Test Device Features
+## =ƒº¬ Test Device Features
 
 ### Current Test Mode
-- âœ… Simulates realistic load cell readings (8-15 kg)
-- âœ… Simulates battery at 85%
-- âœ… Writes real data to SD card
-- âœ… Syncs to Supabase (HTTP 200)
-- âœ… UI responsive with vibrant colors
+- G£à Simulates realistic load cell readings (8-15 kg)
+- G£à Simulates battery at 85%
+- G£à Writes real data to SD card
+- G£à Syncs to Supabase (HTTP 200)
+- G£à UI responsive with vibrant colors
 
 ### Enable Test Data in App
 1. Open Home screen
@@ -92,7 +92,7 @@ flutter build ios --release
 
 ---
 
-## ðŸ“Š App Features to Try
+## =ƒôè App Features to Try
 
 ### 1. Home Screen
 - View all connected devices
@@ -129,7 +129,7 @@ flutter build ios --release
 
 ---
 
-## ðŸŽ¨ See the Vibrant Colors
+## =ƒÄ¿ See the Vibrant Colors
 
 The app uses a professional vibrant palette:
 
@@ -143,11 +143,11 @@ The app uses a professional vibrant palette:
 | Teal | #00E6C8 | Left hand indicator |
 | Deep | #0A0F23 | Background |
 
-**Same palette on device screen!** âœ…
+**Same palette on device screen!** G£à
 
 ---
 
-## ðŸ“ Demo Credentials
+## =ƒô¥ Demo Credentials
 
 If you want to sign in manually:
 
@@ -160,7 +160,7 @@ Or create your own account in the app.
 
 ---
 
-## ðŸ”§ Customize Device Wi-Fi
+## =ƒöº Customize Device Wi-Fi
 
 Device currently connects to: `Julie-2.4G`
 
@@ -176,7 +176,7 @@ To change:
 
 ---
 
-## ðŸ”‹ Enable Real Hardware (Tomorrow)
+## =ƒöï Enable Real Hardware (Tomorrow)
 
 When ready to connect real sensors:
 
@@ -188,9 +188,9 @@ When ready to connect real sensors:
    ```
 
 2. **Connect hardware:**
-   - Load cell â†’ GPIO 21 (DT), 22 (SCK)
-   - Battery â†’ GPIO 35
-   - Speaker â†’ GPIO 26
+   - Load cell GåÆ GPIO 21 (DT), 22 (SCK)
+   - Battery GåÆ GPIO 35
+   - Speaker GåÆ GPIO 26
 
 3. **Re-flash device**
 
@@ -198,9 +198,9 @@ When ready to connect real sensors:
 
 ---
 
-## âœ… Verification Checklist
+## G£à Verification Checklist
 
-### Device âœ…
+### Device G£à
 - [ ] Device boots successfully
 - [ ] Connects to Wi-Fi
 - [ ] Syncs to Supabase (HTTP 200)
@@ -208,7 +208,7 @@ When ready to connect real sensors:
 - [ ] UI colors vibrant
 - [ ] Touch responsive
 
-### App âœ…
+### App G£à
 - [ ] Flutter installed
 - [ ] App runs without errors
 - [ ] All 8 screens accessible
@@ -216,7 +216,7 @@ When ready to connect real sensors:
 - [ ] Colors match device
 - [ ] Animations smooth
 
-### Backend âœ…
+### Backend G£à
 - [ ] Supabase project active
 - [ ] Edge Function returning 200
 - [ ] Device registered (VS-92026)
@@ -224,7 +224,7 @@ When ready to connect real sensors:
 
 ---
 
-## ðŸ†˜ Troubleshooting
+## =ƒåÿ Troubleshooting
 
 ### App Won't Run
 ```bash
@@ -254,7 +254,7 @@ flutter run
 
 ---
 
-## ðŸ“š Full Documentation
+## =ƒôÜ Full Documentation
 
 - **Complete Setup:** `COMPLETE_SETUP_GUIDE.md`
 - **Deployment Info:** `DEPLOYMENT_SUMMARY.md`
@@ -263,31 +263,31 @@ flutter run
 
 ---
 
-## ðŸŽ¯ What's Next?
+## =ƒÄ» What's Next?
 
 ### Today
-- âœ… Run mobile app
-- âœ… Test demo mode
-- âœ… Explore all screens
+- G£à Run mobile app
+- G£à Test demo mode
+- G£à Explore all screens
 
 ### This Week
-- ðŸ”Œ Connect real hardware
-- ðŸ§ª Test with real sensors
-- ðŸ“Š Verify data flow
+- =ƒöî Connect real hardware
+- =ƒº¬ Test with real sensors
+- =ƒôè Verify data flow
 
 ### Next Week
-- ðŸ“¦ Build for app stores
-- ðŸš€ Deploy to testflight/play store
-- ðŸ‘¥ Invite testers
+- =ƒôª Build for app stores
+- =ƒÜÇ Deploy to testflight/play store
+- =ƒæÑ Invite testers
 
 ### Production
-- ðŸ“± Release to app store
-- ðŸ”’ Enable security features
-- ðŸ“ˆ Monitor usage
+- =ƒô¦ Release to app store
+- =ƒöÆ Enable security features
+- =ƒôê Monitor usage
 
 ---
 
-## ðŸ’¡ Pro Tips
+## =ƒÆí Pro Tips
 
 1. **Dark Theme Everywhere:** App uses dark theme, matches device
 2. **Touch Responsive:** All buttons are >48x48 pixels
@@ -297,16 +297,16 @@ flutter run
 
 ---
 
-## ðŸŽ‰ You're All Set!
+## =ƒÄë You're All Set!
 
 ```
-Device:   âœ… Running in test mode
-App:      âœ… Ready to build
-Backend:  âœ… Syncing successfully
-Colors:   âœ… Vibrant & professional
+Device:   G£à Running in test mode
+App:      G£à Ready to build
+Backend:  G£à Syncing successfully
+Colors:   G£à Vibrant & professional
 ```
 
-**Next:** Run the app and explore! ðŸš€
+**Next:** Run the app and explore! =ƒÜÇ
 
 ---
 
@@ -314,4 +314,4 @@ Colors:   âœ… Vibrant & professional
 
 **Time to Production:** Ready now!  
 **Build Date:** November 2026  
-**Status:** ðŸŸ¢ PRODUCTION READY
+**Status:** =ƒƒó PRODUCTION READY

@@ -75,7 +75,7 @@ If you get an error, check:
    - Make sure `is_active = true`
 
 3. **400 Bad Request** = Database insert error
-   - Check Edge Function logs in Supabase Dashboard â†’ Functions â†’ generate-device-id â†’ Logs
+   - Check Edge Function logs in Supabase Dashboard GåÆ Functions GåÆ generate-device-id GåÆ Logs
    - Look for the exact error message
 
 4. **500 Server Error** = Function code issue
@@ -86,6 +86,6 @@ If you get an error, check:
 ## Check Function Logs
 
 1. Go to **Supabase Dashboard**
-2. **Functions** â†’ **generate-device-id**
+2. **Functions** GåÆ **generate-device-id**
 3. **Executions** tab - click the most recent execution to see logs
 

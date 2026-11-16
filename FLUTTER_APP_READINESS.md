@@ -1,8 +1,8 @@
-# âœ… Flutter App - Testing Readiness Checklist
+# G£à Flutter App - Testing Readiness Checklist
 
 ## Current Status
 
-### âœ… What's Ready
+### G£à What's Ready
 - [x] Supabase credentials configured in `supabase_service.dart`
 - [x] Authentication logic implemented (login, signup, logout)
 - [x] Provider state management set up
@@ -12,7 +12,7 @@
 - [x] Cloud sync logic implemented
 - [x] BLE provisioning ready
 
-### âŒ What's NOT Ready Yet
+### G¥î What's NOT Ready Yet
 - [ ] Dependencies NOT downloaded (`flutter pub get` not run)
 - [ ] Supabase backend NOT set up (no tables, no auth enabled)
 - [ ] App NOT built for your phone
@@ -31,7 +31,7 @@ Steps:
 4. Create test user account
 5. Verify in Supabase dashboard
 
-**Status After This**: ğŸŸ¡ Backend ready, app code needs setup
+**Status After This**: =ƒƒí Backend ready, app code needs setup
 
 ---
 
@@ -44,11 +44,11 @@ flutter pub get
 ```
 
 This downloads:
-- âœ… supabase_flutter (cloud backend)
-- âœ… provider (state management)
-- âœ… http (API calls)
-- âœ… flutter_animate (UI animations)
-- âœ… And 15+ other packages
+- G£à supabase_flutter (cloud backend)
+- G£à provider (state management)
+- G£à http (API calls)
+- G£à flutter_animate (UI animations)
+- G£à And 15+ other packages
 
 **Time**: ~2-3 minutes (depends on internet)
 
@@ -57,7 +57,7 @@ This downloads:
 - Enable USB Debugging on phone
 - Run: `flutter devices` (should see your phone)
 
-**Status After This**: ğŸŸ¡ Ready to run
+**Status After This**: =ƒƒí Ready to run
 
 ---
 
@@ -75,11 +75,11 @@ Or from VS Code/Android Studio:
 
 #### 3.2 First Launch
 You should see:
-1. Splash screen (VitalStep logo) â†’ 2 seconds
-2. Login screen â†’ If no user logged in
-3. Home screen â†’ If user logged in
+1. Splash screen (VitalStep logo) GåÆ 2 seconds
+2. Login screen GåÆ If no user logged in
+3. Home screen GåÆ If user logged in
 
-**Status After This**: ğŸŸ¢ App Running!
+**Status After This**: =ƒƒó App Running!
 
 ---
 
@@ -92,7 +92,7 @@ You should see:
    - Email: `test@vitalstep.com` (or your email)
    - Password: `Test123!@#` (must have uppercase, number, special char)
 4. Tap **Create Account**
-5. Should show success â†’ redirects to login
+5. Should show success GåÆ redirects to login
 
 ### Step 2: Sign In
 1. App shows login screen
@@ -100,27 +100,27 @@ You should see:
    - Email: `test@vitalstep.com`
    - Password: `Test123!@#`
 3. Tap **Sign In**
-4. Should show home screen âœ“
+4. Should show home screen G£ô
 
 ### Step 3: Pair Device
 1. Turn on VitalStep device (ESP32)
-2. Device boots â†’ shows BLE pairing screen
-3. App â†’ tap **Add Device** / **Pair Device**
+2. Device boots GåÆ shows BLE pairing screen
+3. App GåÆ tap **Add Device** / **Pair Device**
 4. App scans for BLE devices
 5. Select `PalmPressure` (your device name)
 6. App sends device credentials
-7. Device confirmed on cloud âœ“
+7. Device confirmed on cloud G£ô
 
 ### Step 4: Run Measurement Test
-1. App home screen â†’ tap **Start Test**
+1. App home screen GåÆ tap **Start Test**
 2. Follow on-screen instructions
 3. Device runs measurement cycle (3 trials)
 4. Results appear in app
-5. Tap **Save** â†’ stores locally
-6. Tap **Sync** â†’ uploads to Supabase âœ“
+5. Tap **Save** GåÆ stores locally
+6. Tap **Sync** GåÆ uploads to Supabase G£ô
 
 ### Step 5: View Results
-1. App â†’ tap **History**
+1. App GåÆ tap **History**
 2. You should see your test results:
    - Date & time
    - Hand (Left/Right)
@@ -129,7 +129,7 @@ You should see:
 
 ---
 
-## ğŸ”§ System Requirements
+## =ƒöº System Requirements
 
 ### Your Computer
 - [ ] Windows 10/11 with Flutter SDK installed
@@ -148,7 +148,7 @@ You should see:
 
 ---
 
-## ğŸ“± Installation Command Summary
+## =ƒô¦ Installation Command Summary
 
 ```bash
 # 1. Navigate to app folder
@@ -170,7 +170,7 @@ flutter run
 
 ---
 
-## âœ… Expected Behavior
+## G£à Expected Behavior
 
 ### Login Screen (First Time)
 ```
@@ -226,9 +226,9 @@ Peak: -- kg
 Test Complete!
 
 Left Hand
-Trial 1: 10.2 kg âœ“
-Trial 2: 10.5 kg âœ“
-Trial 3: 10.1 kg âœ“
+Trial 1: 10.2 kg G£ô
+Trial 2: 10.5 kg G£ô
+Trial 3: 10.1 kg G£ô
 Average: 10.3 kg
 
 [Save] [Sync] [Discard]
@@ -236,7 +236,7 @@ Average: 10.3 kg
 
 ---
 
-## ğŸ› Common Issues & Fixes
+## =ƒÉ¢ Common Issues & Fixes
 
 ### Issue: `flutter: not found`
 **Fix**: Flutter not installed. Download from flutter.dev and add to PATH.
@@ -271,12 +271,12 @@ Average: 10.3 kg
 
 ---
 
-## ğŸ“Š Success Checklist
+## =ƒôè Success Checklist
 
 ### Before Testing
 - [ ] Supabase backend set up (SUPABASE_SETUP_GUIDE.md completed)
 - [ ] Test user created in Supabase
-- [ ] Device firmware flashed with HX711 calibration âœ“
+- [ ] Device firmware flashed with HX711 calibration G£ô
 - [ ] Phone connected to computer via USB
 - [ ] Phone has Bluetooth enabled
 - [ ] Phone has internet connection
@@ -296,12 +296,12 @@ Average: 10.3 kg
 - [ ] Pair device successfully
 - [ ] Run measurement test (3 trials)
 - [ ] See results on app
-- [ ] Tap Sync â†’ check Supabase database
-- [ ] Results appear in cloud âœ“
+- [ ] Tap Sync GåÆ check Supabase database
+- [ ] Results appear in cloud G£ô
 
 ---
 
-## ğŸ¯ Timeline
+## =ƒÄ» Timeline
 
 ### Today (Quick Setup)
 - 5 min: Set up Supabase (follow guide)
@@ -317,7 +317,7 @@ Average: 10.3 kg
 
 ---
 
-## ğŸ“ Support Files
+## =ƒôP Support Files
 
 - **SUPABASE_SETUP_GUIDE.md** - Backend setup instructions
 - **FLUTTER_GETTING_STARTED.md** - Detailed Flutter setup (if you need it)
@@ -325,17 +325,17 @@ Average: 10.3 kg
 
 ---
 
-## ğŸš€ You're Almost There!
+## =ƒÜÇ You're Almost There!
 
 Your app is **99% ready**. All you need to do is:
 
-1. âœ… Set up Supabase (backend)
-2. âœ… Run `flutter pub get` (download dependencies)
-3. âœ… Run `flutter run` (start the app)
-4. âœ… Test!
+1. G£à Set up Supabase (backend)
+2. G£à Run `flutter pub get` (download dependencies)
+3. G£à Run `flutter run` (start the app)
+4. G£à Test!
 
 **Expected time to first working test**: 30-45 minutes
 
-**Status**: ğŸŸ¢ **READY TO GO**
+**Status**: =ƒƒó **READY TO GO**
 
 Questions? Check the troubleshooting section or let me know what error you see!

@@ -1,14 +1,14 @@
-# ğŸ” Enable Email/Password Authentication in Supabase (Step-by-Step)
+# =ƒöÉ Enable Email/Password Authentication in Supabase (Step-by-Step)
 
-## You are HERE âœ“
-Screenshot shows: Supabase â†’ Authentication â†’ Users
+## You are HERE G£ô
+Screenshot shows: Supabase GåÆ Authentication GåÆ Users
 
 ---
 
 ## Step 1: Enable Email Provider
 
 ### 1.1 Go to Authentication Providers
-1. **Left sidebar** â†’ Look for "**CONFIGURATION**" section
+1. **Left sidebar** GåÆ Look for "**CONFIGURATION**" section
 2. Click on **"Sign In / Providers"**
 3. You should see a list of available providers (Email, Google, GitHub, Discord, etc.)
 
@@ -18,28 +18,28 @@ Screenshot shows: Supabase â†’ Authentication â†’ Users
 
 ### 2.1 Find and Enable Email
 1. In the providers list, find **"Email"**
-2. Click the **toggle switch** next to "Email" â†’ it should turn **GREEN** (enabled)
+2. Click the **toggle switch** next to "Email" GåÆ it should turn **GREEN** (enabled)
 3. If you see a settings icon, click it
 
 ### 2.2 Email Provider Settings
 You should see options:
-- âœ… **Enable email provider** - toggle ON
-- âœ… **Confirm email** - toggle ON
-- â¸ï¸ **Auto-confirm new users** - toggle ON (for testing, easier)
+- G£à **Enable email provider** - toggle ON
+- G£à **Confirm email** - toggle ON
+- GÅ+n+Å **Auto-confirm new users** - toggle ON (for testing, easier)
 
 **Screenshot reference for Email provider location:**
 
 In Supabase dashboard:
 ```
 Left Sidebar (CONFIGURATION section):
-â”œâ”€â”€ Policies
-â”œâ”€â”€ Sign In / Providers              â† CLICK HERE
-â”‚   â””â”€â”€ Email                        â† Find this
-â”‚       â””â”€â”€ Toggle ON (green)
-â”œâ”€â”€ Passkeys
-â”œâ”€â”€ OAuth Server
-â”œâ”€â”€ Sessions
-â””â”€â”€ ...
+Gö£GöÇGöÇ Policies
+Gö£GöÇGöÇ Sign In / Providers              GåÉ CLICK HERE
+Göé   GööGöÇGöÇ Email                        GåÉ Find this
+Göé       GööGöÇGöÇ Toggle ON (green)
+Gö£GöÇGöÇ Passkeys
+Gö£GöÇGöÇ OAuth Server
+Gö£GöÇGöÇ Sessions
+GööGöÇGöÇ ...
 ```
 
 ---
@@ -47,7 +47,7 @@ Left Sidebar (CONFIGURATION section):
 ## Step 3: Configure URL Settings
 
 ### 3.1 Go to URL Configuration
-1. **Left sidebar** â†’ Still in CONFIGURATION section
+1. **Left sidebar** GåÆ Still in CONFIGURATION section
 2. Scroll down and find **"URL Configuration"**
 3. Click it
 
@@ -63,13 +63,13 @@ Left Sidebar (CONFIGURATION section):
 ## Step 4: Test Email Authentication
 
 ### 4.1 Create a Test User
-1. Go back to **Authentication** â†’ **Users** (main tab)
+1. Go back to **Authentication** GåÆ **Users** (main tab)
 2. Click **"+ Add user"** button (top right, green button)
 3. Enter:
    - **Email**: `test@vitalstep.com`
    - **Password**: `Test123!@#` (must have uppercase, number, special char)
 4. Click **"Create user"**
-5. You should see the user appear in the list with status **"Confirmed"** âœ“
+5. You should see the user appear in the list with status **"Confirmed"** G£ô
 
 ---
 
@@ -117,8 +117,8 @@ This way you can test device pairing with different users.
   - At least 1 UPPERCASE letter (A-Z)
   - At least 1 number (0-9)
   - At least 1 special character (!@#$%^&*)
-- Example: `Test123!@#` âœ“
-- Bad examples: `test123`, `PASSWORD`, `Test123` âœ—
+- Example: `Test123!@#` G£ô
+- Bad examples: `test123`, `PASSWORD`, `Test123` G£ù
 
 ---
 
@@ -127,35 +127,35 @@ This way you can test device pairing with different users.
 ### Where to Find "Sign In / Providers"
 ```
 Supabase Dashboard
-â”‚
-â”œâ”€â”€ Left Sidebar
-â”‚   â”œâ”€â”€ Build section (top)
-â”‚   â”œâ”€â”€ Database
-â”‚   â”œâ”€â”€ Authentication â† Click here
-â”‚   â”‚
-â”‚   â””â”€â”€ Under Authentication sidebar, find:
-â”‚       â”œâ”€â”€ MANAGE
-â”‚       â”‚   â””â”€â”€ Users
-â”‚       â”‚
-â”‚       â””â”€â”€ CONFIGURATION
-â”‚           â”œâ”€â”€ Policies
-â”‚           â”œâ”€â”€ Sign In / Providers  â† THIS ONE
-â”‚           â”œâ”€â”€ Passkeys
-â”‚           â””â”€â”€ ...
+Göé
+Gö£GöÇGöÇ Left Sidebar
+Göé   Gö£GöÇGöÇ Build section (top)
+Göé   Gö£GöÇGöÇ Database
+Göé   Gö£GöÇGöÇ Authentication GåÉ Click here
+Göé   Göé
+Göé   GööGöÇGöÇ Under Authentication sidebar, find:
+Göé       Gö£GöÇGöÇ MANAGE
+Göé       Göé   GööGöÇGöÇ Users
+Göé       Göé
+Göé       GööGöÇGöÇ CONFIGURATION
+Göé           Gö£GöÇGöÇ Policies
+Göé           Gö£GöÇGöÇ Sign In / Providers  GåÉ THIS ONE
+Göé           Gö£GöÇGöÇ Passkeys
+Göé           GööGöÇGöÇ ...
 ```
 
 ### Email Provider Toggle Location
 ```
-Authentication â†’ Sign In / Providers
-â”‚
-â”œâ”€â”€ Email  â† Find this row
-â”‚   â”œâ”€â”€ Toggle switch (currently OFF - should be gray/white)
-â”‚   â”œâ”€â”€ Settings icon (gear)
-â”‚   â””â”€â”€ Status: Disabled
-â”‚
-â”œâ”€â”€ Google
-â”œâ”€â”€ GitHub
-â””â”€â”€ ...
+Authentication GåÆ Sign In / Providers
+Göé
+Gö£GöÇGöÇ Email  GåÉ Find this row
+Göé   Gö£GöÇGöÇ Toggle switch (currently OFF - should be gray/white)
+Göé   Gö£GöÇGöÇ Settings icon (gear)
+Göé   GööGöÇGöÇ Status: Disabled
+Göé
+Gö£GöÇGöÇ Google
+Gö£GöÇGöÇ GitHub
+GööGöÇGöÇ ...
 ```
 
 ---
@@ -178,10 +178,10 @@ After enabling, you should see:
 
 Once Email authentication is enabled:
 
-1. âœ… Create test user: `test@vitalstep.com` / `Test123!@#`
-2. âœ… Continue with database table setup (SQL script)
-3. âœ… Deploy Edge Function (device-sync)
-4. âœ… Test Flutter app login with credentials
+1. G£à Create test user: `test@vitalstep.com` / `Test123!@#`
+2. G£à Continue with database table setup (SQL script)
+3. G£à Deploy Edge Function (device-sync)
+4. G£à Test Flutter app login with credentials
 
 ---
 
@@ -193,7 +193,7 @@ If you can't find the Email provider option:
 1. Click **"Authentication"** in left sidebar
 2. At the top of the main panel, you should see tabs:
    - Users (currently selected)
-   - Providers â† Click this tab instead
+   - Providers GåÉ Click this tab instead
 3. You should see provider list there
 
 **Or**:
@@ -204,7 +204,7 @@ If you can't find the Email provider option:
 
 ---
 
-## Email Authentication is Now ENABLED âœ“
+## Email Authentication is Now ENABLED G£ô
 
 After you:
 1. Enable Email provider
@@ -213,18 +213,18 @@ After you:
 
 You're ready for the next step: **Create Database Tables**
 
-Follow: `SUPABASE_SETUP_GUIDE.md` â†’ **Step 3: Create Database Tables**
+Follow: `SUPABASE_SETUP_GUIDE.md` GåÆ **Step 3: Create Database Tables**
 
 ---
 
-## ğŸ“ Quick Reference
+## =ƒôP Quick Reference
 
-**Location**: Supabase â†’ Authentication â†’ Providers â†’ Email
+**Location**: Supabase GåÆ Authentication GåÆ Providers GåÆ Email
 **Toggle**: Must be GREEN/ON
 **Test User**: test@vitalstep.com / Test123!@#
 **Status**: Should show "Confirmed" in Users list
 
-âœ… **Done when**: 
+G£à **Done when**: 
 - Email provider is enabled (green toggle)
 - Test user appears in Users table
 - User status shows "Confirmed"

@@ -1,4 +1,4 @@
-# ğŸ”§ Edge Function Debugging
+# =ƒöº Edge Function Debugging
 
 The issue is that the test UI is sending a UUID instead of a proper JWT token.
 
@@ -10,7 +10,7 @@ Let me create a simpler version that works without authentication first.
 
 ## Step 1: Update Edge Function Code
 
-Go to **Supabase** â†’ **Edge Functions** â†’ **generate-device-id**
+Go to **Supabase** GåÆ **Edge Functions** GåÆ **generate-device-id**
 
 Replace the entire function code with the fixed version from `generate-device-id-FIXED.ts`
 
@@ -149,10 +149,10 @@ serve(async (req) => {
 ```
 
 This version:
-- âœ… Generates device ID
-- âœ… Stores in database
-- âœ… Returns the ID and secret
-- âŒ Skips admin auth (for testing only)
+- G£à Generates device ID
+- G£à Stores in database
+- G£à Returns the ID and secret
+- G¥î Skips admin auth (for testing only)
 
 ---
 
@@ -167,4 +167,4 @@ This version:
 - Install Supabase CLI
 - Use proper auth testing
 
-Tell me which you prefer and I'll proceed! âœ…
+Tell me which you prefer and I'll proceed! G£à

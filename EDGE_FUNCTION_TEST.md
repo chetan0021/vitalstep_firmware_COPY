@@ -1,10 +1,10 @@
-# ðŸ§ª Edge Function Testing - generate-device-id
+# =ƒº¬ Edge Function Testing - generate-device-id
 
 ## Test the Edge Function Internally in Supabase
 
 ### Step 1: Get Your Admin User Token
 
-Go to Supabase Dashboard â†’ **SQL Editor** â†’ Run this:
+Go to Supabase Dashboard GåÆ **SQL Editor** GåÆ Run this:
 
 ```sql
 SELECT id, email FROM auth.users WHERE email = 'admin@vitalstep.com';
@@ -29,7 +29,7 @@ If not, use the browser console method below.
 
 ### Step 3: Test via Supabase Dashboard
 
-Go to **Edge Functions** â†’ Click on `generate-device-id` â†’ **Function Details**
+Go to **Edge Functions** GåÆ Click on `generate-device-id` GåÆ **Function Details**
 
 Scroll down to **Test** section
 
@@ -66,7 +66,7 @@ Click **Send**
 
 ### Step 4: Verify in Database
 
-Go to **SQL Editor** â†’ Run:
+Go to **SQL Editor** GåÆ Run:
 
 ```sql
 SELECT * FROM device_inventory ORDER BY created_at DESC LIMIT 5;
@@ -92,6 +92,6 @@ VALUES ('YOUR_ADMIN_USER_ID', 'admin@vitalstep.com', 'Admin', 'device_manager', 
 ---
 
 Once testing is complete, reply:
-âœ… "Edge function tested and working!"
+G£à "Edge function tested and working!"
 
 Then I'll build the professional Next.js frontend.

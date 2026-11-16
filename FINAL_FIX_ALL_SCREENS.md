@@ -1,10 +1,10 @@
-# ‚úÖ FINAL FIX - ALL SCREENS NOW RESPONSIVE + BACKLIGHT ALWAYS ON
+# G£‡ FINAL FIX - ALL SCREENS NOW RESPONSIVE + BACKLIGHT ALWAYS ON
 
 ## Problems Fixed
 
-1. ‚úÖ **Loop cycle time 133ms** - Still too slow
-2. ‚úÖ **Insight/Compare screens freezing** - No yield points in these screens
-3. ‚úÖ **Display backlight turning off** - Auto-dim after 90 seconds removed
+1. G£‡ **Loop cycle time 133ms** - Still too slow
+2. G£‡ **Insight/Compare screens freezing** - No yield points in these screens
+3. G£‡ **Display backlight turning off** - Auto-dim after 90 seconds removed
 
 ---
 
@@ -23,11 +23,11 @@ if(!dimmed&&now-lastTouchMs>90000UL&&scr!=S_TEST&&!bleActive){
 
 **Changed to:**
 ```cpp
-// ‚Üê REMOVED: Auto-dim feature was turning off display after 90 seconds
+// GÂ… REMOVED: Auto-dim feature was turning off display after 90 seconds
 // Display now stays ON constantly (no auto-dim)
 ```
 
-**Result:** ‚úÖ Display backlight stays ON always - no more turning off
+**Result:** G£‡ Display backlight stays ON always - no more turning off
 
 ---
 
@@ -39,15 +39,15 @@ if(!dimmed&&now-lastTouchMs>90000UL&&scr!=S_TEST&&!bleActive){
 ```cpp
 static void drawInsight(){
   // ... code ...
-  checkYield();  // ‚Üê After major rendering (rectangles)
+  checkYield();  // GÂ… After major rendering (rectangles)
   // ... code ...
-  checkYield();  // ‚Üê After text wrapping
+  checkYield();  // GÂ… After text wrapping
   // ... code ...
-  checkYield();  // ‚Üê After tip rendering
+  checkYield();  // GÂ… After tip rendering
 }
 ```
 
-**Result:** ‚úÖ Insight screen now responsive - touch checked every 10ms
+**Result:** G£‡ Insight screen now responsive - touch checked every 10ms
 
 ---
 
@@ -66,19 +66,19 @@ static void drawCompare(){
   // ...
   for(int i=0;i<cnt;i++){
     // ... per-item rendering ...
-    checkYield();  // ‚Üê Every iteration (CRITICAL)
+    checkYield();  // GÂ… Every iteration (CRITICAL)
   }
   // ...
   checkYield();  // After calculations
   // ...
   for(int h=0;h<2;h++){
-    checkYield();  // ‚Üê Each hand (both comparisons)
+    checkYield();  // GÂ… Each hand (both comparisons)
     // ... rendering ...
   }
 }
 ```
 
-**Result:** ‚úÖ Compare screen now responsive - heavy lifting broken into chunks
+**Result:** G£‡ Compare screen now responsive - heavy lifting broken into chunks
 
 ---
 
@@ -86,14 +86,14 @@ static void drawCompare(){
 
 | Screen | Before | After | Status |
 |--------|--------|-------|--------|
-| **Home** | Responsive | Responsive | ‚úÖ |
-| **Dashboard** | Frozen (200ms) | Responsive (50-80ms) | ‚úÖ **FIXED** |
-| **Assess** | Responsive | Responsive | ‚úÖ |
-| **Settings** | Responsive | Responsive | ‚úÖ |
-| **Compare** | Frozen (133ms) | Responsive (50-80ms) | ‚úÖ **FIXED** |
-| **Insight** | Frozen (133ms) | Responsive (50-80ms) | ‚úÖ **FIXED** |
-| **Test** | Responsive | Responsive | ‚úÖ |
-| **Calibrate** | Responsive | Responsive | ‚úÖ |
+| **Home** | Responsive | Responsive | G£‡ |
+| **Dashboard** | Frozen (200ms) | Responsive (50-80ms) | G£‡ **FIXED** |
+| **Assess** | Responsive | Responsive | G£‡ |
+| **Settings** | Responsive | Responsive | G£‡ |
+| **Compare** | Frozen (133ms) | Responsive (50-80ms) | G£‡ **FIXED** |
+| **Insight** | Frozen (133ms) | Responsive (50-80ms) | G£‡ **FIXED** |
+| **Test** | Responsive | Responsive | G£‡ |
+| **Calibrate** | Responsive | Responsive | G£‡ |
 
 ---
 
@@ -101,10 +101,10 @@ static void drawCompare(){
 
 | Issue | Before | After |
 |-------|--------|-------|
-| **Dashboard buttons freeze** | 150-200ms delay | Instant ‚úÖ |
-| **Insight screen freeze** | 133ms delay | Instant ‚úÖ |
-| **Compare screen freeze** | 133ms delay | Instant ‚úÖ |
-| **Display turns off** | After 90 sec (need tap to wake) | Always on ‚úÖ |
+| **Dashboard buttons freeze** | 150-200ms delay | Instant G£‡ |
+| **Insight screen freeze** | 133ms delay | Instant G£‡ |
+| **Compare screen freeze** | 133ms delay | Instant G£‡ |
+| **Display turns off** | After 90 sec (need tap to wake) | Always on G£‡ |
 
 ---
 
@@ -124,40 +124,40 @@ static void drawCompare(){
 
 ### Step 1: Compile
 ```
-Arduino IDE ‚Üí Compile (Ctrl+R)
+Arduino IDE GÂ∆ Compile (Ctrl+R)
 Should show: "Sketch uses X bytes..."
 No red errors!
 ```
 
 ### Step 2: Flash
 ```
-Arduino IDE ‚Üí Upload (Ctrl+U)
+Arduino IDE GÂ∆ Upload (Ctrl+U)
 Wait for: "Upload complete"
 Device reboots
 ```
 
 ### Step 3: Test All Screens
 ```
-Home screen      ‚Üí Tap buttons ‚Üí Responsive ‚úÖ
-Dashboard        ‚Üí Tap buttons ‚Üí Responsive ‚úÖ
-Assess           ‚Üí Tap buttons ‚Üí Responsive ‚úÖ
-Settings         ‚Üí Tap buttons ‚Üí Responsive ‚úÖ
-Compare          ‚Üí Tap buttons ‚Üí Responsive (was frozen!) ‚úÖ
-Insight          ‚Üí Tap buttons ‚Üí Responsive (was frozen!) ‚úÖ
-Test             ‚Üí Tap buttons ‚Üí Responsive ‚úÖ
-Calibrate        ‚Üí Tap buttons ‚Üí Responsive ‚úÖ
+Home screen      GÂ∆ Tap buttons GÂ∆ Responsive G£‡
+Dashboard        GÂ∆ Tap buttons GÂ∆ Responsive G£‡
+Assess           GÂ∆ Tap buttons GÂ∆ Responsive G£‡
+Settings         GÂ∆ Tap buttons GÂ∆ Responsive G£‡
+Compare          GÂ∆ Tap buttons GÂ∆ Responsive (was frozen!) G£‡
+Insight          GÂ∆ Tap buttons GÂ∆ Responsive (was frozen!) G£‡
+Test             GÂ∆ Tap buttons GÂ∆ Responsive G£‡
+Calibrate        GÂ∆ Tap buttons GÂ∆ Responsive G£‡
 ```
 
 ### Step 4: Verify Backlight
 ```
-Device on ‚Üí  Display stays ON for extended period
-Touch screen ‚Üí Backlight doesn't turn off
+Device on GÂ∆  Display stays ON for extended period
+Touch screen GÂ∆ Backlight doesn't turn off
 No wake-up needed! (display always active)
 ```
 
 ### Step 5: Watch Serial Monitor
 ```
-Arduino IDE ‚Üí Tools ‚Üí Serial Monitor (115200 baud)
+Arduino IDE GÂ∆ Tools GÂ∆ Serial Monitor (115200 baud)
 Navigate to heavy screens (Compare, Insight, Dashboard)
 Should see: "[PERF] Loop cycle took 45-80 ms"
 NOT:        "[PERF] Loop cycle took 133+ ms"
@@ -186,21 +186,21 @@ NOT:        "[PERF] Loop cycle took 133+ ms"
 
 | # | Fix | File | Status |
 |---|-----|------|--------|
-| 1 | Added checkYield() helper | VitalStep_Device_fixed.ino | ‚úÖ Active |
-| 2 | Optimized gradients (skip every 2 lines) | Lines ~376-392 | ‚úÖ Active |
-| 3 | Added yields to drawChart() | Lines ~1173-1207 | ‚úÖ Active |
-| 4 | Added yields to loop() | Lines ~2013-2033 | ‚úÖ Active |
-| 5 | Added yields to drawInsight() | Lines ~1499-1520 | ‚úÖ **NEW** |
-| 6 | Added yields to drawCompare() | Lines ~1517-1565 | ‚úÖ **NEW** |
-| 7 | Removed auto-dim (backlight always on) | Line ~1943 | ‚úÖ **NEW** |
-| 8 | Performance debug output | Lines ~2020-2024 | ‚úÖ Active |
+| 1 | Added checkYield() helper | VitalStep_Device_fixed.ino | G£‡ Active |
+| 2 | Optimized gradients (skip every 2 lines) | Lines ~376-392 | G£‡ Active |
+| 3 | Added yields to drawChart() | Lines ~1173-1207 | G£‡ Active |
+| 4 | Added yields to loop() | Lines ~2013-2033 | G£‡ Active |
+| 5 | Added yields to drawInsight() | Lines ~1499-1520 | G£‡ **NEW** |
+| 6 | Added yields to drawCompare() | Lines ~1517-1565 | G£‡ **NEW** |
+| 7 | Removed auto-dim (backlight always on) | Line ~1943 | G£‡ **NEW** |
+| 8 | Performance debug output | Lines ~2020-2024 | G£‡ Active |
 
 ---
 
 ## Why These Changes Work
 
 ### Problem: Long-running screens freeze
-- Compare screen has complex loops (6 items √ó 3 bars each)
+- Compare screen has complex loops (6 items +˘ 3 bars each)
 - Insight screen has extensive text wrapping and rendering
 - Without yield points, touch ISR waits too long
 
@@ -262,39 +262,39 @@ A: These screens have complex rendering. More yield points may be needed. Rechec
 - Gradient: 2x faster (skip every 2 lines)
 - Chart: Interrupted every 10ms for touch
 - Total render: 50-80ms
-- Button response: Instant ‚úÖ
+- Button response: Instant G£‡
 
 ### Compare Screen  
 - Complex loops: Interrupted every iteration
 - Two-handed comparison: Interrupted per side
 - Total render: 50-80ms
-- Button response: Instant ‚úÖ
+- Button response: Instant G£‡
 
 ### Insight Screen
 - Text wrapping: Interrupted after completion
 - Rendering: Interrupted after major sections
 - Total render: 50-80ms
-- Button response: Instant ‚úÖ
+- Button response: Instant G£‡
 
 ---
 
 ## Summary
 
 ### Before These Fixes:
-- Dashboard: Buttons frozen for 150-200ms ‚úó
-- Compare: Buttons frozen for 133ms ‚úó
-- Insight: Buttons frozen for 133ms ‚úó
-- Display: Auto-dims after 90 seconds ‚úó
+- Dashboard: Buttons frozen for 150-200ms G£˘
+- Compare: Buttons frozen for 133ms G£˘
+- Insight: Buttons frozen for 133ms G£˘
+- Display: Auto-dims after 90 seconds G£˘
 
 ### After These Fixes:
-- Dashboard: Buttons instant ‚úÖ
-- Compare: Buttons instant ‚úÖ
-- Insight: Buttons instant ‚úÖ
-- Display: Always on ‚úÖ
+- Dashboard: Buttons instant G£‡
+- Compare: Buttons instant G£‡
+- Insight: Buttons instant G£‡
+- Display: Always on G£‡
 
 ---
 
-**The device is now fully responsive on ALL screens! üöÄ**
+**The device is now fully responsive on ALL screens! =É‹«**
 
 Just compile, flash, and enjoy smooth operation everywhere!
 

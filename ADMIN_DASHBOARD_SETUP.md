@@ -1,4 +1,4 @@
-# ðŸ­ Admin Manufacturing Dashboard - Complete Setup Guide
+# =ƒÅ¡ Admin Manufacturing Dashboard - Complete Setup Guide
 
 ## PART 1: Supabase Backend Setup
 
@@ -76,7 +76,7 @@ CREATE POLICY "admins_audit_insert" ON public.device_audit
 
 ### Step 1.2: Create Edge Function to Generate Device IDs
 
-Go to **Edge Functions** â†’ **+ Create a new function** â†’ Name: `generate-device-id`
+Go to **Edge Functions** GåÆ **+ Create a new function** GåÆ Name: `generate-device-id`
 
 Paste this code:
 
@@ -209,7 +209,7 @@ serve(async (req) => {
 
 ### Step 1.3: Create Admin User in Supabase
 
-1. Go to **Authentication** â†’ **Users**
+1. Go to **Authentication** GåÆ **Users**
 2. **+ Add user**
 3. Email: `admin@vitalstep.com`
 4. Password: `Admin123!@#` (strong password)
@@ -220,7 +220,7 @@ serve(async (req) => {
 
 ### Step 1.4: Add Admin to admins Table
 
-Go to **SQL Editor** â†’ **+ New Query** â†’ Run this (replace USER_ID with actual UUID from step 1.3):
+Go to **SQL Editor** GåÆ **+ New Query** GåÆ Run this (replace USER_ID with actual UUID from step 1.3):
 
 ```sql
 INSERT INTO public.admins (id, email, name, role, is_active)
@@ -257,7 +257,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi
 NEXT_PUBLIC_SUPABASE_SERVICE_KEY=your_service_key_here
 ```
 
-Get SERVICE_KEY from Supabase â†’ Settings â†’ API â†’ Service Role Key (keep secret!)
+Get SERVICE_KEY from Supabase GåÆ Settings GåÆ API GåÆ Service Role Key (keep secret!)
 
 ---
 
@@ -265,9 +265,9 @@ Get SERVICE_KEY from Supabase â†’ Settings â†’ API â†’ Service Role Key (keep se
 
 The dashboard is ready to be built. Confirm:
 
-1. âœ… All SQL tables created?
-2. âœ… Edge Function deployed?
-3. âœ… Admin user created?
+1. G£à All SQL tables created?
+2. G£à Edge Function deployed?
+3. G£à Admin user created?
 
 Then I'll create:
 - Login page
@@ -276,4 +276,4 @@ Then I'll create:
 - Device inventory table
 - Deployment to Vercel
 
-Confirm when ready! ðŸš€
+Confirm when ready! =ƒÜÇ

@@ -34,10 +34,10 @@ Write-Host $token
 In the Supabase dashboard where you see "Test generate-device-id":
 
 ### HTTP Method
-âœ… Already set to **POST**
+G£à Already set to **POST**
 
 ### Request Body
-âœ… Already set to **`{ "name": "functions" }`** - CHANGE THIS TO:
+G£à Already set to **`{ "name": "functions" }`** - CHANGE THIS TO:
 ```json
 {}
 ```
@@ -85,7 +85,7 @@ Click the **Send your first test request** button (or the arrow button)
   "error": "Unauthorized"
 }
 ```
-â†’ Token is invalid or expired. Get a fresh token.
+GåÆ Token is invalid or expired. Get a fresh token.
 
 **403 Forbidden**
 ```json
@@ -94,7 +94,7 @@ Click the **Send your first test request** button (or the arrow button)
   "error": "User is not an authorized admin"
 }
 ```
-â†’ Admin user not found in admins table. Check SQL.
+GåÆ Admin user not found in admins table. Check SQL.
 
 **400 Bad Request**
 ```json
@@ -103,7 +103,7 @@ Click the **Send your first test request** button (or the arrow button)
   "error": "insert or update on table violates foreign key constraint"
 }
 ```
-â†’ Database issue. Check that user exists in auth.users.
+GåÆ Database issue. Check that user exists in auth.users.
 
 ---
 
@@ -111,7 +111,7 @@ Click the **Send your first test request** button (or the arrow button)
 
 ### If you get errors, check the function logs:
 
-1. Go to **Functions** â†’ **generate-device-id**
+1. Go to **Functions** GåÆ **generate-device-id**
 2. Click **Executions** tab
 3. Click the failed execution
 4. Look at the logs to see what went wrong

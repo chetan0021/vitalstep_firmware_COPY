@@ -102,7 +102,7 @@ export default function DashboardPage() {
           href="/dashboard/generate"
           className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg p-6 transition transform hover:scale-105"
         >
-          <div className="text-3xl mb-2">π”§</div>
+          <div className="text-3xl mb-2">=ƒφΊ</div>
           <h3 className="text-xl font-bold">Generate Device ID</h3>
           <p className="text-indigo-100 mt-2">Create a new device code</p>
         </Link>
@@ -111,7 +111,7 @@ export default function DashboardPage() {
           href="/dashboard/devices"
           className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-6 transition transform hover:scale-105"
         >
-          <div className="text-3xl mb-2">π“‹</div>
+          <div className="text-3xl mb-2">=ƒτο</div>
           <h3 className="text-xl font-bold">View Inventory</h3>
           <p className="text-blue-100 mt-2">Manage all devices</p>
         </Link>

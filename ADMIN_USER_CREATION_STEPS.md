@@ -16,7 +16,7 @@ The Edge Function is failing because:
 5. Fill in:
    - **Email**: `admin@vitalstep.com`
    - **Password**: `Admin123!@#` (or your secure password)
-   - **Auto confirm user**: Check this box ‚úÖ
+   - **Auto confirm user**: Check this box G£‡
 6. Click **Create user**
 
 **Write down the User ID UUID** - you'll see it in the list. It should look like:
@@ -88,17 +88,17 @@ powershell -ExecutionPolicy Bypass -File "c:\Users\Appmaker\Documents\vitalstep_
 
 ## COMMON MISTAKES
 
-1. ‚ùå **UUID doesn't match**: Copy-paste the UUID exactly from auth.users
-2. ‚ùå **Forgot to enable "Auto confirm user"**: User won't be able to login
-3. ‚ùå **Used wrong email**: Make sure it's exactly `admin@vitalstep.com`
-4. ‚ùå **Didn't add to admins table**: Must do BOTH auth.users AND admins table
+1. G•Ó **UUID doesn't match**: Copy-paste the UUID exactly from auth.users
+2. G•Ó **Forgot to enable "Auto confirm user"**: User won't be able to login
+3. G•Ó **Used wrong email**: Make sure it's exactly `admin@vitalstep.com`
+4. G•Ó **Didn't add to admins table**: Must do BOTH auth.users AND admins table
 
 ---
 
 ## IF IT STILL FAILS
 
 Check the Edge Function logs:
-1. Go to **Functions** ‚Üí **generate-device-id**
+1. Go to **Functions** GÂ∆ **generate-device-id**
 2. Click **Executions** tab
 3. Find the latest execution
 4. Click it to see the detailed logs

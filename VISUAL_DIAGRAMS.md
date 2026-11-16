@@ -6,93 +6,93 @@
 
 ```
 User Interface Timeline
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+GòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉ
 
 Time: 0ms                                                200ms
-      â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+      Gö£GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñ
       
 User Action: TAPS BUTTON at 50ms
-      â”‚
-      â–¼
+      Göé
+      Gû+
       
 Event Processing:
-      T=0-50ms   â”‚ User finger down
-                 â”‚ Touch sensor detects
-                 â”œâ”€ pollTouch() called at T=3ms
-                 â”œâ”€ Sets ttap = true
-                 â””â”€ Ready to process!
+      T=0-50ms   Göé User finger down
+                 Göé Touch sensor detects
+                 Gö£GöÇ pollTouch() called at T=3ms
+                 Gö£GöÇ Sets ttap = true
+                 GööGöÇ Ready to process!
       
 Screen Rendering: (BLOCKING - No touch input processed!)
-      T=50-150ms â”‚ â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                 â”‚ â”‚ drawScreen()        â”‚
-                 â”‚ â”‚ - GRRH gradient     â”‚ â† Touch input IGNORED!
-                 â”‚ â”‚ - drawChart()       â”‚ â† User released at ~80ms
-                 â”‚ â”‚ - Text rendering    â”‚ â† Button press is LOST
-                 â”‚ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+      T=50-150ms Göé GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+                 Göé Göé drawScreen()        Göé
+                 Göé Göé - GRRH gradient     Göé GåÉ Touch input IGNORED!
+                 Göé Göé - drawChart()       Göé GåÉ User released at ~80ms
+                 Göé Göé - Text rendering    Göé GåÉ Button press is LOST
+                 Göé GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
       
 Touch Result:
-      T=150ms    â”‚ drawScreen() FINALLY DONE
-                 â”‚ pollTouch() runs
-                 â”‚ No touch detected (user already released finger!)
-                 â””â”€ Button press: MISSED âœ—
+      T=150ms    Göé drawScreen() FINALLY DONE
+                 Göé pollTouch() runs
+                 Göé No touch detected (user already released finger!)
+                 GööGöÇ Button press: MISSED G£ù
                  
 User Perception:
-      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-      â”‚ I PRESSED THE BUTTON!                   â”‚
-      â”‚ Nothing happened...                     â”‚
-      â”‚ (Wait 1-2 seconds)                      â”‚
-      â”‚ Oh, NOW it responded                    â”‚
-      â”‚ This app is frozen/broken               â”‚
-      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+      GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+      Göé I PRESSED THE BUTTON!                   Göé
+      Göé Nothing happened...                     Göé
+      Göé (Wait 1-2 seconds)                      Göé
+      Göé Oh, NOW it responded                    Göé
+      Göé This app is frozen/broken               Göé
+      GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ### AFTER FIX (Buttons Responsive)
 
 ```
 User Interface Timeline
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+GòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉ
 
 Time: 0ms                        80ms              200ms
-      â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+      Gö£GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñ
       
 User Action: TAPS BUTTON at 50ms
-      â”‚
-      â–¼
+      Göé
+      Gû+
       
 Event Processing:
-      T=0-50ms   â”‚ User finger down
-                 â”‚ Touch sensor detects
-                 â”œâ”€ pollTouch() called at T=3ms
-                 â”œâ”€ Sets ttap = true
-                 â”œâ”€ checkYield() called
-                 â””â”€ Button press is REGISTERED! âœ“
+      T=0-50ms   Göé User finger down
+                 Göé Touch sensor detects
+                 Gö£GöÇ pollTouch() called at T=3ms
+                 Gö£GöÇ Sets ttap = true
+                 Gö£GöÇ checkYield() called
+                 GööGöÇ Button press is REGISTERED! G£ô
       
 Screen Rendering: (With yield points - touch checked every 10ms)
-      T=50-80ms  â”‚ â”Œâ”€â”€â”¬â”€â”€â”¬â”€â”€â”¬â”€â”€â”¬â”€â”€â”¬â”€â”€â”¬â”€â”€â”¬â”€â”€â”
-                 â”‚ â”‚  â”‚  â”‚  â”‚  â”‚  â”‚  â”‚  â”‚  â”‚ 10ms chunks
-                 â”‚ â”œâ”€â”€â”¼â”€â”€â”¼â”€â”€â”¼â”€â”€â”¼â”€â”€â”¼â”€â”€â”¼â”€â”€â”¼â”€â”€â”¤
-                 â”‚ â”‚checkYield() - touch ISR can run â”‚
-                 â”‚ â”‚checkYield() - no new input      â”‚
-                 â”‚ â”‚checkYield() - continue drawing  â”‚
-                 â”‚ â”‚   (GRRH optimized - faster)     â”‚
-                 â”‚ â”‚checkYield() - wait here         â”‚
-                 â”‚ â”‚   (drawChart with yields)       â”‚
-                 â”‚ â”‚checkYield() - smooth!           â”‚
-                 â”‚ â”‚checkYield() - almost done       â”‚
-                 â”‚ â””â”€â”€â”´â”€â”€â”´â”€â”€â”´â”€â”€â”´â”€â”€â”´â”€â”€â”´â”€â”€â”´â”€â”€â”˜
+      T=50-80ms  Göé GöîGöÇGöÇGö¼GöÇGöÇGö¼GöÇGöÇGö¼GöÇGöÇGö¼GöÇGöÇGö¼GöÇGöÇGö¼GöÇGöÇGö¼GöÇGöÇGöÉ
+                 Göé Göé  Göé  Göé  Göé  Göé  Göé  Göé  Göé  Göé 10ms chunks
+                 Göé Gö£GöÇGöÇGö+GöÇGöÇGö+GöÇGöÇGö+GöÇGöÇGö+GöÇGöÇGö+GöÇGöÇGö+GöÇGöÇGö+GöÇGöÇGöñ
+                 Göé GöécheckYield() - touch ISR can run Göé
+                 Göé GöécheckYield() - no new input      Göé
+                 Göé GöécheckYield() - continue drawing  Göé
+                 Göé Göé   (GRRH optimized - faster)     Göé
+                 Göé GöécheckYield() - wait here         Göé
+                 Göé Göé   (drawChart with yields)       Göé
+                 Göé GöécheckYield() - smooth!           Göé
+                 Göé GöécheckYield() - almost done       Göé
+                 Göé GööGöÇGöÇGö¦GöÇGöÇGö¦GöÇGöÇGö¦GöÇGöÇGö¦GöÇGöÇGö¦GöÇGöÇGö¦GöÇGöÇGö¦GöÇGöÇGöÿ
       
 Touch Result:
-      T=80ms     â”‚ drawScreen() DONE
-                 â”‚ Display already updated!
-                 â”‚ Button press already registered at T=3ms
-                 â””â”€ Button response: IMMEDIATE âœ“
+      T=80ms     Göé drawScreen() DONE
+                 Göé Display already updated!
+                 Göé Button press already registered at T=3ms
+                 GööGöÇ Button response: IMMEDIATE G£ô
                  
 User Perception:
-      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-      â”‚ I PRESSED THE BUTTON!                   â”‚
-      â”‚ New screen appears instantly!           â”‚
-      â”‚ This app is responsive and fast!        â”‚
-      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+      GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+      Göé I PRESSED THE BUTTON!                   Göé
+      Göé New screen appears instantly!           Göé
+      Göé This app is responsive and fast!        Göé
+      GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ---
@@ -104,11 +104,11 @@ User Perception:
 ```
 Display Width: 108 pixels
 
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ B B B B B B B B | M M M M M M M M | P P P P P P â”‚
-â”‚ B B B B B B B B | M M M M M M M M | P P P P P P â”‚
-â”‚ B B B B B B B B | M M M M M M M M | P P P P P P â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé B B B B B B B B | M M M M M M M M | P P P P P P Göé
+Göé B B B B B B B B | M M M M M M M M | P P P P P P Göé
+Göé B B B B B B B B | M M M M M M M M | P P P P P P Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
 (Smooth color transition)
 
@@ -123,7 +123,7 @@ What the code does:
 Time: 5-8ms (too slow!)
 
 SPI Transfers Needed:
-  â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“ x 108 = 108 SPI operations
+  GûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûô x 108 = 108 SPI operations
 ```
 
 ### AFTER: Banded Gradient (FAST)
@@ -131,11 +131,11 @@ SPI Transfers Needed:
 ```
 Display Width: 108 pixels
 
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ BBBBBBBBBBBBBBB | MMMMMMMMMMMMMMM | PPPPPPPPPPPP â”‚
-â”‚ BBBBBBBBBBBBBBB | MMMMMMMMMMMMMMM | PPPPPPPPPPPP â”‚
-â”‚ BBBBBBBBBBBBBBB | MMMMMMMMMMMMMMM | PPPPPPPPPPPP â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé BBBBBBBBBBBBBBB | MMMMMMMMMMMMMMM | PPPPPPPPPPPP Göé
+Göé BBBBBBBBBBBBBBB | MMMMMMMMMMMMMMM | PPPPPPPPPPPP Göé
+Göé BBBBBBBBBBBBBBB | MMMMMMMMMMMMMMM | PPPPPPPPPPPP Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
 (Banded color transition)
 
@@ -147,25 +147,25 @@ What the code does:
 Time: <1ms (super fast!)
 
 SPI Transfers Needed:
-  â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“ x 3 = 3 SPI operations
+  GûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûô x 3 = 3 SPI operations
 
-Speedup: 108 â†’ 3 = 36x fewer operations! (practical: 8-10x faster)
+Speedup: 108 GåÆ 3 = 36x fewer operations! (practical: 8-10x faster)
 ```
 
 ### Visual Impact on Dashboard
 
 **Before (Smooth):**
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ â–ˆâ†’â–‘â†’â–“ (continuous gradient) â”‚  Smooth transition
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   but slow to draw
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé GûêGåÆGûæGåÆGûô (continuous gradient) Göé  Smooth transition
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ   but slow to draw
 ```
 
 **After (Banded):**
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ â–ˆâ–ˆâ–ˆ|â–‘â–‘â–‘|â–“â–“â–“ (banded gradient) â”‚  Slight bands, but
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   8-10x faster!
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé GûêGûêGûê|GûæGûæGûæ|GûôGûôGûô (banded gradient) Göé  Slight bands, but
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ   8-10x faster!
 ```
 
 **On actual display**: Almost impossible to see the difference on a 100px header!
@@ -178,52 +178,52 @@ Speedup: 108 â†’ 3 = 36x fewer operations! (practical: 8-10x faster)
 
 ```
 Main Task (Running on CPU)
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ pollTouch()    â† checks touch              â”‚
-â”‚ handleTouch()  â† processes tap             â”‚
-â”‚ tick()         â† various updates           â”‚
-â”‚ drawScreen()   â† BLOCKING FOR 200ms        â”‚
-â”‚   â”œâ”€ GRRH()    â† gradient (5-8ms)          â”‚
-â”‚   â”œâ”€ drawChart()  â† chart (40-80ms)        â”‚
-â”‚   â”œâ”€ DT()      â† text (10-15ms)            â”‚
-â”‚   â””â”€ drawNav() â† nav (15-25ms)             â”‚
-â”‚ delay(3)       â† tiny break                â”‚
-â”‚ loop ends      â† back to start             â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé pollTouch()    GåÉ checks touch              Göé
+Göé handleTouch()  GåÉ processes tap             Göé
+Göé tick()         GåÉ various updates           Göé
+Göé drawScreen()   GåÉ BLOCKING FOR 200ms        Göé
+Göé   Gö£GöÇ GRRH()    GåÉ gradient (5-8ms)          Göé
+Göé   Gö£GöÇ drawChart()  GåÉ chart (40-80ms)        Göé
+Göé   Gö£GöÇ DT()      GåÉ text (10-15ms)            Göé
+Göé   GööGöÇ drawNav() GåÉ nav (15-25ms)             Göé
+Göé delay(3)       GåÉ tiny break                Göé
+Göé loop ends      GåÉ back to start             Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
 Touch ISR (Waiting!)
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ [WAITING FOR SCHEDULER SLICE]               â”‚
-â”‚ âœ— Cannot run while drawScreen() is running! â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé [WAITING FOR SCHEDULER SLICE]               Göé
+Göé G£ù Cannot run while drawScreen() is running! Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ### Execution Model WITH Yield Points (NON-BLOCKING)
 
 ```
 Main Task (Running on CPU)
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ pollTouch()    â† checks touch              â”‚
-â”‚ handleTouch()  â† processes tap             â”‚
-â”‚ tick()         â† various updates           â”‚
-â”‚ drawScreen()   â† SPLIT INTO CHUNKS         â”‚
-â”‚   â”œâ”€ GRRH()    â† gradient (5-8ms)          â”‚
-â”‚   â”œâ”€ checkYield() â† PAUSE FOR ISR          â”‚
-â”‚   â”œâ”€ drawChart() â† chart chunk (10ms)      â”‚
-â”‚   â”œâ”€ checkYield() â† PAUSE FOR ISR          â”‚
-â”‚   â”œâ”€ drawChart() â† chart chunk (10ms)      â”‚
-â”‚   â”œâ”€ checkYield() â† PAUSE FOR ISR          â”‚
-â”‚   â”œâ”€ DT()      â† text (10-15ms)            â”‚
-â”‚   â”œâ”€ checkYield() â† PAUSE FOR ISR          â”‚
-â”‚   â””â”€ drawNav() â† nav (15-25ms)             â”‚
-â”‚ delay(3)       â† tiny break                â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé pollTouch()    GåÉ checks touch              Göé
+Göé handleTouch()  GåÉ processes tap             Göé
+Göé tick()         GåÉ various updates           Göé
+Göé drawScreen()   GåÉ SPLIT INTO CHUNKS         Göé
+Göé   Gö£GöÇ GRRH()    GåÉ gradient (5-8ms)          Göé
+Göé   Gö£GöÇ checkYield() GåÉ PAUSE FOR ISR          Göé
+Göé   Gö£GöÇ drawChart() GåÉ chart chunk (10ms)      Göé
+Göé   Gö£GöÇ checkYield() GåÉ PAUSE FOR ISR          Göé
+Göé   Gö£GöÇ drawChart() GåÉ chart chunk (10ms)      Göé
+Göé   Gö£GöÇ checkYield() GåÉ PAUSE FOR ISR          Göé
+Göé   Gö£GöÇ DT()      GåÉ text (10-15ms)            Göé
+Göé   Gö£GöÇ checkYield() GåÉ PAUSE FOR ISR          Göé
+Göé   GööGöÇ drawNav() GåÉ nav (15-25ms)             Göé
+Göé delay(3)       GåÉ tiny break                Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
 Touch ISR (Active!)
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ âœ“ CAN RUN at each checkYield() point!       â”‚
-â”‚ Gets to run every 10ms                      â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé G£ô CAN RUN at each checkYield() point!       Göé
+Göé Gets to run every 10ms                      Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
 Result:
   - Main task: Still takes 80ms total (similar)
@@ -240,26 +240,26 @@ Result:
 
 ```
 Touch Hardware Timeline
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+GòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉ
 
 T=50ms: User presses button
         Touch sensor: "Button pressed!"
-        â–¼
+        Gû+
         Touch data ready: (70, 47, pressed=true)
         
 T=0-200ms: Main loop rendering (touch data IGNORED)
-           â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-           â”‚ drawScreen() running...         â”‚
-           â”‚ Main task not checking ISR      â”‚
-           â”‚ Touch sensor still has data     â”‚
-           â”‚ But no one is reading it!       â”‚
-           â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+           GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+           Göé drawScreen() running...         Göé
+           Göé Main task not checking ISR      Göé
+           Göé Touch sensor still has data     Göé
+           Göé But no one is reading it!       Göé
+           GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
         
 T=200ms: Main loop checks touch
          pollTouch() called
          Touch data: "No touch" (already released!)
-         â–¼
-         Button press: LOST âœ—
+         Gû+
+         Button press: LOST G£ù
 
 User sees: Nothing happened (button ignored)
 ```
@@ -268,23 +268,23 @@ User sees: Nothing happened (button ignored)
 
 ```
 Touch Hardware Timeline
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+GòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉ
 
 T=50ms: User presses button
         Touch sensor: "Button pressed!"
-        â–¼
+        Gû+
         Touch data ready: (70, 47, pressed=true)
         
 T=3ms: pollTouch() called
        checkYield() called
-       â–¼
+       Gû+
        FreeRTOS scheduler allows touch ISR
-       â–¼
+       Gû+
        Touch ISR runs: "Button press detected!"
-       â–¼
+       Gû+
        Sets ttap = true in handleTouch()
-       â–¼
-       Button action registered âœ“
+       Gû+
+       Button action registered G£ô
 
 T=6-80ms: Main loop continues rendering
           checkYield() called every 10ms
@@ -292,8 +292,8 @@ T=6-80ms: Main loop continues rendering
           
 T=80ms: Main loop ends
         Display updated with new content
-        â–¼
-User sees: Button press registered immediately! âœ“
+        Gû+
+User sees: Button press registered immediately! G£ô
 ```
 
 ---
@@ -305,27 +305,27 @@ User sees: Button press registered immediately! âœ“
 ```
 One 200ms frame:
 
-Time â†’
-â”‚
-0ms   â”œâ”€ pollTouch(1ms)
-      â”‚
-1ms   â”œâ”€ handleTouch(1ms)
-      â”‚
-2ms   â”œâ”€ tick(1ms)
-      â”‚
-3ms   â”œâ”€ drawScreen() â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”“
-      â”‚                                    â”‚
-50ms  â”‚                                    â”‚ 197ms of blocking
-      â”‚                                    â”‚ Touch completely ignored
-100ms â”‚                                    â”‚
-      â”‚                                    â”‚
-150ms â”‚                                    â”‚
-      â”‚                                    â”ƒ
-200ms â”œâ”€ delay(3ms)                        â”—
-      â”‚
-203ms â”œâ”€ pollTouch(1ms) â† FINALLY checks touch again
-      â”‚
-      â–¼ (back to start)
+Time GåÆ
+Göé
+0ms   Gö£GöÇ pollTouch(1ms)
+      Göé
+1ms   Gö£GöÇ handleTouch(1ms)
+      Göé
+2ms   Gö£GöÇ tick(1ms)
+      Göé
+3ms   Gö£GöÇ drawScreen() GöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöüGöô
+      Göé                                    Göé
+50ms  Göé                                    Göé 197ms of blocking
+      Göé                                    Göé Touch completely ignored
+100ms Göé                                    Göé
+      Göé                                    Göé
+150ms Göé                                    Göé
+      Göé                                    Göâ
+200ms Gö£GöÇ delay(3ms)                        Göù
+      Göé
+203ms Gö£GöÇ pollTouch(1ms) GåÉ FINALLY checks touch again
+      Göé
+      Gû+ (back to start)
 
 Every 200ms:
   - 1 chance to process touch
@@ -338,36 +338,36 @@ Every 200ms:
 ```
 One 80ms frame (split into chunks):
 
-Time â†’
-â”‚
-0ms   â”œâ”€ pollTouch(1ms)
-1ms   â”œâ”€ checkYield() â† ISR can run
-1ms   â”œâ”€ handleTouch(1ms)
-2ms   â”œâ”€ checkYield() â† ISR can run
-2ms   â”œâ”€ tick(1ms)
-3ms   â”œâ”€ checkYield() â† ISR can run
-3ms   â”œâ”€ drawScreen_chunk1 (gradient, 5ms)
-8ms   â”œâ”€ checkYield() â† ISR can run âœ“
-8ms   â”œâ”€ drawChart_chunk1 (grid, 10ms)
-18ms  â”œâ”€ checkYield() â† ISR can run âœ“
-18ms  â”œâ”€ drawChart_chunk2 (curves, 10ms)
-28ms  â”œâ”€ checkYield() â† ISR can run âœ“
-28ms  â”œâ”€ drawChart_chunk3 (markers, 10ms)
-38ms  â”œâ”€ checkYield() â† ISR can run âœ“
-38ms  â”œâ”€ drawText (text, 15ms)
-53ms  â”œâ”€ checkYield() â† ISR can run âœ“
-53ms  â”œâ”€ drawNav (nav, 15ms)
-68ms  â”œâ”€ checkYield() â† ISR can run âœ“
-68ms  â”œâ”€ delay(3ms)
-71ms  â”œâ”€ checkYield() â† ISR can run âœ“
-71ms  â”œâ”€ pollTouch() â† Touch checked again
-      â”‚
-      â–¼ (back to start at ~72ms)
+Time GåÆ
+Göé
+0ms   Gö£GöÇ pollTouch(1ms)
+1ms   Gö£GöÇ checkYield() GåÉ ISR can run
+1ms   Gö£GöÇ handleTouch(1ms)
+2ms   Gö£GöÇ checkYield() GåÉ ISR can run
+2ms   Gö£GöÇ tick(1ms)
+3ms   Gö£GöÇ checkYield() GåÉ ISR can run
+3ms   Gö£GöÇ drawScreen_chunk1 (gradient, 5ms)
+8ms   Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+8ms   Gö£GöÇ drawChart_chunk1 (grid, 10ms)
+18ms  Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+18ms  Gö£GöÇ drawChart_chunk2 (curves, 10ms)
+28ms  Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+28ms  Gö£GöÇ drawChart_chunk3 (markers, 10ms)
+38ms  Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+38ms  Gö£GöÇ drawText (text, 15ms)
+53ms  Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+53ms  Gö£GöÇ drawNav (nav, 15ms)
+68ms  Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+68ms  Gö£GöÇ delay(3ms)
+71ms  Gö£GöÇ checkYield() GåÉ ISR can run G£ô
+71ms  Gö£GöÇ pollTouch() GåÉ Touch checked again
+      Göé
+      Gû+ (back to start at ~72ms)
 
 Every 10ms:
   - 7-8 chances to process touch
   - User needs to hold button for ~10ms (natural)
-  - Feels smooth and responsive âœ“
+  - Feels smooth and responsive G£ô
 ```
 
 ---
@@ -382,29 +382,29 @@ Dashboard Load Timeline
 Event: User taps "Dashboard" tab
 
 drawScreen() execution waterfall:
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”Œâ”€ GRRH() gradient â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚                   5-8ms            â”‚ Touch IGNORED
-â”œâ”€ drawChart() grid lines â”€â”€â”€â”€â”€â”€â”€â”€â”€â”â”‚
-â”‚   â”œâ”€ Draw 12+ lines               â”‚â”‚
-â”‚   â”œâ”€ Format text                  â”‚â”‚ Touch IGNORED (40-80ms)
-â”‚   â”œâ”€ Draw curves (2x loops)       â”‚â”‚
-â”‚   â”œâ”€ Draw markers                 â”‚â”‚
-â”‚   â””â”€ (more operations)            â”‚â”‚
-â”œâ”€ drawNav() â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”â”‚â”‚
-â”‚   â”œâ”€ Draw buttons                 â”‚â”‚â”‚ Touch IGNORED
-â”‚   â”œâ”€ Render icons                 â”‚â”‚â”‚
-â”‚   â””â”€ Format text                  â”‚â”‚â”‚
-â””â”€ drawStatus() â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”˜â”‚â”‚
-  â””â”€ Various UI elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚â”‚
-                                    â”‚â”‚
-Total blocking: 150-200ms â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜â”‚
-                                     â”‚
-At this point: Touch finally checked â”‚
-But user already released button!    â”‚
-Result: Button press = MISSED âœ—
+GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇ
+GöîGöÇ GRRH() gradient GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé                   5-8ms            Göé Touch IGNORED
+Gö£GöÇ drawChart() grid lines GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉGöé
+Göé   Gö£GöÇ Draw 12+ lines               GöéGöé
+Göé   Gö£GöÇ Format text                  GöéGöé Touch IGNORED (40-80ms)
+Göé   Gö£GöÇ Draw curves (2x loops)       GöéGöé
+Göé   Gö£GöÇ Draw markers                 GöéGöé
+Göé   GööGöÇ (more operations)            GöéGöé
+Gö£GöÇ drawNav() GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉGöéGöé
+Göé   Gö£GöÇ Draw buttons                 GöéGöéGöé Touch IGNORED
+Göé   Gö£GöÇ Render icons                 GöéGöéGöé
+Göé   GööGöÇ Format text                  GöéGöéGöé
+GööGöÇ drawStatus() GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGö¼GöÇGöÇGöÇGöÿGöéGöé
+  GööGöÇ Various UI elements GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ GöéGöé
+                                    GöéGöé
+Total blocking: 150-200ms GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿGöé
+                                     Göé
+At this point: Touch finally checked Göé
+But user already released button!    Göé
+Result: Button press = MISSED G£ù
 
-User Experience: "Nothing happened" â†’ (wait) â†’ "Finally!" â†’ "App is slow/frozen"
+User Experience: "Nothing happened" GåÆ (wait) GåÆ "Finally!" GåÆ "App is slow/frozen"
                  0ms                   50ms                  200ms
 ```
 
@@ -416,32 +416,32 @@ Dashboard Load Timeline
 Event: User taps "Dashboard" tab
 
 Screen rendering with checkYield():
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”Œâ”€ GRRH() gradient (optimized) â”€â”€â”
-â”‚          <1ms                   â”‚ Touch OK
-â”œâ”€ checkYield() â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤ â† ISR can run
-â”‚                                 â”‚
-â”œâ”€ drawChart_grid (10ms) â”€â”€â”€â”€â”€â”€â”€â”€â”â”‚
-â”‚                                 â”‚â”‚ Touch checked
-â”œâ”€ checkYield() â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤â”‚ â† ISR can run
-â”‚                                 â”‚
-â”œâ”€ drawChart_curves (20ms) â”€â”€â”€â”€â”€â”€â”â”‚â”‚
-â”‚   (split into 2x 10ms chunks)   â”‚â”‚â”‚ Touch checked
-â”‚                                 â”‚â”‚â”‚
-â”œâ”€ checkYield() â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤â”‚â”‚ â† ISR can run
-â”‚                                 â”‚
-â”œâ”€ drawText/Nav (20ms) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”â”‚â”‚â”‚
-â”‚                                 â”‚â”‚â”‚â”‚ Touch checked
-â”œâ”€ checkYield() â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤â”‚â”‚â”‚ â† ISR can run
-â”‚                                 â”‚
-Total time: 50-80ms â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜â”‚â”‚â”‚
-(But split into 8x 10ms chunks) â”€â”€â”€â”˜â”‚â”‚
-                                     â”‚â”‚
-User already let button go at T=50ms â”‚
-But button press registered at T=3ms â”‚â”‚
-Result: Visual feedback at T=80ms âœ“  â”‚
+GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇ
+GöîGöÇ GRRH() gradient (optimized) GöÇGöÇGöÉ
+Göé          <1ms                   Göé Touch OK
+Gö£GöÇ checkYield() GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñ GåÉ ISR can run
+Göé                                 Göé
+Gö£GöÇ drawChart_grid (10ms) GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉGöé
+Göé                                 GöéGöé Touch checked
+Gö£GöÇ checkYield() GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñGöé GåÉ ISR can run
+Göé                                 Göé
+Gö£GöÇ drawChart_curves (20ms) GöÇGöÇGöÇGöÇGöÇGöÇGöÉGöéGöé
+Göé   (split into 2x 10ms chunks)   GöéGöéGöé Touch checked
+Göé                                 GöéGöéGöé
+Gö£GöÇ checkYield() GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñGöéGöé GåÉ ISR can run
+Göé                                 Göé
+Gö£GöÇ drawText/Nav (20ms) GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉGöéGöéGöé
+Göé                                 GöéGöéGöéGöé Touch checked
+Gö£GöÇ checkYield() GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöñGöéGöéGöé GåÉ ISR can run
+Göé                                 Göé
+Total time: 50-80ms GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿGöéGöéGöé
+(But split into 8x 10ms chunks) GöÇGöÇGöÇGöÿGöéGöé
+                                     GöéGöé
+User already let button go at T=50ms Göé
+But button press registered at T=3ms GöéGöé
+Result: Visual feedback at T=80ms G£ô  Göé
 
-User Experience: "I tapped it" â†’ (instant visual feedback) â†’ "Works great!"
+User Experience: "I tapped it" GåÆ (instant visual feedback) GåÆ "Works great!"
                  0ms           T=50-80ms                    User happy!
 ```
 
@@ -453,52 +453,52 @@ User Experience: "I tapped it" â†’ (instant visual feedback) â†’ "Works great!"
 Loop Cycle Time (ms)
 
 Before Fix:
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ 180 â”‚                                           â”‚
-â”‚     â”‚                                           â”‚
-â”‚ 160 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ Dashboard renders       â”‚
-â”‚ 140 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ every cycle             â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚ 120 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚ 100 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ Touch missed:           â”‚
-â”‚  80 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ âœ— Button feels stuck   â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚  60 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚  40 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚  20 â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚     â”‚  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ                         â”‚
-â”‚   0 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé 180 Göé                                           Göé
+Göé     Göé                                           Göé
+Göé 160 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê Dashboard renders       Göé
+Göé 140 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê every cycle             Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé 120 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé 100 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê Touch missed:           Göé
+Göé  80 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê G£ù Button feels stuck   Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé  60 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé  40 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé  20 Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé     Göé  GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê                         Göé
+Göé   0 GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
        Home    Dash    Assess   Settings  Test
        (simple) (complex)
 ```
 
 ```
 After Fix:
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ 180 â”‚                                           â”‚
-â”‚     â”‚                                           â”‚
-â”‚ 160 â”‚                                           â”‚
-â”‚     â”‚                                           â”‚
-â”‚ 140 â”‚                                           â”‚
-â”‚     â”‚                                           â”‚
-â”‚ 120 â”‚                                           â”‚
-â”‚     â”‚                                           â”‚
-â”‚ 100 â”‚  â–ˆâ–ˆ                                       â”‚
-â”‚     â”‚  â–ˆâ–ˆ Home                                  â”‚
-â”‚  80 â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ  All    â”‚
-â”‚     â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ  respondâ”‚
-â”‚  60 â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ  quicklyâ”‚
-â”‚     â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ âœ“      â”‚
-â”‚  40 â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ  Touch â”‚
-â”‚     â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ  never â”‚
-â”‚  20 â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ  missedâ”‚
-â”‚     â”‚  â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â–ˆâ–ˆ        â”‚
-â”‚   0 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé 180 Göé                                           Göé
+Göé     Göé                                           Göé
+Göé 160 Göé                                           Göé
+Göé     Göé                                           Göé
+Göé 140 Göé                                           Göé
+Göé     Göé                                           Göé
+Göé 120 Göé                                           Göé
+Göé     Göé                                           Göé
+Göé 100 Göé  GûêGûê                                       Göé
+Göé     Göé  GûêGûê Home                                  Göé
+Göé  80 Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê  All    Göé
+Göé     Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê  respondGöé
+Göé  60 Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê  quicklyGöé
+Göé     Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê G£ô      Göé
+Göé  40 Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê  Touch Göé
+Göé     Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê  never Göé
+Göé  20 Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê  missedGöé
+Göé     Göé  GûêGûê  GûêGûêGûêGûêGûêGûê    GûêGûê      GûêGûêGûêGûêGûêGûê GûêGûê        Göé
+Göé   0 GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
        Home    Dash    Assess   Settings  Test
        (fast rendering, responsive touch)
 ```
@@ -509,50 +509,50 @@ After Fix:
 
 ```
 ESP32 System Architecture
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+GòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉGòÉ
 
-â”Œâ”€ Core 0 (UI Thread) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚                                                        â”‚
-â”‚  loop()                                                â”‚
-â”‚  â”œâ”€ pollTouch()                                        â”‚
-â”‚  â”œâ”€ checkYield() â†â”€â”€ NEW! Yield to scheduler          â”‚
-â”‚  â”œâ”€ handleTouch()                                      â”‚
-â”‚  â”œâ”€ tick()                                             â”‚
-â”‚  â”œâ”€ drawScreen()                                       â”‚
-â”‚  â”‚  â”œâ”€ GRRH() â†â”€â”€ OPTIMIZED! Banded gradient          â”‚
-â”‚  â”‚  â”œâ”€ drawChart()                                     â”‚
-â”‚  â”‚  â”‚  â”œâ”€ Grid loop                                    â”‚
-â”‚  â”‚  â”‚  â”œâ”€ checkYield() â†â”€â”€ NEW! Interrupt point       â”‚
-â”‚  â”‚  â”‚  â”œâ”€ Curve loop                                   â”‚
-â”‚  â”‚  â”‚  â”œâ”€ checkYield() â†â”€â”€ NEW! Interrupt point       â”‚
-â”‚  â”‚  â”‚  â””â”€ Text rendering                              â”‚
-â”‚  â”‚  â””â”€ drawNav()                                       â”‚
-â”‚  â””â”€ checkYield() â†â”€â”€ NEW! Final yield before delay    â”‚
-â”‚                                                        â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇ Core 0 (UI Thread) GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé                                                        Göé
+Göé  loop()                                                Göé
+Göé  Gö£GöÇ pollTouch()                                        Göé
+Göé  Gö£GöÇ checkYield() GåÉGöÇGöÇ NEW! Yield to scheduler          Göé
+Göé  Gö£GöÇ handleTouch()                                      Göé
+Göé  Gö£GöÇ tick()                                             Göé
+Göé  Gö£GöÇ drawScreen()                                       Göé
+Göé  Göé  Gö£GöÇ GRRH() GåÉGöÇGöÇ OPTIMIZED! Banded gradient          Göé
+Göé  Göé  Gö£GöÇ drawChart()                                     Göé
+Göé  Göé  Göé  Gö£GöÇ Grid loop                                    Göé
+Göé  Göé  Göé  Gö£GöÇ checkYield() GåÉGöÇGöÇ NEW! Interrupt point       Göé
+Göé  Göé  Göé  Gö£GöÇ Curve loop                                   Göé
+Göé  Göé  Göé  Gö£GöÇ checkYield() GåÉGöÇGöÇ NEW! Interrupt point       Göé
+Göé  Göé  Göé  GööGöÇ Text rendering                              Göé
+Göé  Göé  GööGöÇ drawNav()                                       Göé
+Göé  GööGöÇ checkYield() GåÉGöÇGöÇ NEW! Final yield before delay    Göé
+Göé                                                        Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
-â”Œâ”€ FreeRTOS Scheduler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚                                                        â”‚
-â”‚  When UI calls yield():                                â”‚
-â”‚  â”œâ”€ Checks if touch ISR has pending work               â”‚
-â”‚  â”œâ”€ If yes: Switches to Touch ISR immediately         â”‚
-â”‚  â”œâ”€ ISR processes button press                         â”‚
-â”‚  â”œâ”€ ISR returns                                        â”‚
-â”‚  â””â”€ Switches back to UI thread                         â”‚
-â”‚                                                        â”‚
-â”‚  Result: No blocking! Touch always responsive!         â”‚
-â”‚                                                        â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇ FreeRTOS Scheduler GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé                                                        Göé
+Göé  When UI calls yield():                                Göé
+Göé  Gö£GöÇ Checks if touch ISR has pending work               Göé
+Göé  Gö£GöÇ If yes: Switches to Touch ISR immediately         Göé
+Göé  Gö£GöÇ ISR processes button press                         Göé
+Göé  Gö£GöÇ ISR returns                                        Göé
+Göé  GööGöÇ Switches back to UI thread                         Göé
+Göé                                                        Göé
+Göé  Result: No blocking! Touch always responsive!         Göé
+Göé                                                        Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 
-â”Œâ”€ Touch Hardware ISR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚                                                        â”‚
-â”‚  Touch interrupt (when yield() called):                â”‚
-â”‚  â”œâ”€ Read touch coordinates                             â”‚
-â”‚  â”œâ”€ Determine which button was pressed                 â”‚
-â”‚  â”œâ”€ Set ttap flag                                      â”‚
-â”‚  â””â”€ Return control to scheduler                        â”‚
-â”‚                                                        â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+GöîGöÇ Touch Hardware ISR GöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+Göé                                                        Göé
+Göé  Touch interrupt (when yield() called):                Göé
+Göé  Gö£GöÇ Read touch coordinates                             Göé
+Göé  Gö£GöÇ Determine which button was pressed                 Göé
+Göé  Gö£GöÇ Set ttap flag                                      Göé
+Göé  GööGöÇ Return control to scheduler                        Göé
+Göé                                                        Göé
+GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
 ```
 
 ---

@@ -91,7 +91,7 @@ git push -u origin main
 
 ## 7. Vercel Environment Variables
 
-Add these in Vercel Project Settings â†’ Environment Variables:
+Add these in Vercel Project Settings GåÆ Environment Variables:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL = https://oyqecdcpicvzwwvwaeka.supabase.co
@@ -177,13 +177,13 @@ TO:   admin-dashboard\components\Sidebar.tsx
 
 ## Quick Summary
 
-1. âœ… Run all commands from Step 1-6
-2. âœ… Copy all files from Step 11
-3. âœ… Test with Step 5
-4. âœ… Push to GitHub with Step 6
-5. âœ… Deploy to Vercel with Step 8
-6. âœ… Login with Step 9
-7. âœ… Share production URL!
+1. G£à Run all commands from Step 1-6
+2. G£à Copy all files from Step 11
+3. G£à Test with Step 5
+4. G£à Push to GitHub with Step 6
+5. G£à Deploy to Vercel with Step 8
+6. G£à Login with Step 9
+7. G£à Share production URL!
 
 ---
 
@@ -207,4 +207,4 @@ npm install
 
 ---
 
-Done! ðŸš€
+Done! =ƒÜÇ

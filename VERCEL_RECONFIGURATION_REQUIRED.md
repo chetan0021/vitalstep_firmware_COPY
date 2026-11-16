@@ -4,12 +4,12 @@
 The dashboard application is deployed correctly on GitHub `main` branch, but Vercel may be configured to build from a subdirectory instead of the root.
 
 ## Current Status
-âœ… All dashboard files are properly integrated into the main branch  
-âœ… Configuration files added:
+G£à All dashboard files are properly integrated into the main branch  
+G£à Configuration files added:
 - `tailwind.config.ts` - Tailwind CSS configuration with proper content paths
 - `postcss.config.ts` - PostCSS configuration for CSS processing
 - `vercel.json` - Explicit Next.js project configuration  
-âœ… All latest changes pushed to GitHub (main branch)
+G£à All latest changes pushed to GitHub (main branch)
 
 ## What You Need to Do in Vercel Dashboard
 
@@ -18,7 +18,7 @@ The dashboard application is deployed correctly on GitHub `main` branch, but Ver
 2. Click on your project: `vitalstep-with-firmware`
 
 ### Step 2: Check Project Root Settings
-1. Go to **Settings** â†’ **General**
+1. Go to **Settings** GåÆ **General**
 2. Look for **Root Directory** setting
 3. It should be empty (meaning `/` - the repository root)
 4. **If it shows `admin-dashboard` or any subfolder, change it to empty/root**
@@ -30,20 +30,20 @@ The dashboard application is deployed correctly on GitHub `main` branch, but Ver
 4. Wait for the new build to complete
 
 ### Step 4: Verify Environment Variables
-Go to **Settings** â†’ **Environment Variables** and verify these are set:
+Go to **Settings** GåÆ **Environment Variables** and verify these are set:
 
 | Variable Name | Present? | Notes |
 |---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | âœ“ | Should start with `https://oyqecdcpicvzwwvwaeka.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | âœ“ | Should start with `sb_publishable_` |
-| `NEXT_PUBLIC_EDGE_FUNCTION_URL` | âœ“ | Should point to `/functions/v1/generate-device-id` |
+| `NEXT_PUBLIC_SUPABASE_URL` | G£ô | Should start with `https://oyqecdcpicvzwwvwaeka.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | G£ô | Should start with `sb_publishable_` |
+| `NEXT_PUBLIC_EDGE_FUNCTION_URL` | G£ô | Should point to `/functions/v1/generate-device-id` |
 
 ### Step 5: Monitor the Build
 Watch the build logs for:
-- âœ… Should see: `Detected Next.js version: 16.4.6`
-- âœ… Should see: `Applying modifyConfig from Vercel`
-- âœ… Should see: `> next build` succeeds
-- âŒ Should NOT see: `Export LogBook doesn't exist` (this is fixed now)
+- G£à Should see: `Detected Next.js version: 16.4.6`
+- G£à Should see: `Applying modifyConfig from Vercel`
+- G£à Should see: `> next build` succeeds
+- G¥î Should NOT see: `Export LogBook doesn't exist` (this is fixed now)
 
 ## What Changed
 The latest commits added proper Tailwind CSS and Vercel configurations:
@@ -64,29 +64,29 @@ The problem was Vercel trying to build from `admin-dashboard/` subdirectory inst
 
 ```
 Repository Root (main branch)
-â”œâ”€â”€ app/                    â† Next.js app router
-â”‚   â”œâ”€â”€ dashboard/
-â”‚   â”œâ”€â”€ login/
-â”‚   â”œâ”€â”€ layout.tsx
-â”‚   â”œâ”€â”€ globals.css
-â”‚   â””â”€â”€ page.tsx
-â”œâ”€â”€ components/
-â”‚   â””â”€â”€ Sidebar.tsx
-â”œâ”€â”€ lib/
-â”‚   â””â”€â”€ supabase.ts
-â”œâ”€â”€ package.json
-â”œâ”€â”€ next.config.ts
-â”œâ”€â”€ tailwind.config.ts       â† NEW
-â”œâ”€â”€ postcss.config.ts        â† NEW
-â”œâ”€â”€ vercel.json              â† NEW
-â””â”€â”€ ... other files
+Gö£GöÇGöÇ app/                    GåÉ Next.js app router
+Göé   Gö£GöÇGöÇ dashboard/
+Göé   Gö£GöÇGöÇ login/
+Göé   Gö£GöÇGöÇ layout.tsx
+Göé   Gö£GöÇGöÇ globals.css
+Göé   GööGöÇGöÇ page.tsx
+Gö£GöÇGöÇ components/
+Göé   GööGöÇGöÇ Sidebar.tsx
+Gö£GöÇGöÇ lib/
+Göé   GööGöÇGöÇ supabase.ts
+Gö£GöÇGöÇ package.json
+Gö£GöÇGöÇ next.config.ts
+Gö£GöÇGöÇ tailwind.config.ts       GåÉ NEW
+Gö£GöÇGöÇ postcss.config.ts        GåÉ NEW
+Gö£GöÇGöÇ vercel.json              GåÉ NEW
+GööGöÇGöÇ ... other files
 ```
 
 ## Expected Result After Redeploy
-- âœ… Vercel deployment should succeed with no errors
-- âœ… Tailwind CSS styling should be fully applied
-- âœ… Dashboard UI should have colors, proper layout, responsive design
-- âœ… Same code from GitHub main branch is deployed
+- G£à Vercel deployment should succeed with no errors
+- G£à Tailwind CSS styling should be fully applied
+- G£à Dashboard UI should have colors, proper layout, responsive design
+- G£à Same code from GitHub main branch is deployed
 
 ## Test After Deployment
 1. Visit your Vercel deployment URL
@@ -100,7 +100,7 @@ Repository Root (main branch)
 4. Dashboard should display with all colors and styling intact
 
 ## If Styling Still Doesn't Work
-1. Clear Vercel build cache: Settings â†’ Deployments â†’ Remove all Cache
+1. Clear Vercel build cache: Settings GåÆ Deployments GåÆ Remove all Cache
 2. Redeploy again
 3. Check build logs for any CSS warnings
 4. Verify environment variables are correctly saved

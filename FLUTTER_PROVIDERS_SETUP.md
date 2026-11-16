@@ -1,4 +1,4 @@
-# ğŸ“± Flutter Providers Setup Guide
+# =ƒô¦ Flutter Providers Setup Guide
 
 ## What are Providers?
 
@@ -185,7 +185,7 @@ void main() async {
 class _VitalStepAppState extends State<VitalStepApp> {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(  // â† HERE: All providers defined
+    return MultiProvider(  // GåÉ HERE: All providers defined
       providers: [
         Provider<SupabaseService>(create: (_) => SupabaseService()),
         ChangeNotifierProvider<AuthProvider>(
@@ -223,20 +223,20 @@ class _VitalStepAppState extends State<VitalStepApp> {
 
 ```
 Provider Tree:
-â”‚
-â”œâ”€â”€ SupabaseService (Supabase connection)
-â”‚   â”‚
-â”‚   â”œâ”€â”€ AuthProvider (user login/signup)
-â”‚   â”‚   â””â”€â”€ Uses SupabaseService.client.auth.*
-â”‚   â”‚
-â”‚   â”œâ”€â”€ DeviceProvider (device management)
-â”‚   â”‚   â””â”€â”€ Uses SupabaseService.client.from('devices').*
-â”‚   â”‚
-â”‚   â””â”€â”€ MeasurementProvider (test results)
-â”‚       â””â”€â”€ Uses SupabaseService.client.from('measurements').*
-â”‚
-â””â”€â”€ All Screens
-    â””â”€â”€ Read from providers via context.read<>() or Consumer<>()
+Göé
+Gö£GöÇGöÇ SupabaseService (Supabase connection)
+Göé   Göé
+Göé   Gö£GöÇGöÇ AuthProvider (user login/signup)
+Göé   Göé   GööGöÇGöÇ Uses SupabaseService.client.auth.*
+Göé   Göé
+Göé   Gö£GöÇGöÇ DeviceProvider (device management)
+Göé   Göé   GööGöÇGöÇ Uses SupabaseService.client.from('devices').*
+Göé   Göé
+Göé   GööGöÇGöÇ MeasurementProvider (test results)
+Göé       GööGöÇGöÇ Uses SupabaseService.client.from('measurements').*
+Göé
+GööGöÇGöÇ All Screens
+    GööGöÇGöÇ Read from providers via context.read<>() or Consumer<>()
 ```
 
 ---
@@ -280,7 +280,7 @@ MultiProvider(
       create: (context) => NewFeatureProvider(
         supabaseService: context.read<SupabaseService>(),
       ),
-    ),  // â† Add this
+    ),  // GåÉ Add this
   ],
   child: MaterialApp(...),
 )
@@ -363,9 +363,9 @@ void debugProviders() {
 ```dart
 class AuthProvider extends ChangeNotifier {
   Future<void> signIn(String email, String password) async {
-    print('ğŸ” Attempting login: $email');
+    print('=ƒöÉ Attempting login: $email');
     // ... login logic
-    print('âœ… Login successful!');
+    print('G£à Login successful!');
     notifyListeners();
   }
 }
@@ -375,13 +375,13 @@ class AuthProvider extends ChangeNotifier {
 
 ## Provider Best Practices
 
-âœ… **Do**:
+G£à **Do**:
 - Use `context.read<>()` inside callbacks/button handlers
 - Use `Consumer<>()` in build methods for reactive updates
 - Call `notifyListeners()` when data changes
 - Inject dependencies (Supabase) into providers
 
-âŒ **Don't**:
+G¥î **Don't**:
 - Overuse `Consumer<>()` (can rebuild too often)
 - Forget to call `notifyListeners()` after changing data
 - Put UI logic in providers
@@ -411,15 +411,15 @@ Now that you understand providers:
 1. Open `VitalStep_Mobile_App/lib/screens/auth/login_screen.dart`
 2. You'll see it uses `context.read<AuthProvider>()`
 3. Same pattern in all other screens
-4. Everything is already connected! âœ“
+4. Everything is already connected! G£ô
 
 ---
 
-## ğŸ“ Quick Reference
+## =ƒôP Quick Reference
 
 **Get a provider**: `context.read<ProviderName>()`  
 **Listen to changes**: `Consumer<ProviderName>(builder: ...)`  
 **Notify of change**: `notifyListeners()`  
 **Location**: `VitalStep_Mobile_App/lib/providers/*.dart`
 
-âœ… **Status**: All providers configured and ready to use!
+G£à **Status**: All providers configured and ready to use!

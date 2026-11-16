@@ -1,12 +1,12 @@
-# ‚úÖ VitalStep Firmware - READY FOR TESTING
+# G£‡ VitalStep Firmware - READY FOR TESTING
 
 ## Summary
 
 Both firmware files have been updated with your **calibrated load cell factor: 13.746 counts/gram (13746 counts/kg)**
 
 ```
-BEFORE:  HX_DEFAULT_SCALE = 10300.0f  ‚ùå (incorrect)
-AFTER:   HX_DEFAULT_SCALE = 13746.0f  ‚úÖ (calibrated from your HX711 tool)
+BEFORE:  HX_DEFAULT_SCALE = 10300.0f  G•Ó (incorrect)
+AFTER:   HX_DEFAULT_SCALE = 13746.0f  G£‡ (calibrated from your HX711 tool)
 ```
 
 ---
@@ -23,13 +23,13 @@ AFTER:   HX_DEFAULT_SCALE = 13746.0f  ‚úÖ (calibrated from your HX711 tool)
 | SD Card | REAL_SD=1 | Real file storage (test results, queue) |
 | Wi-Fi | Hardcoded SSID | Uses "redmi10A" + "897654321" |
 | Speaker | MOCK_BUZZER=1 | No sound output |
-| **Calibration Factor** | **13746** | **‚úÖ UPDATED** |
+| **Calibration Factor** | **13746** | **G£‡ UPDATED** |
 
 **When you run this**:
-1. Device boots ‚Üí Shows UI with buttons
-2. Press "Test" ‚Üí Simulates realistic pressure curve (8-14 kg)
-3. After 3 trials ‚Üí Results save to SD card `/vs/pending/`
-4. Tap "Sync" ‚Üí Results upload to Supabase cloud
+1. Device boots GÂ∆ Shows UI with buttons
+2. Press "Test" GÂ∆ Simulates realistic pressure curve (8-14 kg)
+3. After 3 trials GÂ∆ Results save to SD card `/vs/pending/`
+4. Tap "Sync" GÂ∆ Results upload to Supabase cloud
 5. All buttons respond instantly (yield points active)
 
 **Good for**: Testing UI, cloud sync, offline queue, without needing hardware
@@ -46,33 +46,33 @@ AFTER:   HX_DEFAULT_SCALE = 13746.0f  ‚úÖ (calibrated from your HX711 tool)
 | SD Card | REAL_SD=1 | Real file storage |
 | Wi-Fi | BLE Provisioned | App provides credentials over Bluetooth |
 | Speaker | MOCK_BUZZER=0 | **Real sound** output on GPIO26 |
-| **Calibration Factor** | **13746** | **‚úÖ UPDATED** |
+| **Calibration Factor** | **13746** | **G£‡ UPDATED** |
 
 **When you run this**:
-1. Device boots ‚Üí Shows BLE pairing screen
-2. Scan with app ‚Üí Choose Wi-Fi network
-3. App sends credentials ‚Üí Device connects
-4. Press "Test" ‚Üí **Real load cell reads** actual palm pressure
-5. After 3 trials ‚Üí Results save + upload to Supabase
+1. Device boots GÂ∆ Shows BLE pairing screen
+2. Scan with app GÂ∆ Choose Wi-Fi network
+3. App sends credentials GÂ∆ Device connects
+4. Press "Test" GÂ∆ **Real load cell reads** actual palm pressure
+5. After 3 trials GÂ∆ Results save + upload to Supabase
 6. Battery shows actual pack voltage
 
 **Good for**: Real usage with actual measurements and cloud sync
 
 ---
 
-## üéØ Testing Plan
+## =Éƒª Testing Plan
 
 ### Phase 1: UI + Offline Testing (Today - using fixed.ino)
 ```
 1. Flash VitalStep_Device_fixed.ino to ESP32
-2. Power on ‚Üí UI loads
+2. Power on GÂ∆ UI loads
 3. Test all screens (home, dashboard, settings)
 4. Run a test cycle (should show mock 8-14 kg pressure)
 5. Check that all buttons respond instantly
 6. Check SD card has files in /vs/pending/
-   - Offline queue works ‚úÖ
-   - UI responsive ‚úÖ
-   - Calibration factor applied ‚úÖ
+   - Offline queue works G£‡
+   - UI responsive G£‡
+   - Calibration factor applied G£‡
 ```
 
 ### Phase 2: Cloud Sync Testing (When ready - still fixed.ino)
@@ -81,9 +81,9 @@ AFTER:   HX_DEFAULT_SCALE = 13746.0f  ‚úÖ (calibrated from your HX711 tool)
 2. Run another test cycle
 3. Press "Sync" button
 4. Check Supabase database
-   - Results appear in cloud ‚úÖ
-   - Device ID matches ‚úÖ
-   - Timestamps correct ‚úÖ
+   - Results appear in cloud G£‡
+   - Device ID matches G£‡
+   - Timestamps correct G£‡
 ```
 
 ### Phase 3: Real Sensor Testing (When ready - switch to prod.ino)
@@ -93,9 +93,9 @@ AFTER:   HX_DEFAULT_SCALE = 13746.0f  ‚úÖ (calibrated from your HX711 tool)
 3. Use mobile app to send Wi-Fi credentials
 4. Run a test cycle
 5. Observe REAL pressure readings from load cell
-   - Should match physical pressure applied ‚úÖ
-   - Calibration factor working correctly ‚úÖ
-   - Results save correctly ‚úÖ
+   - Should match physical pressure applied G£‡
+   - Calibration factor working correctly G£‡
+   - Results save correctly G£‡
 ```
 
 ### Phase 4: Battery Testing (Future - when divider tested)
@@ -107,22 +107,22 @@ AFTER:   HX_DEFAULT_SCALE = 13746.0f  ‚úÖ (calibrated from your HX711 tool)
 
 ---
 
-## üìä Expected Behavior
+## =ÉÙË Expected Behavior
 
 ### Mock Mode (fixed.ino)
 When you run a test:
 ```
 1. Press "Test" button
 2. Screen shows: "Apply pressure..."
-3. Simulated data ramps from 0 ‚Üí 8-14 kg over 1.2 seconds
+3. Simulated data ramps from 0 GÂ∆ 8-14 kg over 1.2 seconds
 4. Data stays stable
 5. After 3 trials, shows results:
    - Trial 1: ~9.2 kg
    - Trial 2: ~10.5 kg
    - Trial 3: ~8.7 kg
    (values change each run - realistic variation)
-6. Press "Save" ‚Üí Results go to SD card
-7. Press "Sync" ‚Üí Results upload to Supabase
+6. Press "Save" GÂ∆ Results go to SD card
+7. Press "Sync" GÂ∆ Results upload to Supabase
 ```
 
 ### Real Mode (prod.ino)
@@ -131,67 +131,67 @@ When you run a test:
 1. Press "Test" button
 2. Screen shows: "Apply pressure to load cell..."
 3. As you press harder:
-   - Reading increases from 0 ‚Üí actual_pressure_kg
+   - Reading increases from 0 GÂ∆ actual_pressure_kg
    - Real HX711 sensor reading (13.746 cal factor applied)
-4. Release pressure ‚Üí reading drops to 0
+4. Release pressure GÂ∆ reading drops to 0
 5. After 3 trials, shows results:
    - Trial 1: Your actual pressure
    - Trial 2: Your actual pressure
    - Trial 3: Your actual pressure
    (based on how hard you press)
-6. Press "Save" ‚Üí Results to SD card + cloud
+6. Press "Save" GÂ∆ Results to SD card + cloud
 ```
 
 ---
 
-## üîç Verification
+## =ÉˆÏ Verification
 
 ### Before Flashing
-‚úÖ Calibration factor: **13.746** (not 10.3)
-‚úÖ Load cell pins: IO21 (DT), IO22 (SCK)
-‚úÖ SD card pins: IO5 (CS), IO18 (SCK), IO19 (MISO), IO23 (MOSI)
-‚úÖ Battery pin: IO35
-‚úÖ Yield points: In place (buttons responsive)
-‚úÖ Gradients: Optimized (fast rendering)
+G£‡ Calibration factor: **13.746** (not 10.3)
+G£‡ Load cell pins: IO21 (DT), IO22 (SCK)
+G£‡ SD card pins: IO5 (CS), IO18 (SCK), IO19 (MISO), IO23 (MOSI)
+G£‡ Battery pin: IO35
+G£‡ Yield points: In place (buttons responsive)
+G£‡ Gradients: Optimized (fast rendering)
 
 ### After Flashing (fixed.ino)
-1. Device boots ‚Üí UI appears ‚úÖ
-2. All buttons clickable ‚Üí respond instantly ‚úÖ
-3. Run test ‚Üí mock 8-14 kg data appears ‚úÖ
-4. Check `/vs/pending/` on SD ‚Üí test files saved ‚úÖ
-5. Cloud sync works ‚Üí results in Supabase ‚úÖ
+1. Device boots GÂ∆ UI appears G£‡
+2. All buttons clickable GÂ∆ respond instantly G£‡
+3. Run test GÂ∆ mock 8-14 kg data appears G£‡
+4. Check `/vs/pending/` on SD GÂ∆ test files saved G£‡
+5. Cloud sync works GÂ∆ results in Supabase G£‡
 
 ### After Flashing (prod.ino)
-1. Device boots ‚Üí BLE pairing screen ‚úÖ
-2. App pairs & sends Wi-Fi ‚Üí device connects ‚úÖ
-3. Run test with load cell ‚Üí real readings ‚úÖ
-4. Results match calibration factor ‚úÖ
-5. Cloud sync uploads real data ‚úÖ
+1. Device boots GÂ∆ BLE pairing screen G£‡
+2. App pairs & sends Wi-Fi GÂ∆ device connects G£‡
+3. Run test with load cell GÂ∆ real readings G£‡
+4. Results match calibration factor G£‡
+5. Cloud sync uploads real data G£‡
 
 ---
 
-## üéöÔ∏è Calibration Factor Explanation
+## =Éƒ‹n+≈ Calibration Factor Explanation
 
 Your calibration from the tool showed:
 ```
 1.010 kg on load cell
-‚Üí Raw delta: 13883 counts
-‚Üí Factor: 13883 / 1.010 = 13.746 counts/gram
-‚Üí In firmware: 13746 counts/kg (multiply by 1000)
+GÂ∆ Raw delta: 13883 counts
+GÂ∆ Factor: 13883 / 1.010 = 13.746 counts/gram
+GÂ∆ In firmware: 13746 counts/kg (multiply by 1000)
 ```
 
 Every kg of pressure = 13746 counts from HX711
 
 This is now **baked into both firmware files**. When the load cell reads:
 ```
-- 50000 counts ‚Üí 50000 / 13746 = 3.64 kg
-- 100000 counts ‚Üí 100000 / 13746 = 7.27 kg
-- 137460 counts ‚Üí 137460 / 13746 = 10.0 kg (exactly 1 kg * 10000 counts)
+- 50000 counts GÂ∆ 50000 / 13746 = 3.64 kg
+- 100000 counts GÂ∆ 100000 / 13746 = 7.27 kg
+- 137460 counts GÂ∆ 137460 / 13746 = 10.0 kg (exactly 1 kg * 10000 counts)
 ```
 
 ---
 
-## ‚úÖ Checklist Before Flashing
+## G£‡ Checklist Before Flashing
 
 - [ ] Read this entire document
 - [ ] Have `VitalStep_Device_fixed.ino` ready (for testing)
@@ -207,9 +207,9 @@ This is now **baked into both firmware files**. When the load cell reads:
 
 ---
 
-## üöÄ Ready to Go!
+## =É‹« Ready to Go!
 
-**Status**: ‚úÖ **READY FOR TESTING**
+**Status**: G£‡ **READY FOR TESTING**
 
 Both files are updated and ready to flash. Start with `fixed.ino` for testing, then move to `prod.ino` when ready for real hardware.
 

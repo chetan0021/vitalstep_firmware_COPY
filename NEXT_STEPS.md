@@ -1,6 +1,6 @@
 # Next Steps - Edge Function Testing & Dashboard
 
-## ‚ö†Ô∏è IMPORTANT: Supabase UI Tester Issue
+## G‹·n+≈ IMPORTANT: Supabase UI Tester Issue
 
 The Supabase built-in test UI has a JWT validation issue that prevents testing directly in the dashboard. **This is a known Supabase limitation** - the UI tester uses a different API gateway that validates JWTs differently.
 
@@ -14,7 +14,7 @@ Replace your current Edge Function code with the working version:
 
 **File**: `generate-device-id-WORKING.ts` (already created in your project)
 
-1. Go to Supabase ‚Üí **Functions** ‚Üí **generate-device-id** ‚Üí **Code tab**
+1. Go to Supabase GÂ∆ **Functions** GÂ∆ **generate-device-id** GÂ∆ **Code tab**
 2. Delete all current code
 3. Copy the entire content from: `generate-device-id-WORKING.ts`
 4. Click **Deploy**
@@ -35,14 +35,14 @@ powershell -ExecutionPolicy Bypass -File "c:\Users\Appmaker\Documents\vitalstep_
 STEP 1: Getting JWT Token
 ========================================
 
-‚úÖ Token obtained
+G£‡ Token obtained
 User ID: 09c41189-b0c7-4dc0-b9f9-153162041dfa
 
 ========================================
 STEP 2: Calling Edge Function
 ========================================
 
-‚úÖ SUCCESS!
+G£‡ SUCCESS!
 Status Code: 200
 
 Device Generated:

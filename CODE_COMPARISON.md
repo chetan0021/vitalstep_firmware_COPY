@@ -78,7 +78,7 @@ void loop(){
   if(needFull){ 
     needFull=false; 
     drawScreen();   // BLOCKS FOR 150-200ms!
-                    // ‚úó Touch input is IGNORED during this time
+                    // G£˘ Touch input is IGNORED during this time
   }
   else if(statusDirty) 
     drawStatus();
@@ -111,18 +111,18 @@ static void checkYield(){
 void loop(){
   uint32_t now=millis();
   pollTouch();
-  checkYield();      // ‚Üê Allow touch to be processed
+  checkYield();      // GÂ… Allow touch to be processed
   handleTouch();
-  checkYield();      // ‚Üê Allow touch to be processed
+  checkYield();      // GÂ… Allow touch to be processed
   tick(now);
-  checkYield();      // ‚Üê Allow touch to be processed
+  checkYield();      // GÂ… Allow touch to be processed
   if(needFull){ 
     needFull=false; 
     drawScreen();    // Draws with yield points inside
   }
   else if(statusDirty) 
     drawStatus();
-  checkYield();      // ‚Üê Allow touch to be processed
+  checkYield();      // GÂ… Allow touch to be processed
   delay(3);
 }
 
@@ -164,7 +164,7 @@ static void drawChart(const Patient& p,int ox,int oy,int w,int h,int range,int c
   uint16_t gridc=mix(C_CARD,C_LINE,170); char b[24];
   
   for(int g=0;g<=(int)ymax;g+=5){
-    // ‚úó NO YIELD - drawing for 5ms continuously
+    // G£˘ NO YIELD - drawing for 5ms continuously
     int yy=pb-(int)((pb-pt)*(float)g/ymax); 
     HL(pl,yy,pr-pl,gridc);
     snprintf(b,sizeof b,"%d",g); 
@@ -202,7 +202,7 @@ static void drawChart(const Patient& p,int ox,int oy,int w,int h,int range,int c
   uint16_t gridc=mix(C_CARD,C_LINE,170); char b[24];
   
   for(int g=0;g<=(int)ymax;g+=5){
-    checkYield();  // ‚úì Allow touch ISR every 10ms
+    checkYield();  // G£Ù Allow touch ISR every 10ms
     int yy=pb-(int)((pb-pt)*(float)g/ymax); 
     HL(pl,yy,pr-pl,gridc);
     snprintf(b,sizeof b,"%d",g); 
@@ -212,7 +212,7 @@ static void drawChart(const Patient& p,int ox,int oy,int w,int h,int range,int c
   for(int s2=0;s2<2;s2++){
     const float* a=(s2==0)?p.L:p.R; uint16_t c=(s2==0)?C_L:C_R; int lx=-1,ly=0;
     for(int i=0;i<cnt;i++){
-      checkYield();  // ‚úì Allow touch ISR every 10ms
+      checkYield();  // G£Ù Allow touch ISR every 10ms
       float v=a[st+i]; 
       int xx=(cnt==1)?(pl+pr)/2:pl+8+((pr-pl-16)*i)/(cnt-1);
       if(v<=0){ lx=-1; continue; }
@@ -243,7 +243,7 @@ static void drawChart(const Patient& p,int ox,int oy,int w,int h,int range,int c
 | **Total drawScreen()** | 150-200ms | 50-80ms | **3-4x faster** |
 | **Touch polling frequency** | Every 150-200ms | Every 10ms | **15-20x more frequent** |
 | **Perceived lag** | 150-200ms | 10-15ms | **10-20x faster response** |
-| **Button responsiveness** | Frozen/slow | Immediate | ‚úÖ **FIXED** |
+| **Button responsiveness** | Frozen/slow | Immediate | G£‡ **FIXED** |
 
 ---
 
@@ -282,7 +282,7 @@ Result:   User tapped button at T=0ms
 ```
 T=0ms:    User touches screen
           pollTouch() detects touch
-          checkYield() ‚Üí Touch ISR processes tap immediately
+          checkYield() GÂ∆ Touch ISR processes tap immediately
           handleTouch() registers button press
           Sets dashTab=0, needFull=true
           

@@ -1,4 +1,4 @@
-# ğŸš€ GitHub Push & Vercel Deployment Guide
+# =ƒÜÇ GitHub Push & Vercel Deployment Guide
 
 ## STEP 1: Stop Dev Server
 
@@ -11,7 +11,7 @@ If still running, press **CTRL+C** in the terminal to stop the dev server.
 ### Option A: Using GitHub Desktop (Easiest)
 
 1. **Open GitHub Desktop**
-2. **File** â†’ **Add Local Repository**
+2. **File** GåÆ **Add Local Repository**
 3. Select: `C:\Users\Appmaker\Documents\vitalstep_with_firmware-master\admin-dashboard`
 4. Click **Create a Local Git Repository**
 5. In the left panel, you'll see all files
@@ -24,7 +24,7 @@ If still running, press **CTRL+C** in the terminal to stop the dev server.
 9. **Name**: `vitalstep-admin-dashboard`
 10. **Keep private** (optional)
 11. Click **Publish Repository**
-12. Done! âœ…
+12. Done! G£à
 
 ### Option B: Using Terminal (Command Line)
 
@@ -74,20 +74,20 @@ Go to: `https://github.com/YOUR_USERNAME/vitalstep-admin-dashboard`
 
 You should see:
 ```
-âœ… admin-dashboard/
-   â”œâ”€â”€ lib/
-   â”‚   â””â”€â”€ supabase.ts
-   â”œâ”€â”€ app/
-   â”‚   â”œâ”€â”€ layout.tsx
-   â”‚   â”œâ”€â”€ login/
-   â”‚   â”œâ”€â”€ dashboard/
-   â”‚   â”œâ”€â”€ globals.css
-   â”œâ”€â”€ components/
-   â”‚   â””â”€â”€ Sidebar.tsx
-   â”œâ”€â”€ .env.local (hidden by git)
-   â”œâ”€â”€ package.json
-   â”œâ”€â”€ tsconfig.json
-   â””â”€â”€ README.md
+G£à admin-dashboard/
+   Gö£GöÇGöÇ lib/
+   Göé   GööGöÇGöÇ supabase.ts
+   Gö£GöÇGöÇ app/
+   Göé   Gö£GöÇGöÇ layout.tsx
+   Göé   Gö£GöÇGöÇ login/
+   Göé   Gö£GöÇGöÇ dashboard/
+   Göé   Gö£GöÇGöÇ globals.css
+   Gö£GöÇGöÇ components/
+   Göé   GööGöÇGöÇ Sidebar.tsx
+   Gö£GöÇGöÇ .env.local (hidden by git)
+   Gö£GöÇGöÇ package.json
+   Gö£GöÇGöÇ tsconfig.json
+   GööGöÇGöÇ README.md
 ```
 
 ---
@@ -110,9 +110,9 @@ You should see:
 
 **Project Name**: `vitalstep-admin-dashboard` (or your choice)
 
-**Framework Preset**: Should auto-detect **Next.js** âœ…
+**Framework Preset**: Should auto-detect **Next.js** G£à
 
-**Root Directory**: `.` (root) âœ…
+**Root Directory**: `.` (root) G£à
 
 ### Step 5.4: Add Environment Variables
 
@@ -152,12 +152,12 @@ Click **Add**
 
 1. Click **Deploy**
 2. Wait for build to complete (2-3 minutes)
-3. See green checkmark âœ…
+3. See green checkmark G£à
 4. Click **Visit** to see your live dashboard!
 
 ---
 
-## âœ… Your Live URL
+## G£à Your Live URL
 
 After deployment, you'll get a URL like:
 
@@ -173,63 +173,63 @@ https://dashboard.vitalstep.com
 
 ---
 
-## ğŸ§ª Test Production
+## =ƒº¬ Test Production
 
 1. Open your Vercel URL
 2. Login with:
    - Email: `admin@vitalstep.com`
    - Password: `Admin123!@#`
 3. Test all features:
-   - âœ… Generate device
-   - âœ… View inventory
-   - âœ… View audit log
-   - âœ… Logout
+   - G£à Generate device
+   - G£à View inventory
+   - G£à View audit log
+   - G£à Logout
 
 ---
 
-## ğŸ“‹ Environment Variables Checklist
+## =ƒôï Environment Variables Checklist
 
 | Variable | Status | Value |
 |----------|--------|-------|
-| `NEXT_PUBLIC_SUPABASE_URL` | â˜ Added | https://oyqecdcpicvzwwvwaeka.supabase.co |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | â˜ Added | sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi |
-| `NEXT_PUBLIC_SUPABASE_SERVICE_KEY` | â˜ Added | eyJhbGci... |
-| `NEXT_PUBLIC_EDGE_FUNCTION_URL` | â˜ Added | https://oyqecdcpicvzwwvwaeka.supabase.co/functions/v1/generate-device-id |
+| `NEXT_PUBLIC_SUPABASE_URL` | GÿÉ Added | https://oyqecdcpicvzwwvwaeka.supabase.co |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | GÿÉ Added | sb_publishable_5ovuyYHtObqNMcjEFrNo6Q_Bo4dDFQi |
+| `NEXT_PUBLIC_SUPABASE_SERVICE_KEY` | GÿÉ Added | eyJhbGci... |
+| `NEXT_PUBLIC_EDGE_FUNCTION_URL` | GÿÉ Added | https://oyqecdcpicvzwwvwaeka.supabase.co/functions/v1/generate-device-id |
 
 ---
 
-## ğŸ†˜ Troubleshooting
+## =ƒåÿ Troubleshooting
 
 ### "Build failed"
-â†’ Check that all files were pushed to GitHub  
-â†’ Verify environment variables are correct
+GåÆ Check that all files were pushed to GitHub  
+GåÆ Verify environment variables are correct
 
 ### "Can't login in production"
-â†’ Check admin user exists in Supabase  
-â†’ Verify credentials: admin@vitalstep.com / Admin123!@#
+GåÆ Check admin user exists in Supabase  
+GåÆ Verify credentials: admin@vitalstep.com / Admin123!@#
 
 ### "Generate device fails"
-â†’ Check NEXT_PUBLIC_EDGE_FUNCTION_URL is correct  
-â†’ Check Supabase Edge Function is deployed
+GåÆ Check NEXT_PUBLIC_EDGE_FUNCTION_URL is correct  
+GåÆ Check Supabase Edge Function is deployed
 
 ### "Environment variables not working"
-â†’ Make sure you added them in Vercel (not just locally)  
-â†’ Redeploy after adding variables
+GåÆ Make sure you added them in Vercel (not just locally)  
+GåÆ Redeploy after adding variables
 
 ---
 
-## ğŸ‰ Success Indicators
+## =ƒÄë Success Indicators
 
-âœ… GitHub repo has all files  
-âœ… Vercel shows "Build successful"  
-âœ… Dashboard loads at https://vitalstep-admin-dashboard.vercel.app  
-âœ… Can login with admin credentials  
-âœ… Can generate devices  
-âœ… Can view device inventory  
+G£à GitHub repo has all files  
+G£à Vercel shows "Build successful"  
+G£à Dashboard loads at https://vitalstep-admin-dashboard.vercel.app  
+G£à Can login with admin credentials  
+G£à Can generate devices  
+G£à Can view device inventory  
 
 ---
 
-## ğŸ“ Next Steps After Deployment
+## =ƒôP Next Steps After Deployment
 
 1. **Share URL with team**
    - Send: https://vitalstep-admin-dashboard.vercel.app
@@ -249,4 +249,4 @@ https://dashboard.vitalstep.com
 
 ---
 
-**All done! Your dashboard is now live in production! ğŸš€**
+**All done! Your dashboard is now live in production! =ƒÜÇ**

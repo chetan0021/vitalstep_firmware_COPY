@@ -34,7 +34,7 @@ static void drawDash(){
 The `GRRH()` function renders gradients PIXEL BY PIXEL:
 ```cpp
 static void GRRH(int x,int y,int w,int h,int r,uint16_t c1,uint16_t c2){
-  // Renders leftâ†’right gradient by drawing vertical lines for each pixel in width
+  // Renders leftGåÆright gradient by drawing vertical lines for each pixel in width
   r=imin(r,imin(w,h)/2); 
   for(int i=0;i<w;i++){              // Loop for EACH PIXEL WIDTH
     int in=rInset(i,w,r); 
@@ -99,9 +99,9 @@ LovyanGFX is optimized for throughput (SPI DMA for bulk transfers), BUT:
 
 1. **Home Screen** (`drawHome()`): Minimal graphics, mostly text and status indicators
 2. **Assess Screen** (`drawAssess()`): Simple card layout, no gradients
-3. **Dashboard** (`drawDash()`): Full gradient header + complex chart â†’ slowest render
+3. **Dashboard** (`drawDash()`): Full gradient header + complex chart GåÆ slowest render
 
-The problem is *screen-dependent* â€“ Dashboard is the worst offender because:
+The problem is *screen-dependent* GÇô Dashboard is the worst offender because:
 - Gradient rendering (GRRH call)
 - Complex chart with lines, text, markers
 - Multiple rounded rects
@@ -146,9 +146,9 @@ Insert `yield()` or `delay(0)` strategically to allow touch ISR to trigger:
 ## Recommended Implementation
 
 **Hybrid approach:**
-1. **Short-term (1 hour)**: Optimize gradient rendering (Option C) â€“ quick 50% speed improvement
-2. **Medium-term (2-3 hours)**: Implement yield points in chart drawing (Option D) â€“ responsive feel
-3. **Long-term (4-6 hours)**: Async rendering with double buffering (Option A) â€“ production ready
+1. **Short-term (1 hour)**: Optimize gradient rendering (Option C) GÇô quick 50% speed improvement
+2. **Medium-term (2-3 hours)**: Implement yield points in chart drawing (Option D) GÇô responsive feel
+3. **Long-term (4-6 hours)**: Async rendering with double buffering (Option A) GÇô production ready
 
 ---
 
@@ -157,7 +157,7 @@ Insert `yield()` or `delay(0)` strategically to allow touch ISR to trigger:
 1. **VitalStep_Device_fixed.ino** (line 364-367): `GRRH()` gradient function
 2. **VitalStep_Device_fixed.ino** (line 1107-1160): `drawChart()` function
 3. **VitalStep_Device_fixed.ino** (line 1961-1970): `loop()` function
-4. **VitalStep_Device_fixed.ino** (line 1912-1930): `tick()` function (optional â€“ for yield points)
+4. **VitalStep_Device_fixed.ino** (line 1912-1930): `tick()` function (optional GÇô for yield points)
 
 ---
 
@@ -172,7 +172,7 @@ Insert `yield()` or `delay(0)` strategically to allow touch ISR to trigger:
 **Goal**: Allow touch ISR to interrupt long rendering sequences
 - Add `yield()` calls after every grid line and every ~10 data points
 
-### Phase 3: Optional â€“ Double Buffering
+### Phase 3: Optional GÇô Double Buffering
 **Goal**: Render off-screen to avoid flicker
 - Would require 480x320x2 bytes = 307KB SRAM (may not fit on ESP32)
 - Alternative: Use DMA transfers for large buffers
@@ -181,9 +181,9 @@ Insert `yield()` or `delay(0)` strategically to allow touch ISR to trigger:
 
 ## Testing Strategy
 
-1. **Before fix**: Hold finger on Dashboard tab button â†’ confirm freezes for 1-2 seconds
-2. **After Phase 1**: Hold finger â†’ should respond faster
-3. **After Phase 2**: Hold finger + rapid taps â†’ should see near-instant response
+1. **Before fix**: Hold finger on Dashboard tab button GåÆ confirm freezes for 1-2 seconds
+2. **After Phase 1**: Hold finger GåÆ should respond faster
+3. **After Phase 2**: Hold finger + rapid taps GåÆ should see near-instant response
 4. **Regression test**: Check all screens (Home, Assess, Settings, Test, etc.) for visual glitches
 
 ---

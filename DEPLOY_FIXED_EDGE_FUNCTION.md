@@ -14,7 +14,7 @@
 
 ### Step 1: Update Edge Function Code
 
-1. Go to Supabase Dashboard â†’ **Functions** â†’ **generate-device-id**
+1. Go to Supabase Dashboard GåÆ **Functions** GåÆ **generate-device-id**
 2. Click **Code** tab
 3. **DELETE all current code** 
 4. **PASTE this entire code**:
@@ -201,11 +201,11 @@ serve(async (req) => {
 
 ### Step 2: Verify Environment Variables
 
-1. Go to **Functions** â†’ **generate-device-id** â†’ **Settings**
+1. Go to **Functions** GåÆ **generate-device-id** GåÆ **Settings**
 2. Check that these environment variables are available:
-   - `SUPABASE_URL` âœ…
-   - `SUPABASE_ANON_KEY` âœ…
-   - `SUPABASE_SERVICE_ROLE_KEY` âœ…
+   - `SUPABASE_URL` G£à
+   - `SUPABASE_ANON_KEY` G£à
+   - `SUPABASE_SERVICE_ROLE_KEY` G£à
 
 They should all be pre-configured by Supabase.
 
@@ -221,12 +221,12 @@ powershell -ExecutionPolicy Bypass -File "c:\Users\Appmaker\Documents\vitalstep_
 
 **Expected output:**
 ```
-âœ… Fresh token received
+G£à Fresh token received
 User ID: 09c41189-b0c7-4dc0-b9f9-153162041dfa
 Token preview: eyJhbGciOiJFUzI1NiIsImtpZCI6IjVmOTA...
 
 Step 2: Calling generate-device-id function...
-âœ… SUCCESS - Status: 200
+G£à SUCCESS - Status: 200
 Response:
 ok           : True
 device_code  : VS-001001
@@ -240,7 +240,7 @@ created_at   : 2026-11-13T10:30:45.123Z
 
 ### Check Edge Function Logs
 
-1. Go to **Functions** â†’ **generate-device-id**
+1. Go to **Functions** GåÆ **generate-device-id**
 2. Click **Executions** tab
 3. Click the latest execution
 4. Check the logs for error details

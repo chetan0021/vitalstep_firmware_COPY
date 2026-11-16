@@ -1,7 +1,7 @@
 # Network Connectivity Issue - Diagnostic and Fix
 
 ## Problem Found
-‚ùå **Your computer cannot reach GitHub**
+G•Ó **Your computer cannot reach GitHub**
 - Error: `The remote name could not be resolved: 'api.github.com'`
 - Cause: DNS resolution failure - GitHub servers are not reachable
 
@@ -24,8 +24,8 @@ Ping request could not find host github.com
 1. Open browser (Chrome, Firefox, Edge)
 2. Try to visit: https://github.com
 3. Can you see the GitHub website?
-   - **YES** ‚Üí Issue is with git/DNS, go to Option 2
-   - **NO** ‚Üí Your internet is down, restart router/modem
+   - **YES** GÂ∆ Issue is with git/DNS, go to Option 2
+   - **NO** GÂ∆ Your internet is down, restart router/modem
 
 ### Option 2: Flush DNS Cache
 1. Open **Command Prompt** as Administrator
@@ -52,7 +52,7 @@ git push origin main
 ### Option 3: Change DNS Server
 If flushing DNS doesn't work, try using a public DNS:
 
-1. **Windows Settings** ‚Üí **Network & Internet** ‚Üí **Change adapter options**
+1. **Windows Settings** GÂ∆ **Network & Internet** GÂ∆ **Change adapter options**
 2. Right-click your active network connection
 3. Select **Properties**
 4. Double-click **Internet Protocol Version 4 (TCP/IPv4)**
@@ -67,7 +67,7 @@ ping github.com
 ```
 
 ### Option 4: Check Firewall/Proxy
-1. Open **Windows Defender Firewall** ‚Üí **Allow apps through firewall**
+1. Open **Windows Defender Firewall** GÂ∆ **Allow apps through firewall**
 2. Look for **Git** in the list
 3. Make sure both Private and Public are checked
 4. If Git isn't there, click **Allow another app**
@@ -84,9 +84,9 @@ git config --global http.proxy [your-proxy]
 ## What NOT to Revoke
 
 The earlier authentication attempt failed due to network, NOT invalid credentials. So:
-- ‚úÖ No need to revoke anything on GitHub
-- ‚úÖ Your credentials weren't actually used (network failed first)
-- ‚úÖ No security issue to worry about
+- G£‡ No need to revoke anything on GitHub
+- G£‡ Your credentials weren't actually used (network failed first)
+- G£‡ No security issue to worry about
 
 ## After Fixing Network
 
@@ -102,10 +102,10 @@ The Git Credential Manager will then properly authenticate and push your code.
 ## Current Git Status
 
 Your local repository is fine:
-- ‚úÖ All commits are made locally
-- ‚úÖ Configuration files are in place
-- ‚úÖ Code is ready to push
-- ‚è≥ Just waiting for network connectivity
+- G£‡ All commits are made locally
+- G£‡ Configuration files are in place
+- G£‡ Code is ready to push
+- G≈¶ Just waiting for network connectivity
 
 ## Test Sequence
 

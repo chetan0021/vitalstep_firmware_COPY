@@ -37,7 +37,7 @@ NEXT_PUBLIC_SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOi
 NEXT_PUBLIC_EDGE_FUNCTION_URL=https://oyqecdcpicvzwwvwaeka.supabase.co/functions/v1/generate-device-id
 ```
 
-**Note**: Get SERVICE_KEY from Supabase â†’ Settings â†’ API â†’ Service Role Key
+**Note**: Get SERVICE_KEY from Supabase GåÆ Settings GåÆ API GåÆ Service Role Key
 
 ---
 

@@ -1,6 +1,6 @@
 # Button Freeze Fix - Quick Summary
 
-## ğŸ”´ THE PROBLEM
+## =ƒö¦ THE PROBLEM
 
 Buttons don't work after entering Dashboard or other complex screens. UI feels "frozen" for 1-2 seconds.
 
@@ -8,21 +8,21 @@ Buttons don't work after entering Dashboard or other complex screens. UI feels "
 
 ```
 Touch event at T=50ms
-          â†“
-    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-    â”‚ Drawing screen (150-200ms)          â”‚
-    â”‚ âœ— Touch input NOT checked!          â”‚
-    â”‚                                     â”‚
-    â”‚ Device finally checks touch at T=200ms
-    â”‚ But user already lifted finger!     â”‚
-    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+          Gåô
+    GöîGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÉ
+    Göé Drawing screen (150-200ms)          Göé
+    Göé G£ù Touch input NOT checked!          Göé
+    Göé                                     Göé
+    Göé Device finally checks touch at T=200ms
+    Göé But user already lifted finger!     Göé
+    GööGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÇGöÿ
     
 Result: Button press = MISSED
 ```
 
 ---
 
-## ğŸŸ¢ THE SOLUTION (Two Parts)
+## =ƒƒó THE SOLUTION (Two Parts)
 
 ### Part 1: Gradient Optimization
 **What**: Replace smooth gradients with 3-color bands  
@@ -36,7 +36,7 @@ Result: Button press = MISSED
 
 ---
 
-## ğŸ“Š Results
+## =ƒôè Results
 
 | Before | After |
 |--------|-------|
@@ -47,7 +47,7 @@ Result: Button press = MISSED
 
 ---
 
-## âš™ï¸ Implementation (3 Simple Steps)
+## GÜÖn+Å Implementation (3 Simple Steps)
 
 ### Step 1: Add Yield Helper
 ```cpp
@@ -72,7 +72,7 @@ static void checkYield(){
 
 ---
 
-## ğŸ§ª How to Verify It Works
+## =ƒº¬ How to Verify It Works
 
 1. Compile and flash the updated firmware
 2. Open Serial Monitor (115200 baud)
@@ -84,19 +84,19 @@ static void checkYield(){
 
 ---
 
-## ğŸ“ Visual Difference
+## =ƒô¥ Visual Difference
 
 ### Dashboard Header Gradient
 
 **Before (Smooth):**
 ```
-â–ˆ (blue) â†’ â–‘ (light blue) â†’ â–“ (purple)
+Gûê (blue) GåÆ Gûæ (light blue) GåÆ Gûô (purple)
 (108 pixels of smooth transition)
 ```
 
 **After (Banded):**
 ```
-â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ (blue) | â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ (light) | â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“â–“ (purple)
+GûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûêGûê (blue) | GûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæGûæ (light) | GûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûôGûô (purple)
     (~36px per band)
 ```
 
@@ -104,7 +104,7 @@ static void checkYield(){
 
 ---
 
-## âœ… What Gets Fixed
+## G£à What Gets Fixed
 
 - [x] Dashboard buttons respond immediately
 - [x] Assess screen tabs work smoothly
@@ -116,7 +116,7 @@ static void checkYield(){
 
 ---
 
-## âŒ What Stays the Same
+## G¥î What Stays the Same
 
 - [x] Visual appearance (gradients look almost identical)
 - [x] All functionality works
@@ -126,7 +126,7 @@ static void checkYield(){
 
 ---
 
-## ğŸš€ Performance Impact
+## =ƒÜÇ Performance Impact
 
 **Device response time:**
 - **Before**: 150-200ms delay between tap and visual feedback
@@ -136,7 +136,7 @@ static void checkYield(){
 
 ---
 
-## ğŸ“¦ Files Affected
+## =ƒôª Files Affected
 
 Only ONE file changes:
 ```
@@ -151,7 +151,7 @@ VitalStep_Device_fixed.ino
 
 ---
 
-## ğŸ”§ Implementation Steps
+## =ƒöº Implementation Steps
 
 1. **Read** `FIRMWARE_FIXES_PATCH.md` for exact code locations
 2. **Apply** the 6 changes listed in that document
@@ -162,7 +162,7 @@ VitalStep_Device_fixed.ino
 
 ---
 
-## ğŸ’¡ Why This Works
+## =ƒÆí Why This Works
 
 **Core principle**: "Never block input for more than 10ms"
 
@@ -178,7 +178,7 @@ This feels smooth to the user because:
 
 ---
 
-## ğŸ¯ Bottom Line
+## =ƒÄ» Bottom Line
 
 **Problem**: Buttons freeze because drawing takes too long  
 **Solution**: Draw faster (8x) + check touch more often (every 10ms)  
@@ -186,7 +186,7 @@ This feels smooth to the user because:
 
 ---
 
-## ğŸ“ Questions?
+## =ƒôP Questions?
 
 - **"Will I notice banding in gradients?"** No - on a 100px header, 3 bands of smooth color transition each is imperceptible
 - **"Will this affect battery?"** No - actually saves power by reducing SPI transfers
