@@ -26,14 +26,16 @@ class AssesmentViewModel extends BaseViewModel {
 
   Future<List<Assessment>?> init() async {
     final assessments = await _apiCallsService.getAllUserAssessments(
-        patientUserId: patientUserId);
-    
+        patientUserId: patientUserId?.toString());
+
     // Start polling if not already started
-    _pollingTimer ??= Timer.periodic(const Duration(seconds: 10), (timer) async {
-       devicesFuture = _apiCallsService.getAllUserAssessments(patientUserId: patientUserId);
-       notifyListeners();
+    _pollingTimer ??=
+        Timer.periodic(const Duration(seconds: 10), (timer) async {
+      devicesFuture = _apiCallsService.getAllUserAssessments(
+          patientUserId: patientUserId?.toString());
+      notifyListeners();
     });
-    
+
     return assessments;
   }
 
@@ -79,8 +81,8 @@ class AssesmentViewModel extends BaseViewModel {
   }
 
   Future<Profile> getPatientProfile({int? patientUserId}) async {
-    final profile =
-        await _accountsService.getAccountDetails(patientUserId: patientUserId);
+    final profile = await _accountsService.getAccountDetails(
+        patientUserId: patientUserId?.toString());
     return profile;
   }
 
@@ -93,7 +95,7 @@ class AssesmentViewModel extends BaseViewModel {
       description: "This action cannot be undone",
     );
     if (response != null && response.confirmed == true) {
-      await _specialistService.deleteAccountAccess(id: id);
+      await _specialistService.deleteAccountAccess(patientId: id?.toString());
     } else {
       Fluttertoast.showToast(msg: "User not deleted");
     }
@@ -118,8 +120,7 @@ class AssesmentViewModel extends BaseViewModel {
   Future<void> createSelfAssessment() async {
     final DialogService dialogService = locator<DialogService>();
     await dialogService.showCustomDialog(
-        variant: DialogType.createAssessment,
-        data: patientUserId);
+        variant: DialogType.createAssessment, data: patientUserId);
     devicesFuture = init();
     rebuildUi();
   }

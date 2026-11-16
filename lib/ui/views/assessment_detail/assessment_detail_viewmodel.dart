@@ -20,8 +20,8 @@ class AssessmentDetailViewModel extends BaseViewModel {
 
   void getBMI() async {
     setBusyForObject(calculatingBMI, true);
-    final profile =
-        await _accountService.getAccountDetails(patientUserId: patientUserId);
+    final profile = await _accountService.getAccountDetails(
+        patientUserId: patientUserId?.toString());
     final height = profile.height; // height is in CMS
     final weight = profile.weight; // Weight is in KGs
     final double heightInMeters = height / 100;

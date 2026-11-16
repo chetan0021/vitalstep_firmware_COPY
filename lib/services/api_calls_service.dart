@@ -122,6 +122,26 @@ class ApiCallsService {
     }
   }
 
+  // ── Assessment Queue (by assessment ID) ──────────────────────────────────
+
+  /// Returns device IDs currently in the queue for a specific assessment.
+  /// Used by test-taking flow to poll until the queue clears.
+  Future<List<String>> getAssessmentQueue(
+      {required String assessmentId}) async {
+    try {
+      final data = await patientSupabaseClient
+          .from('assessment_queue')
+          .select('id')
+          .eq('assessment_id', int.tryParse(assessmentId) ?? 0)
+          .eq('status', 'pending');
+
+      return (data as List).map((q) => q['id'].toString()).toList();
+    } catch (e) {
+      _logger.e('getAssessmentQueue error: $e');
+      return [];
+    }
+  }
+
   // ── Queue ─────────────────────────────────────────────────────────────────
 
   Future<List<Map<String, int>>> getUserQueue() async {
